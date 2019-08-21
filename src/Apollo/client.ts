@@ -16,10 +16,7 @@ console.log(process.env.NODE_ENV);
 const API_SERVER = "https://pinner-fun.herokuapp.com/graphql/";
 
 const uploadLink = createUploadLink({
-  uri:
-    process.env.NODE_ENV === "development"
-      ? "http://localhost:8000/graphql/"
-      : API_SERVER,
+  uri: API_SERVER,
   fetch
 });
 
