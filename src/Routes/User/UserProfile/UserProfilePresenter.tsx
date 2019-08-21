@@ -19,8 +19,6 @@ import Thin from "src/Components/Thin";
 import Helmet from "react-helmet";
 import { countries } from "../../../countryData";
 import InfiniteScroll from "react-infinite-scroller";
-import dotenv from "dotenv";
-dotenv.config();
 
 const Header = styled.header`
   display: flex;

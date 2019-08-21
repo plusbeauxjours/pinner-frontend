@@ -1,7 +1,5 @@
 import axios from "axios";
 import { toast } from "react-toastify";
-import dotenv from "dotenv";
-dotenv.config();
 
 export const cityThumbnail = async cityName => {
   const REACT_APP_UNSPLASH_ACCESS_KEY =

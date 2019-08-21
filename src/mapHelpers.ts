@@ -1,7 +1,5 @@
 import axios from "axios";
 import { toast } from "react-toastify";
-import dotenv from "dotenv";
-dotenv.config();
 
 export const geoCode = async (address: string) => {
   const REACT_APP_GOOGLE_MAPS_KEY = process.env.REACT_APP_GOOGLE_MAPS_KEY;

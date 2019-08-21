@@ -7,8 +7,6 @@ import { Link } from "react-router-dom";
 import UserHeader from "../UserHeader";
 import Avatar from "../Avatar";
 import useGoogleAutocomplete from "../../autocompleteHelpers";
-import dotenv from "dotenv";
-dotenv.config();
 
 const SWrapper = styled(Wrapper)`
   z-index: 1;

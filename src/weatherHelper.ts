@@ -1,7 +1,5 @@
 import axios from "axios";
 import { toast } from "react-toastify";
-import dotenv from "dotenv";
-dotenv.config();
 
 export const getAqi = async (latitude, longitude) => {
   const REACT_APP_AQICN_KEY = process.env.REACT_APP_AQICN_KEY;
