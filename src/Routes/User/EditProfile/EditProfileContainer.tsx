@@ -267,7 +267,6 @@ class EditProfileContainer extends React.Component<IProps, IState> {
             <StartEditEmailVerificationMutatiojn
               mutation={START_EDIT_EMAIL_VERIFICATION}
               variables={{ emailAddress: newEmailAddress }}
-              update={this.updateEditEmailVerification}
               onCompleted={this.onCompletedEditEmailVerification}
             >
               {(emailVerificationFn, { loading: emailLoading }) => {
@@ -1222,10 +1221,6 @@ class EditProfileContainer extends React.Component<IProps, IState> {
       toast.error("Could not send you a Key");
     }
   };
-  public updateEditEmailVerification = (
-    cache,
-    { data: { startEditEmailVerification } }
-  ) => {};
   public onCompletedUploadAvatar = data => {
     if (data.uploadAvatar.ok) {
       toast.success("Avatar updated");
