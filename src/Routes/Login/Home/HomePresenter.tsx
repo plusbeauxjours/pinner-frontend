@@ -127,9 +127,9 @@ const MBold = styled(Bold)`
 `;
 
 const LogoContnainer = styled.span`
-  display: flex;
-  align-items: center;
-  padding: 10px 0 0 10px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
 `;
 
 interface IProps {
@@ -210,12 +210,12 @@ const HomePresenter: React.FunctionComponent<IProps> = ({
           );
         }}
       </ProgressiveImage>
-      <LogoContnainer>
-        <Logo src={require(`../../../Images/animations/logo.png`)} />
-        &nbsp;
-        <MBold text={"PINNER"} />
-      </LogoContnainer>
       <Container>
+        <LogoContnainer>
+          <Logo src={require(`../../../Images/animations/logo.png`)} />
+          &nbsp;
+          <MBold text={"PINNER"} />
+        </LogoContnainer>
         <SwitchModal>
           <SwitchLink onClick={toggleModal}>SIGN IN</SwitchLink>
         </SwitchModal>
