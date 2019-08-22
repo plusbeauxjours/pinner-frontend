@@ -49,7 +49,7 @@
     "build": "react-scripts-ts build",
     "test": "react-scripts-ts test --env=jsdom",
     "eject": "react-scripts-ts eject",
-    "precodegen": "apollo schema:download --endpoint=https://pinner-fun.herokuapp.com/",
+    "precodegen": "apollo schema:download --endpoint=https://pinner-fun.herokuapp.com",
     "codegen": "apollo codegen:generate src/types/api.d.ts --localSchemaFile=schema.json --includes='src/**/!(*.local).ts' --target typescript --outputFlat",
     "predeploy": "yarn run build",
     "deploy": "gh-pages -d dist"
@@ -77,7 +77,7 @@
     "webpack-bundle-tracker": "^0.4.2-beta",
     "webpack-cli": "^3.3.5"
   },
-  "homepage": "https://pinner-fun.herokuapp.com/",
+  "homepage": "https://pinner-fun.herokuapp.com",
   "main": "index.js",
   "repository": "https://github.com/plusbeauxjours/pinner-frontend.git",
   "author": "pinner.superuser@gmail.com",
