@@ -13,11 +13,11 @@ require("dotenv").config();
 
 const cache = new InMemoryCache();
 console.log(process.env.NODE_ENV);
-const API_SERVER = "https://pinner-fun.herokuapp.com/";
+const API_SERVER = "https://pinner-fun.herokuapp.com";
 const uploadLink = createUploadLink({
   uri:
     process.env.NODE_ENV === "development"
-      ? "http://localhost:8000/"
+      ? "http://localhost:8000"
       : API_SERVER,
   fetch
 });
