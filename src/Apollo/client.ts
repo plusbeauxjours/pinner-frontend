@@ -1,4 +1,3 @@
-import { toast } from "react-toastify";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import { HttpLink } from "apollo-link-http";
 import { createUploadLink } from "apollo-upload-client";
@@ -13,11 +12,11 @@ require("dotenv").config();
 
 const cache = new InMemoryCache();
 console.log(process.env.NODE_ENV);
-const API_SERVER = "https://pinner-fun.herokuapp.com";
+const API_SERVER = "https://pinner-fun.herokuapp.com/graphql";
 const uploadLink = createUploadLink({
   uri:
     process.env.NODE_ENV === "development"
-      ? "http://localhost:8000"
+      ? "http://localhost:8000/graphql"
       : API_SERVER,
   fetch
 });
@@ -58,15 +57,14 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
     browserHistory.push("/404");
     console.log(`[Network error]: ${networkError}`);
   }
-
-  if (graphQLErrors) {
-    graphQLErrors.map(({ message, locations, path }) => {
-      graphQLErrors.forEach(error => toast.error(error.message));
-      console.log(
-        `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
-      );
-    });
-  }
+  // if (graphQLErrors) {
+  //   graphQLErrors.map(({ message, locations, path }) => {
+  //     graphQLErrors.forEach(error => toast.error(error.message));
+  //     console.log(
+  //       `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
+  //     );
+  //   });
+  // }
 });
 
 const httpLink = new HttpLink({ uri: API_SERVER });
@@ -108,8 +106,7 @@ const client = new ApolloClient({
     uploadLink,
     httpLink
   ]),
-  cache,
-  resolvers: {}
+  cache
 });
 
 export default client;

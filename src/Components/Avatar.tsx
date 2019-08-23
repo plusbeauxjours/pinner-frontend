@@ -130,29 +130,32 @@ const Avatar: React.FunctionComponent<IProps> = ({
   //   alpha: 0.9
   // });
   if (cityId) {
-    const { data: cityPhotoData } = useQuery(GET_CITY_PHOTO, {
+    const { data, loading } = useQuery(GET_CITY_PHOTO, {
       variables: { cityId }
     });
-    const { getCityPhoto: { photo = null } = {} } = cityPhotoData;
-    return (
-      // <ProgressiveImage delay={0} src={photo} placeholder="">
-      //   {(src, loading) => {
-      //     return loading ? (
-      //       <AvatarContainer size={size}>
-      //         <Placeholder
-      //           className={className}
-      //           color={"#212121"}
-      //           size={size}
-      //         />
-      //       </AvatarContainer>
-      //     ) : (
-      <AvatarContainer size={size}>
-        <Container className={className} src={photo} size={size} />
-      </AvatarContainer>
-      //     );
-      //   }}
-      // </ProgressiveImage>
-    );
+    if (!loading) {
+      const { getCityPhoto: { photo = null } = {} } = data;
+      return (
+        // <ProgressiveImage delay={0} src={photo} placeholder="">
+        //   {(src, loading) => {
+        //     return loading ? (
+        //       <AvatarContainer size={size}>
+        //         <Placeholder
+        //           className={className}
+        //           color={"#212121"}
+        //           size={size}
+        //         />
+        //       </AvatarContainer>
+        //     ) : (
+        <AvatarContainer size={size}>
+          <Container className={className} src={photo} size={size} />
+        </AvatarContainer>
+        //     );
+        //   }}
+        // </ProgressiveImage>
+      );
+    }
+    return null;
   } else if (countryPhoto) {
     return (
       // <ProgressiveImage delay={0} src={photo} placeholder="">
