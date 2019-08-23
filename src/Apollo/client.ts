@@ -108,7 +108,8 @@ const client = new ApolloClient({
     uploadLink,
     httpLink
   ]),
-  cache
+  cache,
+  resolvers: {}
 });
 
 export default client;

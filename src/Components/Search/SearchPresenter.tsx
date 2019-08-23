@@ -143,7 +143,14 @@ const SearchPresenter: React.FunctionComponent<IProps> = ({
                 }}
               >
                 <Header>
-                  <SAvatar size={"sm"} countryPhoto={country.countryPhoto} />
+                  <SAvatar
+                    size={"sm"}
+                    countryPhoto={
+                      country.countryPhoto
+                        ? country.countryPhoto
+                        : require(`../../Images/notFound/Lost Tourist-big.png`)
+                    }
+                  />
                   <HeaderColumn>
                     <HeaderText text={country.countryName} />
                     <Location>{country.continent.continentName}</Location>
