@@ -3,6 +3,14 @@ import HomePresenter from "./HomePresenter";
 import { reverseGeoCode } from "../../../mapHelpers";
 import { countries } from "../../../countryData";
 import { RouteComponentProps, withRouter } from "react-router";
+import { Mutation, MutationFn } from "react-apollo";
+import { ReportLocation, ReportLocationVariables } from "../../../types/api";
+import { REPORT_LOCATION } from "./HomeQueries";
+
+class ReportLocationMutation extends Mutation<
+  ReportLocation,
+  ReportLocationVariables
+> {}
 
 interface IProps extends RouteComponentProps<any> {}
 
@@ -18,6 +26,7 @@ interface IState {
 }
 
 class HomeContainer extends React.Component<IProps, IState> {
+  public ReportLocationFn: MutationFn;
   constructor(props) {
     super(props);
     navigator.geolocation.getCurrentPosition(
@@ -53,18 +62,25 @@ class HomeContainer extends React.Component<IProps, IState> {
       countryPhone
     } = this.state;
     return (
-      <HomePresenter
-        isLogIn={isLogIn}
-        modalOpen={modalOpen}
-        latitude={latitude}
-        longitude={longitude}
-        cityId={cityId}
-        cityName={cityName}
-        countryCode={countryCode}
-        countryPhone={countryPhone}
-        changeMode={this.changeMode}
-        toggleModal={this.toggleModal}
-      />
+      <ReportLocationMutation mutation={REPORT_LOCATION}>
+        {ReportLocationFn => {
+          this.ReportLocationFn = ReportLocationFn;
+          return (
+            <HomePresenter
+              isLogIn={isLogIn}
+              modalOpen={modalOpen}
+              latitude={latitude}
+              longitude={longitude}
+              cityId={cityId}
+              cityName={cityName}
+              countryCode={countryCode}
+              countryPhone={countryPhone}
+              changeMode={this.changeMode}
+              toggleModal={this.toggleModal}
+            />
+          );
+        }}
+      </ReportLocationMutation>
     );
   }
   public handleGeoSuccess = (position: Position) => {
@@ -75,9 +91,9 @@ class HomeContainer extends React.Component<IProps, IState> {
   };
   public getAddress = async (latitude: number, longitude: number) => {
     const address = await reverseGeoCode(latitude, longitude);
-    localStorage.setItem("cityId", address.storableLocation.cityId);
-    localStorage.setItem("countryCode", address.storableLocation.countryCode);
     if (address) {
+      localStorage.setItem("cityId", address.storableLocation.cityId);
+      localStorage.setItem("countryCode", address.storableLocation.countryCode);
       this.setState({
         latitude,
         longitude,
@@ -88,6 +104,13 @@ class HomeContainer extends React.Component<IProps, IState> {
           i => i.code === address.storableLocation.countryCode
         ).phone
       });
+      await this.reportLocation(
+        latitude,
+        longitude,
+        address.storableLocation.cityId,
+        address.storableLocation.cityName,
+        address.storableLocation.countryCode
+      );
     }
     return {
       countryCode: address.storableLocation.countryCode,
@@ -95,6 +118,27 @@ class HomeContainer extends React.Component<IProps, IState> {
         i => i.code === address.storableLocation.countryCode
       ).phone
     };
+  };
+  public reportLocation = async (
+    latitude: number,
+    longitude: number,
+    currentCityId: string,
+    currentCityName: string,
+    currentCountryCode: string
+  ) => {
+    try {
+      this.ReportLocationFn({
+        variables: {
+          currentLat: latitude,
+          currentLng: longitude,
+          currentCityId,
+          currentCityName,
+          currentCountryCode
+        }
+      });
+    } catch (e) {
+      console.log(e);
+    }
   };
   public handleGeoError = () => {
     console.log("No location");

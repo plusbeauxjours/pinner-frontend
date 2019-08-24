@@ -57,14 +57,14 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
     browserHistory.push("/404");
     console.log(`[Network error]: ${networkError}`);
   }
-  if (graphQLErrors) {
-    graphQLErrors.map(({ message, locations, path }) => {
-      // graphQLErrors.forEach(error => toast.error(error.message));
-      console.log(
-        `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
-      );
-    });
-  }
+  // if (graphQLErrors) {
+  //   graphQLErrors.map(({ message, locations, path }) => {
+  //     graphQLErrors.forEach(error => toast.error(error.message));
+  //     console.log(
+  //       `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
+  //     );
+  //   });
+  // }
 });
 
 const httpLink = new HttpLink({ uri: API_SERVER });
