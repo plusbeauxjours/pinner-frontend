@@ -599,6 +599,7 @@ const STextArea = styled(Textarea)`
   font-size: 12px;
   font-weight: 100;
   padding: 10px 15px 4px 15px;
+  color: ${props => props.theme.color};
   margin-bottom: 10px;
   border: 1px solid ${props => props.theme.borderColor};
   overflow-y: auto;
@@ -816,7 +817,7 @@ const EditProfilePresenter: React.FunctionComponent<IProps> = ({
                   <p>Check your email</p>
                   <br />
                   <br />
-                  <p>&nbsp;{emailAddress}, an email has been sent</p>
+                  <p>&nbsp;{newEmailAddress}, an email has been sent</p>
                   <p>
                     Please check your email in a moment to verify email address.
                   </p>
