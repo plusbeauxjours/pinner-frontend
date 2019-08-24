@@ -957,7 +957,6 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
           <GenderModalContainer>
             <GenderModalOverlay onClick={closeGenderModal} />
             <GenderModal>
-              Set your {target}
               <GenderModalLink onClick={() => onSelectGender("MALE")}>
                 MALE
               </GenderModalLink>
@@ -977,7 +976,6 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
           <SearchModalContainer>
             <SearchModalOverlay onClick={closeCountryModal} />
             <SearchModal>
-              Set your {target}
               <CountryContainer>
                 {countries.map((country, index) => (
                   <CountryRow
@@ -1601,7 +1599,7 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                   coffees &&
                   coffees.length !== 0 &&
                   coffees.map(coffee => (
-                    <Row>
+                    <Row key={coffee.id}>
                       <Link
                         to={{
                           pathname: `/c/${coffee.uuid}`,
@@ -1620,7 +1618,7 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                   coffees &&
                   coffees.length !== 0 &&
                   coffees.map(coffee => (
-                    <Row>
+                    <Row key={coffee.id}>
                       <Link
                         to={{
                           pathname: `/c/${coffee.uuid}`,
