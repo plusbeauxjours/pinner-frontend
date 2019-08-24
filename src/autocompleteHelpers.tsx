@@ -27,7 +27,7 @@ export interface IAutocompleteProps {
   options?: IGoogleProps;
 }
 
-const cors = "https://cors-anywhere.herokuapp.com/";
+// const cors = "https://cors-anywhere.herokuapp.com/";
 
 export default function useGoogleAutocomplete({
   apiKey,
