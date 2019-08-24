@@ -817,7 +817,7 @@ interface IProps {
   removeImagePreviewUrl: () => void;
   deleteAvatarFn: MutationFn;
   markAsMainFn: any;
-  logUserOutFn: any;
+  logUserOut: () => void;
   logoutConfirmModal: boolean;
   toggleLogoutConfirmModal: () => void;
   slackReportUsers: (payload: string) => void;
@@ -904,7 +904,7 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
   removeImagePreviewUrl,
   deleteAvatarFn,
   markAsMainFn,
-  logUserOutFn,
+  logUserOut,
   logoutConfirmModal,
   toggleLogoutConfirmModal,
   slackReportUsers,
@@ -978,7 +978,7 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
           <ConfirmModalContainer>
             <ConfirmModalOverlay onClick={toggleLogoutConfirmModal} />
             <ConfirmModal>
-              <ConfirmModalLink onClick={logUserOutFn}>Yes</ConfirmModalLink>
+              <ConfirmModalLink onClick={logUserOut}>Yes</ConfirmModalLink>
               <ConfirmModalLink onClick={toggleLogoutConfirmModal}>
                 No
               </ConfirmModalLink>

@@ -633,9 +633,9 @@ class UserProfileContainer extends React.Component<IProps, IState> {
                                                                                               markAsMainFn={
                                                                                                 markAsMainFn
                                                                                               }
-                                                                                              logUserOutFn={
+                                                                                              logUserOut={
                                                                                                 this
-                                                                                                  .logUserOutFn
+                                                                                                  .logUserOut
                                                                                               }
                                                                                               logoutConfirmModal={
                                                                                                 logoutConfirmModal
@@ -731,6 +731,11 @@ class UserProfileContainer extends React.Component<IProps, IState> {
       </SlackReportUsersMutation>
     );
   }
+  public logUserOut = () => {
+    const { history } = this.props;
+    this.logUserOutFn();
+    history.push("/");
+  };
   public loadMore = page => {
     const {
       match: {

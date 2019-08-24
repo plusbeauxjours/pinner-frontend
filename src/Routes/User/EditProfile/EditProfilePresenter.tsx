@@ -651,7 +651,7 @@ interface IProps {
   onSelectChange: (
     event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => void;
-  logUserOutFn: any;
+  logUserOut: () => void;
 
   imagePreviewUrl: string;
 
@@ -739,7 +739,7 @@ const EditProfilePresenter: React.FunctionComponent<IProps> = ({
   onInputChange,
   onInputUsernameChange,
   onSelectChange,
-  logUserOutFn,
+  logUserOut,
 
   avatarPreviewModalOpen,
   toggleAvatarModal,
@@ -1070,7 +1070,7 @@ const EditProfilePresenter: React.FunctionComponent<IProps> = ({
         <ModalContainer>
           <ModalOverlay onClick={toggleLogoutConfirmModal} />
           <ConfirmModal>
-            <ModalLink onClick={logUserOutFn}>Yes</ModalLink>
+            <ModalLink onClick={logUserOut}>Yes</ModalLink>
             <ModalLink onClick={toggleLogoutConfirmModal}>No</ModalLink>
           </ConfirmModal>
         </ModalContainer>

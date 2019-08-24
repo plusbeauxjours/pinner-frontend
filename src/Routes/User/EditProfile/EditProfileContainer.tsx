@@ -455,9 +455,9 @@ class EditProfileContainer extends React.Component<IProps, IState> {
                                                                           this
                                                                             .onSelectChange
                                                                         }
-                                                                        logUserOutFn={
+                                                                        logUserOut={
                                                                           this
-                                                                            .logUserOutFn
+                                                                            .logUserOut
                                                                         }
                                                                         back={
                                                                           this
@@ -674,6 +674,11 @@ class EditProfileContainer extends React.Component<IProps, IState> {
       </LogUserInMutation>
     );
   }
+  public logUserOut = () => {
+    const { history } = this.props;
+    this.logUserOutFn();
+    history.push("/");
+  };
   public markAsMain = (uuid, avatarUrl) => {
     this.markAsMainFn({ variables: { uuid } });
     this.setState({ avatarUrl });

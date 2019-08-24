@@ -438,36 +438,40 @@ const MatchPresenter: React.FunctionComponent<IProps> = ({
           </ModalContainer>
         )}
         <SWrapper>
-          <UserContainer>
-            <Helmet>
-              <title>Home | Pinner</title>
-            </Helmet>
-            <Title>
-              <SText text={"RECOMMEND USERS"} />
-              <Link to={`/people`}>
-                <SeeAll>SEE ALL</SeeAll>
-              </Link>
-            </Title>
-            <Container>
-              <Box>
-                {users &&
-                  users.length !== 0 &&
-                  users.map(user => (
-                    <UserRow key={user.id}>
-                      <Link to={`/${user.username}`}>
-                        <UserHeader
-                          username={user.username}
-                          currentCity={user.currentCity.cityName}
-                          currentCountry={user.currentCity.country.countryName}
-                          avatar={user.avatarUrl}
-                          size={"sm"}
-                        />
-                      </Link>
-                    </UserRow>
-                  ))}
-              </Box>
-            </Container>
-          </UserContainer>
+          {users && (
+            <UserContainer>
+              <Helmet>
+                <title>Home | Pinner</title>
+              </Helmet>
+              <Title>
+                <SText text={"RECOMMEND USERS"} />
+                <Link to={`/people`}>
+                  <SeeAll>SEE ALL</SeeAll>
+                </Link>
+              </Title>
+              <Container>
+                <Box>
+                  {users &&
+                    users.length !== 0 &&
+                    users.map(user => (
+                      <UserRow key={user.id}>
+                        <Link to={`/${user.username}`}>
+                          <UserHeader
+                            username={user.username}
+                            currentCity={user.currentCity.cityName}
+                            currentCountry={
+                              user.currentCity.country.countryName
+                            }
+                            avatar={user.avatarUrl}
+                            size={"sm"}
+                          />
+                        </Link>
+                      </UserRow>
+                    ))}
+                </Box>
+              </Container>
+            </UserContainer>
+          )}
           <LocationBox
             recommendLocations={recommendLocations}
             title={"RECOMMEND LOCATIONS"}
