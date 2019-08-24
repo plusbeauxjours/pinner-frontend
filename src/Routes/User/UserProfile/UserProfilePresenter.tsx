@@ -19,6 +19,8 @@ import Thin from "src/Components/Thin";
 import Helmet from "react-helmet";
 import { countries } from "../../../countryData";
 import InfiniteScroll from "react-infinite-scroller";
+import LoadingOverlay from "react-loading-overlay";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const Header = styled.header`
   display: flex;
@@ -730,6 +732,14 @@ const InfoContainer = styled.div`
   margin-bottom: 20px;
 `;
 
+const LoaderContainer = styled(ModalContainer)`
+  z-index: 20;
+`;
+
+const LoaderModalOverlay = styled(ModalOverlay)`
+  z-index: 21;
+`;
+
 interface ITheme {
   size?: string;
 }
@@ -933,6 +943,16 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
   } else if (user && coffees && avatars) {
     return (
       <>
+        {(uploadAvatarLoading || avatarsLoading) && (
+          <LoaderContainer>
+            <LoaderModalOverlay />
+            <LoadingOverlay
+              active={true}
+              spinner={<ClipLoader color={"#999"} />}
+              fadeSpeed={500}
+            />
+          </LoaderContainer>
+        )}
         {genderModalOpen && (
           <GenderModalContainer>
             <GenderModalOverlay onClick={closeGenderModal} />
