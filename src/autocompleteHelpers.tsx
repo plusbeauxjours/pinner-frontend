@@ -98,7 +98,8 @@ export default function useGoogleAutocomplete({
       const location = options.location ? `&location=${options.location}` : "";
       const radius = options.radius ? `&radius=${options.radius}` : "";
 
-      const url = `${cors}https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${query}${types}${language}${location}${radius}${strictbounds}${offset}&key=${apiKey}&sessiontoken=${sessionToken.current}`;
+      // const url = `${cors}https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${query}${types}${language}${location}${radius}${strictbounds}${offset}&key=${apiKey}&sessiontoken=${sessionToken.current}`;
+      const url = `https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${query}${types}${language}${location}${radius}${strictbounds}${offset}&key=${apiKey}&sessiontoken=${sessionToken.current}`;
       fetch(url, { signal: abortSignal.current })
         .then(data => data.json())
         .then(data => {
