@@ -23,7 +23,6 @@ interface IState {
 }
 
 class HomeContainer extends React.Component<IProps, IState> {
-  public ReportLocationFn: MutationFn;
   public createCityFn: MutationFn;
   constructor(props) {
     super(props);
@@ -101,11 +100,6 @@ class HomeContainer extends React.Component<IProps, IState> {
         countryPhone: countries.find(
           i => i.code === address.storableLocation.countryCode
         ).phone
-      });
-      await this.createCityFn({
-        variables: {
-          cityId: address.storableLocation.cityId
-        }
       });
     }
     return {
