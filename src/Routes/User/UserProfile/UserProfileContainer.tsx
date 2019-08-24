@@ -733,8 +733,8 @@ class UserProfileContainer extends React.Component<IProps, IState> {
   }
   public logUserOut = () => {
     const { history } = this.props;
-    this.logUserOutFn();
     history.push("/");
+    this.logUserOutFn();
   };
   public loadMore = page => {
     const {

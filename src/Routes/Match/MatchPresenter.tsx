@@ -438,7 +438,7 @@ const MatchPresenter: React.FunctionComponent<IProps> = ({
           </ModalContainer>
         )}
         <SWrapper>
-          {users && (
+          {users && users.length !== 0 && (
             <UserContainer>
               <Helmet>
                 <title>Home | Pinner</title>

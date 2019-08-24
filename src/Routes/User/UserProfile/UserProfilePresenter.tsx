@@ -938,7 +938,7 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
       language: "en"
     }
   });
-  if (userProfileLoading || avatarsLoading) {
+  if (userProfileLoading) {
     return <Loader />;
   } else if (user && coffees && avatars) {
     return (
