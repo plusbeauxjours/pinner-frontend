@@ -210,6 +210,9 @@ const TripRow = styled.div<ITheme>`
   @media screen and (min-width: 935px) {
     min-width: 685px;
   }
+  @media screen and (max-width: 400px) {
+    grid-template-columns: 6fr  1fr 0.1fr;
+  }
 `;
 
 const HeaderColumn = styled.div`
@@ -431,6 +434,14 @@ const SearchCitiesInput = styled.input`
 `;
 
 const GreyText = styled(Thin)`
+  text-align: center;
+  color: ${props => props.theme.greyColor};
+  @media screen and (max-width: 400px) {
+    display: none;
+  }
+`;
+
+const GreyDutationText = styled(Thin)`
   text-align: center;
   color: ${props => props.theme.greyColor};
 `;
@@ -1702,7 +1713,7 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                                 : "-"
                             }
                           />
-                          <GreyText
+                          <GreyDutationText
                             text={
                               trip.diffDays === 1
                                 ? `${trip.diffDays} Day`
@@ -1787,7 +1798,7 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                               }
                             />
                           ) : (
-                            <GreyText text={"no trip date"} />
+                            <GreyDutationText text={"no trip date"} />
                           )}
                           <TripOverlay
                             onClick={() => {

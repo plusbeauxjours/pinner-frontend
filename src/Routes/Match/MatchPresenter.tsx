@@ -71,6 +71,9 @@ const Input = styled.input`
 const Column = styled.div`
   display: flex;
   flex-direction: column;
+  @media screen and (max-width: 400px) {
+    display: none;
+  }
 `;
 
 const ModalContainer = styled.div`

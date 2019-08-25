@@ -69,6 +69,9 @@ const Text = styled(Bold)<ITheme>`
   color: ${props =>
     props.type === "row" ? props.theme.color : props.theme.color};
   /* margin-left: 8px; */
+  @media screen and (max-width: 400px) {
+    display: none;
+  }
 `;
 
 interface ITheme {
