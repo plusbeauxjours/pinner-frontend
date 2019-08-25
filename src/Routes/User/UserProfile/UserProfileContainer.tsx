@@ -736,8 +736,6 @@ class UserProfileContainer extends React.Component<IProps, IState> {
     );
   }
   public logUserOut = () => {
-    const { history } = this.props;
-    history.push("/");
     this.logUserOutFn();
   };
   public loadMore = page => {
@@ -1010,7 +1008,6 @@ class UserProfileContainer extends React.Component<IProps, IState> {
   };
   public onCompletedUserProfile = data => {
     if (!data.userProfile.user) {
-      toast.error("User not found");
       this.props.history.goBack();
     }
   };

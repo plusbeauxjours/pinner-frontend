@@ -675,8 +675,6 @@ class EditProfileContainer extends React.Component<IProps, IState> {
     );
   }
   public logUserOut = () => {
-    const { history } = this.props;
-    history.push("/");
     this.logUserOutFn();
   };
   public markAsMain = (uuid, avatarUrl) => {

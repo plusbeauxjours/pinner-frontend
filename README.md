@@ -1,1 +1,1 @@
-wwww.pinner.fun
+www.pinner.fun

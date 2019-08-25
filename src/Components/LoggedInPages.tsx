@@ -308,7 +308,7 @@ class LoggedInPages extends React.Component<IProps> {
             exact={true}
             component={UserProfile}
           />
-          <Route onUpdate={window.scrollTo(0, 0)} component={NotFound} />
+          <Route component={NotFound} />
         </Switch>
       </Wrapper>
     );
