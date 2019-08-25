@@ -334,6 +334,10 @@ class UserProfileContainer extends React.Component<IProps, IState> {
                                                                   query={
                                                                     GET_USER
                                                                   }
+                                                                  onCompleted={
+                                                                    this
+                                                                      .onCompletedUserProfile
+                                                                  }
                                                                   variables={{
                                                                     username
                                                                   }}
@@ -1004,7 +1008,12 @@ class UserProfileContainer extends React.Component<IProps, IState> {
       tripEndDate: null
     });
   };
-
+  public onCompletedUserProfile = data => {
+    if (!data.userProfile.user) {
+      toast.error("User not found");
+      this.props.history.goBack();
+    }
+  };
   public onCompletedAddTrip = data => {
     if (data.addTrip.moveNotification) {
       toast.success("Trip added");

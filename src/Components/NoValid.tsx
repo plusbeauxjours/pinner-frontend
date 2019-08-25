@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "src/Styles/typed-components";
 import Wrapper from "./Wrapper";
-import browserHistory from "../Apollo/browserHistory";
-import Button from "src/Components/Button";
 import Helmet from "react-helmet";
 
 const Container = styled.div`
@@ -45,16 +43,6 @@ const Image = styled.img`
   margin-bottom: 30px;
 `;
 
-const SButton = styled(Button)`
-  width: 50px;
-  margin-top: 20px;
-`;
-
-const back = event => {
-  event.stopPropagation();
-  browserHistory.push("/");
-};
-
 const NotFound: React.FunctionComponent<any> = () => (
   <Container>
     <Helmet>
@@ -77,7 +65,6 @@ const NotFound: React.FunctionComponent<any> = () => (
         saw the balloon floating outside your office window.
         <br />
       </GreyText>
-      <SButton onClick={back} text={"HOME"} />
     </SWrapper>
   </Container>
 );

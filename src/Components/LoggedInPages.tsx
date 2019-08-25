@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import styled from "styled-components";
 
 import CityProfile from "../Routes/City/CityProfile";
@@ -184,12 +184,6 @@ class LoggedInPages extends React.Component<IProps> {
           />
           <Route
             onUpdate={window.scrollTo(0, 0)}
-            path="/404"
-            exact={true}
-            component={NotFound}
-          />
-          <Route
-            onUpdate={window.scrollTo(0, 0)}
             path="/novalid"
             exact={true}
             component={NoValid}
@@ -308,7 +302,13 @@ class LoggedInPages extends React.Component<IProps> {
             exact={true}
             component={UserProfile}
           />
-          <Redirect exact={true} from="*" to="/404" />
+          <Route
+            onUpdate={window.scrollTo(0, 0)}
+            path="/:username"
+            exact={true}
+            component={UserProfile}
+          />
+          <Route onUpdate={window.scrollTo(0, 0)} component={NotFound} />
         </Switch>
       </Wrapper>
     );
