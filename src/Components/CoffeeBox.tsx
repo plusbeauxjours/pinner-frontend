@@ -173,7 +173,7 @@ const UserBox: React.FunctionComponent<IProps> = ({
         </Title>
         <Container>
           <Box>
-            {isStaying && (
+            {isStaying && coffees.length === 0 && (
               <IconRow>
                 <Icon onClick={toggleCoffeeRequestModal}>
                   <Upload />
