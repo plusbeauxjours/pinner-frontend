@@ -287,6 +287,9 @@ class UserProfileContainer extends React.Component<IProps, IState> {
                                           <GetAvatarsQuery
                                             query={GET_AVATARS}
                                             variables={{ userName: username }}
+                                            onCompleted={
+                                              this.onCompletedGetAvatar
+                                            }
                                           >
                                             {({
                                               data: avatarsData,
@@ -294,6 +297,9 @@ class UserProfileContainer extends React.Component<IProps, IState> {
                                             }) => (
                                               <CreateCityQuery
                                                 mutation={CREATE_CITY}
+                                                onCompleted={
+                                                  this.onCompletedCreateCity
+                                                }
                                               >
                                                 {(
                                                   createCityFn,
@@ -1294,7 +1300,7 @@ class UserProfileContainer extends React.Component<IProps, IState> {
     if (data.uploadAvatar.ok) {
       toast.success("Avatar updated");
     } else {
-      toast.error("error uploading avatar");
+      toast.error("error");
     }
   };
   public updateDeleteAvatar = (cache, { data: { deleteAvatar } }) => {
@@ -1326,6 +1332,16 @@ class UserProfileContainer extends React.Component<IProps, IState> {
     if (data.deleteAvatar.ok) {
       toast.success("Avatar deleted");
     } else {
+      toast.error("error");
+    }
+  };
+  public onCompletedCreateCity = data => {
+    if (!data.createCity.ok) {
+      toast.error("error");
+    }
+  };
+  public onCompletedGetAvatar = data => {
+    if (!data.getAvatars.avatars) {
       toast.error("error");
     }
   };
