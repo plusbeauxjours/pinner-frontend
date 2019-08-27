@@ -180,6 +180,15 @@ const UserBox: React.FunctionComponent<IProps> = ({
                 </Icon>
               </IconRow>
             )}
+            {isStaying &&
+              coffees.length !== 0 &&
+              coffees.find(coffee => !coffee.host.profile.isSelf) && (
+                <IconRow>
+                  <Icon onClick={toggleCoffeeRequestModal}>
+                    <Upload />
+                  </Icon>
+                </IconRow>
+              )}
             {coffees.map(coffee => {
               return (
                 <UserRow key={coffee.uuid}>
