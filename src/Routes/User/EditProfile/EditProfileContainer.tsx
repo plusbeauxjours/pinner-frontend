@@ -321,7 +321,7 @@ class EditProfileContainer extends React.Component<IProps, IState> {
                                         return (
                                           <UploadAvatarMutation
                                             mutation={UPLOAD_AVATAR}
-                                            update={this.updatUploadAvatar}
+                                            update={this.updateUploadAvatar}
                                             onCompleted={
                                               this.onCompletedUploadAvatar
                                             }
@@ -1152,7 +1152,7 @@ class EditProfileContainer extends React.Component<IProps, IState> {
       toast.error("error");
     }
   };
-  public updatUploadAvatar = (cache, { data: { uploadAvatar } }) => {
+  public updateUploadAvatar = (cache, { data: { uploadAvatar } }) => {
     const { username } = this.state;
     try {
       const data = cache.readQuery({
