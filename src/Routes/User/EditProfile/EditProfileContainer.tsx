@@ -1210,8 +1210,7 @@ class EditProfileContainer extends React.Component<IProps, IState> {
   };
   public onCompletedEditEmailVerification = data => {
     this.setState({
-      isEmailSubmitted: false,
-      newEmailAddress: ""
+      isEmailSubmitted: false
     });
     this.setState({});
     if (data.startEditEmailVerification.ok) {
