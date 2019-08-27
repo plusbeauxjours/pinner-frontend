@@ -147,38 +147,38 @@ class VerificationContainer extends React.Component<IProps, IState> {
       return <Loader />;
     }
   }
-  public onCompletedCompletePhoneVerification = data => {
+  public onCompletedCompletePhoneVerification = async data => {
     const { history } = this.props;
     const { completePhoneVerification } = data;
     if (completePhoneVerification.ok) {
       if (completePhoneVerification.token) {
-        this.logUserInFn({
+        await this.logUserInFn({
           variables: {
             token: completePhoneVerification.token
           }
         });
-        toast.success("You're verified, loggin in now");
+        await toast.success("You're verified, loggin in now");
       }
-      history.push({
+      await history.push({
         pathname: "/"
       });
     } else {
       toast.error("Could not be Verified you");
     }
   };
-  public onCompletedCompleteEmailVerification = data => {
+  public onCompletedCompleteEmailVerification = async data => {
     const { history } = this.props;
     const { completeEmailVerification } = data;
     if (completeEmailVerification.ok) {
       if (completeEmailVerification.token) {
-        this.logUserInFn({
+        await this.logUserInFn({
           variables: {
             token: completeEmailVerification.token
           }
         });
-        toast.success("You're verified, loggin in now");
+        await toast.success("You're verified, loggin in now");
       }
-      history.push({
+      await history.push({
         pathname: "/"
       });
     } else if (completeEmailVerification.ok === false) {
