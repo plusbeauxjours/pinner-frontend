@@ -178,6 +178,9 @@ class VerificationContainer extends React.Component<IProps, IState> {
         });
         toast.success("You're verified, loggin in now");
       }
+      history.push({
+        pathname: "/"
+      });
     } else if (completeEmailVerification.ok === false) {
       history.push({
         pathname: "/novalid"
@@ -221,7 +224,6 @@ class VerificationContainer extends React.Component<IProps, IState> {
     cache,
     { data: { completeEmailVerification } }
   ) => {
-    const { history } = this.props;
     try {
       const data = cache.readQuery({
         query: ME
@@ -233,9 +235,6 @@ class VerificationContainer extends React.Component<IProps, IState> {
           data
         });
       }
-      history.push({
-        pathname: "/"
-      });
     } catch (e) {
       console.log(e);
     }
