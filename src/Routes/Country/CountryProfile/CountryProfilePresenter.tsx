@@ -431,14 +431,14 @@ const CountryProfilePresenter: React.FunctionComponent<IProps> = ({
                   slackReportLocations(country.countryCode, "PHOTO")
                 }
               >
-                Inappropriate Photos
+                INAPPROPRIATE PHOTOS
               </ModalLink>
               <ModalLink
                 onClick={() =>
                   slackReportLocations(country.countryCode, "LOCATION")
                 }
               >
-                Wrong Location
+                WRONG LOCATION
               </ModalLink>
 
               <ModalLink
@@ -446,9 +446,9 @@ const CountryProfilePresenter: React.FunctionComponent<IProps> = ({
                   slackReportLocations(country.countryCode, "OTHER")
                 }
               >
-                Other
+                OTHER
               </ModalLink>
-              <ModalLink onClick={toggleReportModal}>Cancel</ModalLink>
+              <ModalLink onClick={toggleReportModal}>CANCEL</ModalLink>
             </Modal>
           </ModalContainer>
         )}

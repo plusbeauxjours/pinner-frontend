@@ -188,7 +188,7 @@ const ContinentsPresenter: React.FunctionComponent<IProps> = ({
                     </Header>
                   </Link>
                   <GreyText text={`x ${continent.count}`} />
-                  <GreyText text={`${continent.diff} d`} />
+                  {continent.diff && <GreyText text={`${continent.diff} d`} />}
                 </UserRow>
               ))}
             {continentList.length === 0 &&
@@ -209,7 +209,7 @@ const ContinentsPresenter: React.FunctionComponent<IProps> = ({
                     </Header>
                   </Link>
                   <GreyText text={`x ${continent.count}`} />
-                  <GreyText text={`${continent.diff} d`} />
+                  {continent.diff && <GreyText text={`${continent.diff} d`} />}
                 </UserRow>
               ))}
           </Modal>

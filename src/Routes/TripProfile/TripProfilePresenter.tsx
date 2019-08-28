@@ -396,20 +396,20 @@ const TripProfilePresenter: React.FunctionComponent<IProps> = ({
               <ModalLink
                 onClick={() => slackReportLocations(city.cityId, "PHOTO")}
               >
-                Inappropriate Photos
+                INAPPROPRIATE PHOTOS
               </ModalLink>
               <ModalLink
                 onClick={() => slackReportLocations(city.cityId, "LOCATION")}
               >
-                Wrong Location
+                WRONG LOCATION
               </ModalLink>
 
               <ModalLink
                 onClick={() => slackReportLocations(city.cityId, "OTHER")}
               >
-                Other
+                OTHER
               </ModalLink>
-              <ModalLink onClick={toggleReportModal}>Cancel</ModalLink>
+              <ModalLink onClick={toggleReportModal}>CANCEL</ModalLink>
             </Modal>
           </ModalContainer>
         )}

@@ -333,14 +333,16 @@ const ContinentProfilePresenter: React.FunctionComponent<IProps> = ({
                   slackReportLocations(continent.continentCode, "PHOTO")
                 }
               >
-                Inappropriate Photos
+                INAPPROPRIATE PHOTOS
+                INAPPROPRIATE PHOTOS
               </ModalLink>
               <ModalLink
                 onClick={() =>
                   slackReportLocations(continent.continentCode, "LOCATION")
                 }
               >
-                Wrong Location
+                WRONG LOCATION
+                WRONG LOCATION
               </ModalLink>
 
               <ModalLink
@@ -348,9 +350,9 @@ const ContinentProfilePresenter: React.FunctionComponent<IProps> = ({
                   slackReportLocations(continent.continentCode, "OTHER")
                 }
               >
-                Other
+                OTHER
               </ModalLink>
-              <ModalLink onClick={toggleReportModal}>Cancel</ModalLink>
+              <ModalLink onClick={toggleReportModal}>CANCEL</ModalLink>
             </Modal>
           </ModalContainer>
         )}

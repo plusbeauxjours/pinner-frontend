@@ -192,7 +192,7 @@ const CitiesPresenter: React.FunctionComponent<IProps> = ({
                     </Header>
                   </Link>
                   <GreyText text={`x ${city.count}`} />
-                  <GreyText text={`${city.diff} d`} />
+                  {city.diff && <GreyText text={`${city.diff} d`} />}
                 </UserRow>
               ))}
             {cityList.length === 0 &&
@@ -210,7 +210,7 @@ const CitiesPresenter: React.FunctionComponent<IProps> = ({
                     </Header>
                   </Link>
                   <GreyText text={`x ${city.count}`} />
-                  <GreyText text={`${city.diff} d`} />
+                  {city.diff && <GreyText text={`${city.diff} d`} />}
                 </UserRow>
               ))}
           </Modal>

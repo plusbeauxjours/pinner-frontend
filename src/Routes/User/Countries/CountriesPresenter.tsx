@@ -196,7 +196,7 @@ const CountriesPresenter: React.FunctionComponent<IProps> = ({
                     </Header>
                   </Link>
                   <GreyText text={`x ${country.count}`} />
-                  <GreyText text={`${country.diff} d`} />
+                  {country.diff && <GreyText text={`${country.diff} d`} />}
                 </UserRow>
               ))}
             {countryList.length === 0 &&
@@ -218,7 +218,7 @@ const CountriesPresenter: React.FunctionComponent<IProps> = ({
                     </Header>
                   </Link>
                   <GreyText text={`x ${country.count}`} />
-                  <GreyText text={`${country.diff} d`} />
+                  {country.diff && <GreyText text={`${country.diff} d`} />}
                 </UserRow>
               ))}
           </Modal>

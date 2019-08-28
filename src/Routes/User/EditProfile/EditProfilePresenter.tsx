@@ -1048,7 +1048,7 @@ const EditProfilePresenter: React.FunctionComponent<IProps> = ({
             </ModalInputContainer>
 
             {username === confirmUsername ? (
-              <ModalLink onClick={deleteProfile}>Yes</ModalLink>
+              <ModalLink onClick={deleteProfile}>YES</ModalLink>
             ) : (
               <ConfirmModalLink>
                 <Input
@@ -1070,7 +1070,7 @@ const EditProfilePresenter: React.FunctionComponent<IProps> = ({
         <ModalContainer>
           <ModalOverlay onClick={toggleLogoutConfirmModal} />
           <ConfirmModal>
-            <ModalLink onClick={logUserOut}>Yes</ModalLink>
+            <ModalLink onClick={logUserOut}>YES</ModalLink>
             <ModalLink onClick={toggleLogoutConfirmModal}>No</ModalLink>
           </ConfirmModal>
         </ModalContainer>
@@ -1204,7 +1204,7 @@ const EditProfilePresenter: React.FunctionComponent<IProps> = ({
             <Select value={gender} name={"gender"} onChange={onSelectChange}>
               <Option value={"MALE"}>Male</Option>
               <Option value={"FEMALE"}>Female</Option>
-              <Option value={"OTHER"}>Other</Option>
+              <Option value={"OTHER"}>OTHER</Option>
             </Select>
           </Conatainer>
           <ExplainText>Your gender to match</ExplainText>

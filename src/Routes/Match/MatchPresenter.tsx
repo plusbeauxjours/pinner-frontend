@@ -434,7 +434,7 @@ const MatchPresenter: React.FunctionComponent<IProps> = ({
               >
                 GENDER
               </ModalLink>
-              <ModalLink onClick={toggleRequestModal}>Cancel</ModalLink>
+              <ModalLink onClick={toggleRequestModal}>CANCEL</ModalLink>
             </Modal>
           </ModalContainer>
         )}

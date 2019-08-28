@@ -1007,7 +1007,7 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
           <ConfirmModalContainer>
             <ConfirmModalOverlay onClick={toggleLogoutConfirmModal} />
             <ConfirmModal>
-              <ConfirmModalLink onClick={logUserOut}>Yes</ConfirmModalLink>
+              <ConfirmModalLink onClick={logUserOut}>YES</ConfirmModalLink>
               <ConfirmModalLink onClick={toggleLogoutConfirmModal}>
                 No
               </ConfirmModalLink>
@@ -1138,7 +1138,7 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
               >
                 GENDER
               </ModalLink>
-              <ModalLink onClick={toggleRequestModal}>Cancel</ModalLink>
+              <ModalLink onClick={toggleRequestModal}>CANCEL</ModalLink>
             </Modal>
           </ModalContainer>
         )}
@@ -1209,7 +1209,7 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                 Settings
               </ModalLinkContainer>
               <ModalLink onClick={toggleLogoutConfirmModal}>Log Out</ModalLink>
-              <ModalLink onClick={toggleModal}>Cancel</ModalLink>
+              <ModalLink onClick={toggleModal}>CANCEL</ModalLink>
             </Modal>
           </ModalContainer>
         )}
@@ -1228,15 +1228,14 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                     tripEndDate
                   )
                 }
-              >
-                Goto Trip
+              >GOTO TRIP
               </ModalLink>
-              <ModalLink onClick={toggleAddTripModal}>Add Trip</ModalLink>
-              <ModalLink onClick={toggleEditTripModal}>Edit Trip</ModalLink>
+              <ModalLink onClick={toggleAddTripModal}>ADD TRIP</ModalLink>
+              <ModalLink onClick={toggleEditTripModal}>EDIT TRIP</ModalLink>
               <ModalLink onClick={toggleTripConfirmModal}>
-                Delete Trip
+                DELETE TRIP
               </ModalLink>
-              <ModalLink onClick={toggleTripModal}>Cancel</ModalLink>
+              <ModalLink onClick={toggleTripModal}>CANCEL</ModalLink>
             </Modal>
           </ModalContainer>
         )}
@@ -1245,7 +1244,7 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
             <ModalOverlay onClick={toggleReportModal} />
             <Modal>
               <ModalLink onClick={() => slackReportUsers("PHOTO")}>
-                Inappropriate Photos
+                INAPPROPRIATE PHOTOS
               </ModalLink>
               <ModalLink onClick={() => slackReportUsers("SPAM")}>
                 Wrong Loca
@@ -1254,9 +1253,9 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                 Inappropriate Message
               </ModalLink>
               <ModalLink onClick={() => slackReportUsers("OTHER")}>
-                Other
+                OTHER
               </ModalLink>
-              <ModalLink onClick={toggleReportModal}>Cancel</ModalLink>
+              <ModalLink onClick={toggleReportModal}>CANCEL</ModalLink>
             </Modal>
           </ModalContainer>
         )}
@@ -1264,9 +1263,9 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
           <ConfirmModalContainer>
             <ConfirmModalOverlay onClick={toggleTripConfirmModal} />
             <ConfirmModal>
-              <ConfirmModalLink onClick={deleteTrip}>Yes</ConfirmModalLink>
+              <ConfirmModalLink onClick={deleteTrip}>YES</ConfirmModalLink>
               <ConfirmModalLink onClick={toggleTripConfirmModal}>
-                No
+                NO
               </ConfirmModalLink>
             </ConfirmModal>
           </ConfirmModalContainer>
