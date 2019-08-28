@@ -1170,7 +1170,7 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                   }
                 }}
               >
-                Edit Profile
+                EDIT PROFILE
               </ModalLinkContainer>
               <ModalLinkContainer
                 to={{
@@ -1201,9 +1201,9 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                   }
                 }}
               >
-                Settings
+                SETTINGS
               </ModalLinkContainer>
-              <ModalLink onClick={toggleLogoutConfirmModal}>Log Out</ModalLink>
+              <ModalLink onClick={toggleLogoutConfirmModal}>LOG OUT</ModalLink>
               <ModalLink onClick={toggleModal}>CANCEL</ModalLink>
             </Modal>
           </ModalContainer>
@@ -1243,10 +1243,10 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                 INAPPROPRIATE PHOTOS
               </ModalLink>
               <ModalLink onClick={() => slackReportUsers("SPAM")}>
-                Wrong Loca
+              WRONG LOCATION
               </ModalLink>
               <ModalLink onClick={() => slackReportUsers("MESSAGE")}>
-                Inappropriate Message
+              INAPPROPRIATE MESSAGE
               </ModalLink>
               <ModalLink onClick={() => slackReportUsers("OTHER")}>
                 OTHER

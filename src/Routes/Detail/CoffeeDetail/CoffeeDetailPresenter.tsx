@@ -268,25 +268,29 @@ const CoffeeDetailPresenter: React.FunctionComponent<IProps> = ({
                 {coffee.host.profile.coffeeCount !== 0 && (
                   <Row>
                     <VBold text={String(coffee.host.profile.coffeeCount)} />
-                    {coffee.host.profile.cityCount === 1 ? (
+                    {coffee.host.profile.coffeeCount === 1 ? (
                       <UBold text={"COFFEE"} />
                     ) : (
                       <UBold text={"COFFEES"} />
                     )}
                   </Row>
                 )}
-                <Row>
-                  <VBold text={String(coffee.host.profile.tripCount)} />
-                  <UBold text={"TRIPS"} />
-                </Row>
+                {coffee.host.profile.coffeeCount !== 0 && (
+                  <Row>
+                    <VBold text={String(coffee.host.profile.tripCount)} />
+                    {coffee.host.profile.tripCount === 1 ? (
+                      <UBold text={"TRIP"} />
+                    ) : (
+                      <UBold text={"TRIPS"} />
+                    )}
+                  </Row>
+                )}
               </NumberContainer>
               <InfoContainer>
                 {coffee.host.profile.nationality && (
                   <Row>
                     <Link
-                      to={`/country/${
-                        coffee.host.profile.nationality.countryCode
-                      }`}
+                      to={`/country/${coffee.host.profile.nationality.countryCode}`}
                     >
                       <VBold
                         text={String(
@@ -300,9 +304,7 @@ const CoffeeDetailPresenter: React.FunctionComponent<IProps> = ({
                 {coffee.host.profile.residence && (
                   <Row>
                     <Link
-                      to={`/country/${
-                        coffee.host.profile.residence.countryCode
-                      }`}
+                      to={`/country/${coffee.host.profile.residence.countryCode}`}
                     >
                       <VBold
                         text={String(
