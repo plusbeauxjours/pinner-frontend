@@ -211,7 +211,7 @@ const TripRow = styled.div<ITheme>`
     min-width: 685px;
   }
   @media screen and (max-width: 400px) {
-    grid-template-columns: 6fr  1fr 0.1fr;
+    grid-template-columns: 6fr 1fr 0.1fr;
   }
 `;
 
@@ -439,11 +439,6 @@ const GreyText = styled(Thin)`
   @media screen and (max-width: 400px) {
     display: none;
   }
-`;
-
-const GreyDutationText = styled(Thin)`
-  text-align: center;
-  color: ${props => props.theme.greyColor};
 `;
 
 const TripInput = styled.input`
@@ -1009,7 +1004,7 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
             <ConfirmModal>
               <ConfirmModalLink onClick={logUserOut}>YES</ConfirmModalLink>
               <ConfirmModalLink onClick={toggleLogoutConfirmModal}>
-                No
+                NO
               </ConfirmModalLink>
             </ConfirmModal>
           </ConfirmModalContainer>
@@ -1228,7 +1223,8 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                     tripEndDate
                   )
                 }
-              >GOTO TRIP
+              >
+                GOTO TRIP
               </ModalLink>
               <ModalLink onClick={toggleAddTripModal}>ADD TRIP</ModalLink>
               <ModalLink onClick={toggleEditTripModal}>EDIT TRIP</ModalLink>
@@ -1712,13 +1708,15 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                                 : "-"
                             }
                           />
-                          <GreyDutationText
-                            text={
-                              trip.diffDays === 1
-                                ? `${trip.diffDays} Day`
-                                : `${trip.diffDays} Days`
-                            }
-                          />
+                          {trip.diffDays && (
+                            <GreyText
+                              text={
+                                trip.diffDays === 1
+                                  ? `${trip.diffDays} Day`
+                                  : `${trip.diffDays} Days`
+                              }
+                            />
+                          )}
                           <TripOverlay
                             onClick={() => {
                               user.profile.isSelf
@@ -1788,7 +1786,7 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                                 : "-"
                             }
                           />
-                          {trip.diffDays ? (
+                          {trip.diffDays && (
                             <GreyText
                               text={
                                 trip.diffDays === 1
@@ -1796,8 +1794,6 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                                   : `${trip.diffDays} Days`
                               }
                             />
-                          ) : (
-                            <GreyDutationText text={"no trip date"} />
                           )}
                           <TripOverlay
                             onClick={() => {

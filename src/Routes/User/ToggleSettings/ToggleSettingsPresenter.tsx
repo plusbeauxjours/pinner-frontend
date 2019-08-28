@@ -213,7 +213,7 @@ const ToggleSettingsPresenter: React.FunctionComponent<IProps> = ({
           <ModalOverlay onClick={toggleConfirmModal} />
           <ConfirmModal>
             <ModalLink onClick={logUserOutFn}>YES</ModalLink>
-            <ModalLink onClick={toggleConfirmModal}>No</ModalLink>
+            <ModalLink onClick={toggleConfirmModal}>NO</ModalLink>
           </ConfirmModal>
         </ModalContainer>
       )}

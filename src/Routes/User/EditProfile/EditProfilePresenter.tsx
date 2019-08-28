@@ -1062,7 +1062,7 @@ const EditProfilePresenter: React.FunctionComponent<IProps> = ({
               </ConfirmModalLink>
             )}
 
-            <ModalLink onClick={toggleDeleteConfirmModal}>No</ModalLink>
+            <ModalLink onClick={toggleDeleteConfirmModal}>NO</ModalLink>
           </Modal>
         </ModalContainer>
       )}
@@ -1071,7 +1071,7 @@ const EditProfilePresenter: React.FunctionComponent<IProps> = ({
           <ModalOverlay onClick={toggleLogoutConfirmModal} />
           <ConfirmModal>
             <ModalLink onClick={logUserOut}>YES</ModalLink>
-            <ModalLink onClick={toggleLogoutConfirmModal}>No</ModalLink>
+            <ModalLink onClick={toggleLogoutConfirmModal}>NO</ModalLink>
           </ConfirmModal>
         </ModalContainer>
       )}
