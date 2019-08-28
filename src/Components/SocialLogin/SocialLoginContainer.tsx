@@ -18,8 +18,6 @@ interface IState {
   email?: string;
   gender: string;
   fbId: string;
-  latitude: number;
-  longitude: number;
   cityId: string;
   cityName: string;
   countryCode: string;
@@ -37,8 +35,6 @@ class SocialLoginContainer extends React.Component<any, IState> {
       email: "",
       gender: "",
       fbId: "",
-      latitude: 0,
-      longitude: 0,
       cityId: props.cityId,
       cityName: props.cityName,
       countryCode: props.countryCode
@@ -92,7 +88,7 @@ class SocialLoginContainer extends React.Component<any, IState> {
       id,
       accessToken
     } = response;
-    const { latitude, longitude, cityId, cityName, countryCode } = this.state;
+    const { cityId, cityName, countryCode } = this.state;
     if (accessToken) {
       toast.success(`Welcom ${name}!`);
       this.facebookConnectFn({
@@ -101,8 +97,6 @@ class SocialLoginContainer extends React.Component<any, IState> {
           lastName: last_name,
           email,
           gender,
-          latitude,
-          longitude,
           cityId,
           cityName,
           countryCode,

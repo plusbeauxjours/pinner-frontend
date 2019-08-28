@@ -7,4 +7,4 @@ const BUCKET_URL = process.env.REACT_APP_AWS_STORAGE_BUCKET_NAME;
 export const BACKEND_URL =
   process.env.NODE_ENV === "development"
     ? "http://localhost:8000"
-    : `http://${BUCKET_URL}.s3.amazonaws.com/`;
+    : `https://${BUCKET_URL}.s3.amazonaws.com`;
