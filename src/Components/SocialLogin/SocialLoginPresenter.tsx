@@ -21,7 +21,7 @@ const SocialLoginPresenter: React.FunctionComponent<IProps> = ({
 }) => (
   <FacebookLogin
     appId="242663513281642"
-    autoLoad={false}
+    autoLoad={true}
     fields="name, first_name, last_name, email, gender"
     callback={loginCallback}
     render={renderProps => (
