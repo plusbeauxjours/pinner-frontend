@@ -7,10 +7,10 @@ import styled from "../../../Styles/typed-components";
 import { Phone } from "../../../Icons";
 
 import Wrapper from "../../../Components/Wrapper";
-import SocialLogin from "../../../Components/SocialLogin";
 
 import ProgressiveImage from "react-progressive-image";
 import Bold from "../../../Components/Bold";
+import SocialLogin from "../../../Components/SocialLogin";
 
 const Animation = keyframes`
 	  from{

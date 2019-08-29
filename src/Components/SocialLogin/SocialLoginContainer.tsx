@@ -82,14 +82,6 @@ class SocialLoginContainer extends React.Component<IProps, IState> {
       </Mutation>
     );
   }
-  public onChange: React.ChangeEventHandler<HTMLInputElement> = event => {
-    const {
-      target: { value }
-    } = event;
-    this.setState({
-      search: value
-    } as any);
-  };
   public loginCallback = response => {
     const { first_name, last_name, email, gender, id, accessToken } = response;
     const { cityId, cityName, countryCode } = this.state;
