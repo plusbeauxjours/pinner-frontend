@@ -90,7 +90,6 @@ class SocialLoginContainer extends React.Component<any, IState> {
     } = response;
     const { cityId, cityName, countryCode } = this.state;
     if (accessToken) {
-      toast.success(`Welcom ${name}!`);
       this.facebookConnectFn({
         variables: {
           firstName: first_name,
@@ -103,6 +102,7 @@ class SocialLoginContainer extends React.Component<any, IState> {
           fbId: id
         }
       });
+      toast.success(`Welcom ${name}!`);
     } else {
       toast.error("Could not log you in 😔");
     }

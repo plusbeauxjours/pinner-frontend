@@ -26,6 +26,9 @@ export interface ToggleLikeCity_toggleLikeCity {
 }
 
 export interface ToggleLikeCity {
+  /**
+   * Like a City 
+   */
   toggleLikeCity: ToggleLikeCity_toggleLikeCity;
 }
 
@@ -369,6 +372,9 @@ export interface logIn_logIn {
 }
 
 export interface logIn {
+  /**
+   * Obtain JSON Web Token mutation
+   */
   logIn: logIn_logIn;
 }
 
@@ -466,8 +472,6 @@ export interface FacebookConnectVariables {
   lastName?: string | null;
   email?: string | null;
   gender?: string | null;
-  latitude: number;
-  longitude: number;
   cityId: string;
   cityName: string;
   countryCode: string;
@@ -1368,6 +1372,8 @@ export interface CoffeeDetail_coffeeDetail_coffee_host_profile {
   isSelf: boolean | null;
   avatarUrl: string | null;
   gender: ProfileGender | null;
+  distance: number | null;
+  coffeeCount: number | null;
   currentCity: CoffeeDetail_coffeeDetail_coffee_host_profile_currentCity | null;
   nationality: CoffeeDetail_coffeeDetail_coffee_host_profile_nationality | null;
   residence: CoffeeDetail_coffeeDetail_coffee_host_profile_residence | null;
