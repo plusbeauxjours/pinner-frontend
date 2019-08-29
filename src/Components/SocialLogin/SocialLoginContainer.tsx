@@ -79,6 +79,7 @@ class SocialLoginContainer extends React.Component<any, IState> {
     } as any);
   };
   public loginCallback = response => {
+    const { history } = this.props;
     const {
       name,
       first_name,
@@ -101,6 +102,9 @@ class SocialLoginContainer extends React.Component<any, IState> {
           countryCode,
           fbId: id
         }
+      });
+      history.push({
+        pathname: "/"
       });
       toast.success(`Welcom ${name}!`);
     } else {
