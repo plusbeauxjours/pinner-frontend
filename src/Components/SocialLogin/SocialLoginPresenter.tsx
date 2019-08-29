@@ -7,6 +7,9 @@ import { FacebookIcon } from "../../Icons";
 
 const Link = styled.span`
   display: flex;
+  width: 100%;
+  height: 50px;
+  justify-content: center;
   align-items: center;
   cursor: pointer;
 `;
