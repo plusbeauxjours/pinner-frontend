@@ -5,7 +5,7 @@ import { FacebookConnect, FacebookConnectVariables } from "../../types/api";
 import { FACEBOOK_CONNECT } from "./SocialLoginQueries";
 import { toast } from "react-toastify";
 import { LOG_USER_IN } from "../../sharedQueries.local";
-import { RouteComponentProps } from "react-router";
+import { RouteComponentProps, withRouter } from "react-router";
 
 class FacebookConnectMutaion extends Mutation<
   FacebookConnect,
@@ -110,4 +110,4 @@ class SocialLoginContainer extends React.Component<IProps, IState> {
   };
 }
 
-export default SocialLoginContainer;
+export default withRouter(SocialLoginContainer);
