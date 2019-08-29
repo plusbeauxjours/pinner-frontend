@@ -1243,10 +1243,10 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                 INAPPROPRIATE PHOTOS
               </ModalLink>
               <ModalLink onClick={() => slackReportUsers("SPAM")}>
-              WRONG LOCATION
+                WRONG LOCATION
               </ModalLink>
               <ModalLink onClick={() => slackReportUsers("MESSAGE")}>
-              INAPPROPRIATE MESSAGE
+                INAPPROPRIATE MESSAGE
               </ModalLink>
               <ModalLink onClick={() => slackReportUsers("OTHER")}>
                 OTHER
@@ -1708,7 +1708,7 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                                 : "-"
                             }
                           />
-                          {trip.diffDays && (
+                          {trip.diffDays ? (
                             <GreyText
                               text={
                                 trip.diffDays === 1
@@ -1716,6 +1716,8 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                                   : `${trip.diffDays} Days`
                               }
                             />
+                          ) : (
+                            <div />
                           )}
                           <TripOverlay
                             onClick={() => {
@@ -1786,7 +1788,7 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                                 : "-"
                             }
                           />
-                          {trip.diffDays && (
+                          {trip.diffDays ? (
                             <GreyText
                               text={
                                 trip.diffDays === 1
@@ -1794,6 +1796,8 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                                   : `${trip.diffDays} Days`
                               }
                             />
+                          ) : (
+                            <div />
                           )}
                           <TripOverlay
                             onClick={() => {
