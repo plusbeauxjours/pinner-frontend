@@ -165,8 +165,6 @@ const HomePresenter: React.FunctionComponent<IProps> = ({
           <Modal>
             <ModalLink>
               <SocialLogin
-                latitude={latitude}
-                longitude={longitude}
                 countryCode={countryCode}
                 cityId={cityId}
                 cityName={cityName}
