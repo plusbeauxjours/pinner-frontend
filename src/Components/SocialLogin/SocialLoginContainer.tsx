@@ -55,16 +55,12 @@ class SocialLoginContainer extends React.Component<IProps, IState> {
             mutation={FACEBOOK_CONNECT}
             onCompleted={data => {
               const { facebookConnect } = data;
-              const { name } = this.state;
               if (facebookConnect) {
                 logUserIn({
                   variables: {
                     token: facebookConnect.token
                   }
                 });
-                toast.success(`Welcome ${name}!`);
-              } else {
-                toast.error("Could not log you in 😔");
               }
             }}
           >
@@ -98,6 +94,9 @@ class SocialLoginContainer extends React.Component<IProps, IState> {
           fbId: id
         }
       });
+      toast.success(`Welcome ${name}!`);
+    } else {
+      toast.error("Could not log you in 😔");
     }
   };
 }
