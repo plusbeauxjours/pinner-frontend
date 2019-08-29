@@ -5,11 +5,14 @@ import { FacebookConnect, FacebookConnectVariables } from "../../types/api";
 import { FACEBOOK_CONNECT } from "./SocialLoginQueries";
 import { toast } from "react-toastify";
 import { LOG_USER_IN } from "../../sharedQueries.local";
+import { RouteComponentProps } from "react-router";
 
 class FacebookConnectMutaion extends Mutation<
   FacebookConnect,
   FacebookConnectVariables
 > {}
+
+interface IProps extends RouteComponentProps<any> {}
 
 interface IState {
   name: string;
@@ -23,7 +26,7 @@ interface IState {
   countryCode: string;
 }
 
-class SocialLoginContainer extends React.Component<any, IState> {
+class SocialLoginContainer extends React.Component<IProps, IState> {
   public facebookConnectFn: MutationFn;
   constructor(props) {
     super(props);
