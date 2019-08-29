@@ -5,7 +5,7 @@ import { FacebookConnect, FacebookConnectVariables } from "../../types/api";
 import { FACEBOOK_CONNECT } from "./SocialLoginQueries";
 import { toast } from "react-toastify";
 import { LOG_USER_IN } from "../../sharedQueries.local";
-import { RouteComponentProps, withRouter } from "react-router";
+import { RouteComponentProps } from "react-router";
 
 class FacebookConnectMutaion extends Mutation<
   FacebookConnect,
@@ -55,21 +55,26 @@ class SocialLoginContainer extends React.Component<IProps, IState> {
             mutation={FACEBOOK_CONNECT}
             onCompleted={data => {
               const { facebookConnect } = data;
+              const { name } = this.state;
               if (facebookConnect) {
                 logUserIn({
                   variables: {
                     token: facebookConnect.token
                   }
                 });
+                toast.success(`Welcome ${name}!`);
               } else {
                 toast.error("Could not log you in 😔");
               }
             }}
           >
-            {facebookConnectFn => {
+            {(facebookConnectFn, { loading }) => {
               this.facebookConnectFn = facebookConnectFn;
               return (
-                <SocialLoginPresenter loginCallback={this.loginCallback} />
+                <SocialLoginPresenter
+                  loginCallback={this.loginCallback}
+                  loading={loading}
+                />
               );
             }}
           </FacebookConnectMutaion>
@@ -86,16 +91,7 @@ class SocialLoginContainer extends React.Component<IProps, IState> {
     } as any);
   };
   public loginCallback = response => {
-    const { history } = this.props;
-    const {
-      name,
-      first_name,
-      last_name,
-      email,
-      gender,
-      id,
-      accessToken
-    } = response;
+    const { first_name, last_name, email, gender, id, accessToken } = response;
     const { cityId, cityName, countryCode } = this.state;
     if (accessToken) {
       this.facebookConnectFn({
@@ -110,14 +106,8 @@ class SocialLoginContainer extends React.Component<IProps, IState> {
           fbId: id
         }
       });
-      history.push({
-        pathname: "/"
-      });
-      toast.success(`Welcom ${name}!`);
-    } else {
-      toast.error("Could not log you in 😔");
     }
   };
 }
 
-export default withRouter(SocialLoginContainer);
+export default SocialLoginContainer;
