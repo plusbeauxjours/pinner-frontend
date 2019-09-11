@@ -847,6 +847,7 @@ interface IProps {
   onSelectGender: (gender: string) => void;
   target: string;
   loadMore: any;
+  warningToast:(event: any) => void;
 }
 
 const UserProfilePresenter: React.FunctionComponent<IProps> = ({
@@ -933,7 +934,8 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
   closeGenderModal,
   onSelectGender,
   target,
-  loadMore
+  loadMore,
+  warningToast
 }) => {
   const REACT_APP_GOOGLE_PLACE_KEY = process.env.REACT_APP_GOOGLE_PLACE_KEY;
   const { results, isLoading } = useGoogleAutocomplete({
@@ -1289,6 +1291,7 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                 placeholder={"Search a City"}
                 onChange={onSearchInputChange}
                 value={tripCitySearch}
+                onKeyUp={warningToast}
                 autoComplete={"off"}
               />
               <TripModal>
@@ -1351,6 +1354,7 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                 placeholder={cityName || "Search a City"}
                 onChange={onSearchInputChange}
                 value={tripCitySearch}
+                onKeyUp={warningToast}
                 autoComplete={"off"}
               />
               <TripModal>
@@ -1434,7 +1438,6 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                 />
               </Link>
             </LocationAvatarContainer>
-
             <Container>
               <InfoContainer>
                 {user.profile.gender && (

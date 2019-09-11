@@ -3,7 +3,6 @@ import { Query } from "react-apollo";
 import { ToastContainer, toast } from "react-toastify";
 import Router from "../Router";
 import GlobalStyles from "../../Styles/global-styles";
-// import { theme } from "../../Styles/theme";
 import { APP_QUERIES } from "./AppQueries.local";
 import "react-toastify/dist/ReactToastify.css";
 import browserHistory from "src/Apollo/browserHistory";
@@ -27,7 +26,6 @@ export default () => (
           />
         )}
       </Query>
-      {/* <Footer /> */}
     </>
   </ThemeProvider>
 );

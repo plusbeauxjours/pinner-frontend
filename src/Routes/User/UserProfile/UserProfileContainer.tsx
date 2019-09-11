@@ -695,6 +695,10 @@ class UserProfileContainer extends React.Component<IProps, IState> {
                                                                                                 this
                                                                                                   .loadMore
                                                                                               }
+                                                                                              warningToast={
+                                                                                                this
+                                                                                                  .warningToast
+                                                                                              }
                                                                                             />
                                                                                           );
                                                                                         }}
@@ -898,6 +902,12 @@ class UserProfileContainer extends React.Component<IProps, IState> {
       tripEditModalOpen: !tripEditModalOpen,
       tripModalOpen: false
     });
+  };
+  public warningToast = event => {
+    const { keyCode } = event;
+    if (keyCode === 13) {
+      toast.info(`If you want to sbmit please click empty space 🤡`);
+    }
   };
   public addTrip = async () => {
     const { tripAddModalOpen, cityId } = this.state;
