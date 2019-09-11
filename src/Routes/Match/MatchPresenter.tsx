@@ -20,7 +20,6 @@ const UserContainer = styled.div`
   display: flex;
   width: 100%;
   flex-direction: column;
-  margin-bottom: 50px;
 `;
 
 const GreyText = styled(Bold)`
@@ -289,6 +288,10 @@ const CountryText = styled.div`
   display: flex;
   flex-direction: row;
 `;
+
+const Space = styled.div`
+margin-bottom:50px;
+`
 
 interface IProps {
   me: any;
@@ -691,6 +694,7 @@ const MatchPresenter: React.FunctionComponent<IProps> = ({
                 );
               })}
           </UserContainer>
+          <Space />
         </SWrapper>
       </>
     );
