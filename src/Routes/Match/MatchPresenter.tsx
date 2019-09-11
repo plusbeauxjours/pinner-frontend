@@ -439,6 +439,7 @@ const MatchPresenter: React.FunctionComponent<IProps> = ({
           </ModalContainer>
         )}
         <SWrapper>
+          {console.log(users)}
           {users && users.length !== 0 && (
             <UserContainer>
               <Helmet>
