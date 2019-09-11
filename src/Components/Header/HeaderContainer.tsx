@@ -15,6 +15,7 @@ import { Mutation, MutationFn, Query } from "react-apollo";
 import { REPORT_LOCATION } from "../../Routes/Login/Home/HomeQueries";
 import { GET_HEADER, SEARCH } from "./HeaderQueries";
 import { ME } from "../../sharedQueries";
+import { toast } from "react-toastify";
 
 class HeaderQuery extends Query<Header, HeaderVariables> {}
 class ReportLocationMutation extends Mutation<
