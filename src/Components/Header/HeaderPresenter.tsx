@@ -189,6 +189,7 @@ interface IProps extends RouteComponentProps<any> {
   search: string;
   toggleModal: () => void;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  warningToast: (event: any) => void;
 }
 
 const HeaderPresenter: React.FunctionComponent<IProps> = ({
@@ -205,7 +206,8 @@ const HeaderPresenter: React.FunctionComponent<IProps> = ({
   modalOpen,
   search,
   toggleModal,
-  onChange
+  onChange,
+  warningToast
 }) => {
   if (loading) {
     return null;
@@ -221,6 +223,7 @@ const HeaderPresenter: React.FunctionComponent<IProps> = ({
                 placeholder="Search location"
                 value={search}
                 onChange={onChange}
+                onKeyUp={warningToast}
                 autoComplete={"off"}
               />
               <Search

@@ -120,6 +120,7 @@ class HeaderContainer extends React.Component<IProps, IState> {
                                 search={search}
                                 toggleModal={this.toggleModal}
                                 onChange={this.onChange}
+                                warningToast={this.warningToast}
                               />
                             );
                           }}
@@ -203,6 +204,12 @@ class HeaderContainer extends React.Component<IProps, IState> {
     this.setState({
       search: value
     } as any);
+  };
+  public warningToast = event => {
+    const { keyCode } = event;
+    if (keyCode === 13) {
+      toast.info(`If you want to sbmit please click empty space 🤡`);
+    }
   };
 }
 

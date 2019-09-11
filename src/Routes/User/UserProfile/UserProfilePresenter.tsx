@@ -1375,7 +1375,7 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                       }
                     >
                       <TripSearchHeader>
-                        <SAvatar size={"sm"} url={prediction.place_id} />
+                      <SAvatar size={"sm"} cityId={prediction.place_id} />
                         <HeaderColumn>
                           <HeaderText
                             text={prediction.structured_formatting.main_text}
