@@ -217,6 +217,15 @@ const TitleText = styled.p`
   font-weight: 100;
 `;
 
+const CountrySelectText = styled.div`
+  font-size: 18px;
+  font-weight: 100;
+  display: flex;
+  align-self: center;
+  cursor: pointer;
+  width: 250px;
+`;
+
 const ExplainText = styled.p`
   font-size: 12px;
   font-weight: 100;
@@ -637,6 +646,12 @@ interface IProps {
   avatarsLoading: boolean;
   deleteConfirmModalOpen: boolean;
   logoutConfirmModalOpen: boolean;
+  nationalityModalOpen: boolean;
+  residenceModalOpen: boolean;
+  toggleNationalityModal: () => void;
+  toggleResidenceModal: () => void;
+  onSelectNationality: (nationalityCode: string) => void;
+  onSelectResidence: (residenceCode: string) => void;
   toggleDeleteConfirmModal: () => void;
   toggleLogoutConfirmModal: () => void;
   editPhoneNumberModalOpen: boolean;
@@ -722,6 +737,12 @@ const EditProfilePresenter: React.FunctionComponent<IProps> = ({
   avatarsLoading,
   deleteConfirmModalOpen,
   logoutConfirmModalOpen,
+  nationalityModalOpen,
+  residenceModalOpen,
+  toggleNationalityModal,
+  toggleResidenceModal,
+  onSelectNationality,
+  onSelectResidence,
   toggleDeleteConfirmModal,
   toggleLogoutConfirmModal,
   editPhoneNumberModalOpen,
@@ -806,6 +827,48 @@ const EditProfilePresenter: React.FunctionComponent<IProps> = ({
             fadeSpeed={500}
           />
         </LoaderContainer>
+      )}
+      {nationalityModalOpen && (
+        <SearchModalContainer>
+          <SearchModalOverlay onClick={toggleNationalityModal} />
+          <SearchModal>
+            <CountryContainer>
+              {countries.map((country, index) => (
+                <CountryRow
+                  key={index}
+                  onClick={() => onSelectNationality(country.code)}
+                >
+                  <CountryText>
+                    <p>&nbsp;{country.name}</p>
+                    <p>&nbsp;{country.emoji}</p>
+                  </CountryText>
+                  <CountryText>{country.code}</CountryText>
+                </CountryRow>
+              ))}
+            </CountryContainer>
+          </SearchModal>
+        </SearchModalContainer>
+      )}
+      {residenceModalOpen && (
+        <SearchModalContainer>
+          <SearchModalOverlay onClick={toggleResidenceModal} />
+          <SearchModal>
+            <CountryContainer>
+              {countries.map((country, index) => (
+                <CountryRow
+                  key={index}
+                  onClick={() => onSelectResidence(country.code)}
+                >
+                  <CountryText>
+                    <p>&nbsp;{country.name}</p>
+                    <p>&nbsp;{country.emoji}</p>
+                  </CountryText>
+                  <CountryText>{country.code}</CountryText>
+                </CountryRow>
+              ))}
+            </CountryContainer>
+          </SearchModal>
+        </SearchModalContainer>
       )}
       {verifyEmailAddressModalOpen && (
         <PhoneVerifyModalContainer>
@@ -1171,32 +1234,23 @@ const EditProfilePresenter: React.FunctionComponent<IProps> = ({
           </ExplainText>
           <Conatainer>
             <TitleText>NATIONALITY</TitleText>
-            <Select
-              value={nationalityCode}
-              name={"nationalityCode"}
-              onChange={onSelectChange}
-            >
-              {countries.map((country, index) => (
-                <Option key={index} value={country.code}>
-                  {country.emoji} {country.name}
-                </Option>
-              ))}
-            </Select>
+            <CountrySelectText onClick={toggleNationalityModal}>
+              {countries.find(country => country.code === nationalityCode).name}
+              &nbsp;
+              {
+                countries.find(country => country.code === nationalityCode)
+                  .emoji
+              }
+            </CountrySelectText>
           </Conatainer>
           <ExplainText>Your Nationality to match</ExplainText>
           <Conatainer>
             <TitleText>RESIDENCE</TitleText>
-            <Select
-              value={residenceCode}
-              name={"residenceCode"}
-              onChange={onSelectChange}
-            >
-              {countries.map((country, index) => (
-                <Option key={index} value={country.code}>
-                  {country.emoji} {country.name}
-                </Option>
-              ))}
-            </Select>
+            <CountrySelectText onClick={toggleResidenceModal}>
+              {countries.find(country => country.code === residenceCode).name}
+              &nbsp;
+              {countries.find(country => country.code === residenceCode).emoji}
+            </CountrySelectText>
           </Conatainer>
           <ExplainText>Your Residence to match</ExplainText>
           <Conatainer>

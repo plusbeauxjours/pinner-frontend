@@ -75,6 +75,8 @@ interface IProps extends RouteComponentProps<any> {}
 interface IState {
   deleteConfirmModalOpen: boolean;
   logoutConfirmModalOpen: boolean;
+  nationalityModalOpen: boolean;
+  residenceModalOpen: boolean;
 
   countryModalOpen: boolean;
   editPhoneNumberModalOpen: boolean;
@@ -147,6 +149,8 @@ class EditProfileContainer extends React.Component<IProps, IState> {
     this.state = {
       deleteConfirmModalOpen: false,
       logoutConfirmModalOpen: false,
+      nationalityModalOpen: false,
+      residenceModalOpen: false,
 
       countryModalOpen: false,
       editPhoneNumberModalOpen: false,
@@ -217,6 +221,8 @@ class EditProfileContainer extends React.Component<IProps, IState> {
     const {
       deleteConfirmModalOpen,
       logoutConfirmModalOpen,
+      nationalityModalOpen,
+      residenceModalOpen,
 
       countryModalOpen,
       editPhoneNumberModalOpen,
@@ -412,6 +418,22 @@ class EditProfileContainer extends React.Component<IProps, IState> {
                                                                         logoutConfirmModalOpen={
                                                                           logoutConfirmModalOpen
                                                                         }
+                                                                        nationalityModalOpen={
+                                                                          nationalityModalOpen
+                                                                        }
+                                                                        residenceModalOpen={
+                                                                          residenceModalOpen
+                                                                        }
+                                                                        toggleNationalityModal={
+                                                                          this
+                                                                            .toggleNationalityModal
+                                                                        }
+                                                                        toggleResidenceModal={
+                                                                          this
+                                                                            .toggleResidenceModal
+                                                                        }
+                                                                        onSelectNationality={this.onSelectNationality}
+onSelectResidence={this.onSelectResidence}
                                                                         toggleDeleteConfirmModal={
                                                                           this
                                                                             .toggleDeleteConfirmModal
@@ -674,6 +696,22 @@ class EditProfileContainer extends React.Component<IProps, IState> {
       </LogUserInMutation>
     );
   }
+  public toggleNationalityModal = () => {
+    const { nationalityModalOpen } = this.state;
+    this.setState({ nationalityModalOpen: !nationalityModalOpen });
+  };
+  public toggleResidenceModal = () => {
+    const { residenceModalOpen } = this.state;
+    this.setState({ residenceModalOpen: !residenceModalOpen });
+  };
+  public onSelectNationality = nationalityCode => {
+    this.setState({ nationalityCode });
+    this.setState({ nationalityModalOpen: false });
+  };
+  public onSelectResidence = residenceCode => {
+    this.setState({ residenceCode });
+    this.setState({ residenceModalOpen: false });
+  };
   public logUserOut = () => {
     this.logUserOutFn();
   };
