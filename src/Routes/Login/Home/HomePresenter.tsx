@@ -164,11 +164,7 @@ const HomePresenter: React.FunctionComponent<IProps> = ({
           <ModalOverlay onClick={toggleModal} />
           <Modal>
             <ModalLink>
-              <SocialLogin
-                countryCode={countryCode}
-                cityId={cityId}
-                cityName={cityName}
-              />
+              <SocialLogin countryCode={countryCode} cityId={cityId} />
             </ModalLink>
             <Link
               to={{

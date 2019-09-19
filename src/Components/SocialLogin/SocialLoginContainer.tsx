@@ -15,7 +15,6 @@ class FacebookConnectMutaion extends Mutation<
 interface IProps extends RouteComponentProps<any> {
   countryCode: string;
   cityId: string;
-  cityName: string;
 }
 
 interface IState {
@@ -26,7 +25,6 @@ interface IState {
   gender: string;
   fbId: string;
   cityId: string;
-  cityName: string;
   countryCode: string;
 }
 
@@ -43,7 +41,6 @@ class SocialLoginContainer extends React.Component<IProps, IState> {
       gender: "",
       fbId: "",
       cityId: props.cityId,
-      cityName: props.cityName,
       countryCode: props.countryCode
     };
   }
@@ -80,7 +77,7 @@ class SocialLoginContainer extends React.Component<IProps, IState> {
   }
   public loginCallback = response => {
     const { first_name, last_name, email, gender, id, accessToken } = response;
-    const { cityId, cityName, countryCode } = this.state;
+    const { cityId, countryCode } = this.state;
     if (accessToken) {
       this.facebookConnectFn({
         variables: {
@@ -89,7 +86,6 @@ class SocialLoginContainer extends React.Component<IProps, IState> {
           email,
           gender,
           cityId,
-          cityName,
           countryCode,
           fbId: id
         }
