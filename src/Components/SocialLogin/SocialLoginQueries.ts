@@ -7,7 +7,6 @@ export const FACEBOOK_CONNECT = gql`
     $email: String
     $gender: String
     $cityId: String!
-    $cityName: String!
     $countryCode: String!
     $fbId: String!
   ) {
@@ -17,7 +16,6 @@ export const FACEBOOK_CONNECT = gql`
       email: $email
       gender: $gender
       cityId: $cityId
-      cityName: $cityName
       countryCode: $countryCode
       fbId: $fbId
     ) {

@@ -473,7 +473,6 @@ export interface FacebookConnectVariables {
   email?: string | null;
   gender?: string | null;
   cityId: string;
-  cityName: string;
   countryCode: string;
   fbId: string;
 }
