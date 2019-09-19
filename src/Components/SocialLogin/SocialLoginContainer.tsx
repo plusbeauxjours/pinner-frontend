@@ -18,7 +18,6 @@ interface IProps extends RouteComponentProps<any> {
 }
 
 interface IState {
-  name: string;
   firstName: string;
   lastName: string;
   email?: string;
@@ -32,9 +31,7 @@ class SocialLoginContainer extends React.Component<IProps, IState> {
   public facebookConnectFn: MutationFn;
   constructor(props) {
     super(props);
-
     this.state = {
-      name: "",
       firstName: "",
       lastName: "",
       email: "",
@@ -90,7 +87,7 @@ class SocialLoginContainer extends React.Component<IProps, IState> {
           fbId: id
         }
       });
-      toast.success(`Welcome ${name}!`);
+      toast.success(`Welcome ${first_name}!`);
     } else {
       toast.error("Could not log you in 😔");
     }
