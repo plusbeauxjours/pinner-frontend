@@ -176,7 +176,7 @@ export interface UnMatch_unMatch_coffee_city {
   __typename: "CityType";
   cityId: string | null;
   cityName: string | null;
-  cityPhoto: string | null;
+  cityThumbnail: string | null;
   country: UnMatch_unMatch_coffee_city_country;
 }
 
@@ -257,7 +257,7 @@ export interface Header_header_city {
   __typename: "CityType";
   cityId: string | null;
   cityName: string | null;
-  cityPhoto: string | null;
+  cityThumbnail: string | null;
   country: Header_header_city_country;
   userCount: number | null;
   userLogCount: number | null;
@@ -607,6 +607,7 @@ export interface GetSamenameCities_getSamenameCities_cities {
   cityName: string | null;
   cityId: string | null;
   cityPhoto: string | null;
+  cityThumbnail: string | null;
   distance: number | null;
   country: GetSamenameCities_getSamenameCities_cities_country;
   likeCount: number | null;
@@ -746,6 +747,7 @@ export interface NearCities_nearCities_cities {
   cityName: string | null;
   cityId: string | null;
   cityPhoto: string | null;
+  cityThumbnail: string | null;
   distance: number | null;
   country: NearCities_nearCities_cities_country;
   likeCount: number | null;
@@ -1041,6 +1043,7 @@ export interface GetCitiesPage_getCitiesPage_cities {
   cityName: string | null;
   cityId: string | null;
   cityPhoto: string | null;
+  cityThumbnail: string | null;
   distance: number | null;
   country: GetCitiesPage_getCitiesPage_cities_country;
   likeCount: number | null;
@@ -1158,6 +1161,7 @@ export interface CountryProfile_countryProfile_cities {
   cityName: string | null;
   cityId: string | null;
   cityPhoto: string | null;
+  cityThumbnail: string | null;
   distance: number | null;
   country: CountryProfile_countryProfile_cities_country;
   likeCount: number | null;
@@ -1454,6 +1458,7 @@ export interface RecommendLocations_recommendLocations_cities {
   cityName: string | null;
   cityId: string | null;
   cityPhoto: string | null;
+  cityThumbnail: string | null;
   distance: number | null;
   country: RecommendLocations_recommendLocations_cities_country;
   likeCount: number | null;
@@ -1791,7 +1796,7 @@ export interface RequestCoffee_requestCoffee_coffee_city {
   __typename: "CityType";
   cityId: string | null;
   cityName: string | null;
-  cityPhoto: string | null;
+  cityThumbnail: string | null;
   country: RequestCoffee_requestCoffee_coffee_city_country;
 }
 
@@ -2013,6 +2018,7 @@ export interface FrequentVisits_frequentVisits_cities {
   cityName: string | null;
   cityId: string | null;
   cityPhoto: string | null;
+  cityThumbnail: string | null;
   distance: number | null;
   country: FrequentVisits_frequentVisits_cities_country;
   likeCount: number | null;
@@ -2049,7 +2055,7 @@ export interface GetCoffees_getCoffees_coffees_city {
   __typename: "CityType";
   cityId: string | null;
   cityName: string | null;
-  cityPhoto: string | null;
+  cityThumbnail: string | null;
   country: GetCoffees_getCoffees_coffees_city_country;
 }
 
@@ -2278,7 +2284,7 @@ export interface EditProfile_editProfile_user_profile_currentCity {
   longitude: number | null;
   cityId: string | null;
   cityName: string | null;
-  cityPhoto: string | null;
+  cityThumbnail: string | null;
   country: EditProfile_editProfile_user_profile_currentCity_country;
 }
 
@@ -2644,6 +2650,7 @@ export interface GetTrips_getTrips_trip_city {
   cityId: string | null;
   cityName: string | null;
   cityPhoto: string | null;
+  cityThumbnail: string | null;
   country: GetTrips_getTrips_trip_city_country;
 }
 
@@ -2692,6 +2699,7 @@ export interface AddTrip_addTrip_moveNotification_city {
   cityId: string | null;
   cityName: string | null;
   cityPhoto: string | null;
+  cityThumbnail: string | null;
   country: AddTrip_addTrip_moveNotification_city_country;
 }
 
@@ -2738,6 +2746,7 @@ export interface EditTrip_editTrip_moveNotification_city {
   cityId: string | null;
   cityName: string | null;
   cityPhoto: string | null;
+  cityThumbnail: string | null;
   country: EditTrip_editTrip_moveNotification_city_country;
 }
 
@@ -3078,6 +3087,7 @@ export interface CityParts {
   cityName: string | null;
   cityId: string | null;
   cityPhoto: string | null;
+  cityThumbnail: string | null;
   distance: number | null;
   country: CityParts_country;
   likeCount: number | null;
@@ -3141,7 +3151,7 @@ export interface CoffeeParts_city {
   __typename: "CityType";
   cityId: string | null;
   cityName: string | null;
-  cityPhoto: string | null;
+  cityThumbnail: string | null;
   country: CoffeeParts_city_country;
 }
 
