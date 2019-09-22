@@ -847,7 +847,7 @@ interface IProps {
   onSelectGender: (gender: string) => void;
   target: string;
   loadMore: any;
-  warningToast:(event: any) => void;
+  warningToast: (event: any) => void;
 }
 
 const UserProfilePresenter: React.FunctionComponent<IProps> = ({
@@ -1375,7 +1375,7 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                       }
                     >
                       <TripSearchHeader>
-                      <SAvatar size={"sm"} cityId={prediction.place_id} />
+                        <SAvatar size={"sm"} cityId={prediction.place_id} />
                         <HeaderColumn>
                           <HeaderText
                             text={prediction.structured_formatting.main_text}
@@ -1684,7 +1684,7 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                           >
                             <SAvatar
                               size={"sm"}
-                              url={trip.city.cityPhoto}
+                              url={trip.city.cityThumbnail}
                               city={true}
                             />
                             <HeaderColumn>
@@ -1764,7 +1764,7 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                           >
                             <SAvatar
                               size={"sm"}
-                              url={trip.city.cityPhoto}
+                              url={trip.city.cityThumbnail}
                               city={true}
                             />
                             <HeaderColumn>

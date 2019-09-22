@@ -234,7 +234,7 @@ const LocationBox: React.FunctionComponent<IProps> = ({
                     <Header>
                       <SAvatar
                         size={"sm"}
-                        url={samenameCity.cityPhoto}
+                        url={samenameCity.cityThumbnail}
                         city={true}
                       />
                       <HeaderColumn>
@@ -353,7 +353,7 @@ const LocationBox: React.FunctionComponent<IProps> = ({
                     <Header>
                       <SAvatar
                         size={"sm"}
-                        url={nearCity.cityPhoto}
+                        url={nearCity.cityThumbnail}
                         city={true}
                       />
                       <HeaderColumn>
@@ -401,7 +401,11 @@ const LocationBox: React.FunctionComponent<IProps> = ({
                 <UserRow type={"nearCities"}>
                   <Link to={`/city/${city.cityId}`}>
                     <Header>
-                      <SAvatar size={"sm"} url={city.cityPhoto} city={true} />
+                      <SAvatar
+                        size={"sm"}
+                        url={city.cityThumbnail}
+                        city={true}
+                      />
                       <HeaderColumn>
                         <HeaderText text={city.cityName} />
                         <Location>{city.country.countryName}</Location>

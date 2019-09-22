@@ -552,7 +552,11 @@ const CountryProfilePresenter: React.FunctionComponent<IProps> = ({
                   <UserRow key={city.id}>
                     <Link to={`/city/${city.cityId}`}>
                       <Header>
-                        <SAvatar size={"sm"} url={city.cityPhoto} city={true} />
+                        <SAvatar
+                          size={"sm"}
+                          url={city.cityThumbnail}
+                          city={true}
+                        />
                         <HeaderColumn>
                           <HeaderText text={city.cityName} />
                           <Location>{countryName}</Location>
@@ -574,7 +578,11 @@ const CountryProfilePresenter: React.FunctionComponent<IProps> = ({
                   <UserRow key={city.id}>
                     <Link to={`/city/${city.cityId}`}>
                       <Header>
-                        <SAvatar size={"sm"} url={city.cityPhoto} city={true} />
+                        <SAvatar
+                          size={"sm"}
+                          url={city.cityThumbnail}
+                          city={true}
+                        />
                         <HeaderColumn>
                           <HeaderText text={city.cityName} />
                           <Location>{countryName}</Location>

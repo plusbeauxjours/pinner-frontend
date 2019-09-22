@@ -11,7 +11,7 @@ export const GET_HEADER = gql`
       city {
         cityId
         cityName
-        cityPhoto
+        cityThumbnail
         country {
           countryName
           countryPhoto

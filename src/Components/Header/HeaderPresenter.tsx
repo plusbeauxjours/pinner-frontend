@@ -249,7 +249,7 @@ const HeaderPresenter: React.FunctionComponent<IProps> = ({
           <UserContainer>
             <Link to={`/city/${currentCityId}`}>
               <LocationHeader>
-                <SAvatar url={city.cityPhoto} size={"sm"} city={true} />
+                <SAvatar url={city.cityThumbnail} size={"sm"} city={true} />
                 <HeaderColumn>
                   <HeaderRow>
                     <CText text={`${city.cityName}${", "}`} />

@@ -152,7 +152,7 @@ const PeoplePagePresenter: React.FunctionComponent<IProps> = ({
                         <Header>
                           <SAvatar
                             size={"sm"}
-                            url={city.cityPhoto}
+                            url={city.cityThumbnail}
                             city={true}
                           />
                           <HeaderColumn>
@@ -180,7 +180,7 @@ const PeoplePagePresenter: React.FunctionComponent<IProps> = ({
                         <Header>
                           <SAvatar
                             size={"sm"}
-                            url={city.cityPhoto}
+                            url={city.cityThumbnail}
                             city={true}
                           />
                           <HeaderColumn>

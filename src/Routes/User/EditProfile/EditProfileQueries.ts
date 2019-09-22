@@ -66,7 +66,7 @@ export const EDIT_PROFILE = gql`
             longitude
             cityId
             cityName
-            cityPhoto
+            cityThumbnail
             country {
               countryName
               countryCode

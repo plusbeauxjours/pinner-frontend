@@ -188,7 +188,7 @@ const CoffeesPresenter: React.FunctionComponent<IProps> = ({
                     <Header>
                       <SAvatar
                         size={"sm"}
-                        url={coffee.city.cityPhoto}
+                        url={coffee.city.cityThumbnail}
                         city={true}
                       />
                       <HeaderColumn>
@@ -203,25 +203,19 @@ const CoffeesPresenter: React.FunctionComponent<IProps> = ({
                             case "GENDER":
                               return (
                                 <CText
-                                  text={`${
-                                    coffee.city.cityName
-                                  } with same gender`}
+                                  text={`${coffee.city.cityName} with same gender`}
                                 />
                               );
                             case "NATIONALITY":
                               return (
                                 <CText
-                                  text={`${
-                                    coffee.city.cityName
-                                  } with same nationality`}
+                                  text={`${coffee.city.cityName} with same nationality`}
                                 />
                               );
                             case "RESIDENCE":
                               return (
                                 <CText
-                                  text={`${
-                                    coffee.city.cityName
-                                  }with same residence`}
+                                  text={`${coffee.city.cityName}with same residence`}
                                 />
                               );
                             default:
@@ -243,7 +237,7 @@ const CoffeesPresenter: React.FunctionComponent<IProps> = ({
                     <Header>
                       <SAvatar
                         size={"sm"}
-                        url={coffee.city.cityPhoto}
+                        url={coffee.city.cityThumbnail}
                         city={true}
                       />
                       <HeaderColumn>
@@ -258,25 +252,19 @@ const CoffeesPresenter: React.FunctionComponent<IProps> = ({
                             case "GENDER":
                               return (
                                 <CText
-                                  text={`${
-                                    coffee.city.cityName
-                                  }with same gender`}
+                                  text={`${coffee.city.cityName}with same gender`}
                                 />
                               );
                             case "NATIONALITY":
                               return (
                                 <CText
-                                  text={`${
-                                    coffee.city.cityName
-                                  }with same nationality`}
+                                  text={`${coffee.city.cityName}with same nationality`}
                                 />
                               );
                             case "RESIDENCE":
                               return (
                                 <CText
-                                  text={`${
-                                    coffee.city.cityName
-                                  }with same residence`}
+                                  text={`${coffee.city.cityName}with same residence`}
                                 />
                               );
                             default:

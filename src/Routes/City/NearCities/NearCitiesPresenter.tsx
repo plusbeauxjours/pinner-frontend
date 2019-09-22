@@ -155,7 +155,7 @@ const NearCitiesPresenter: React.FunctionComponent<IProps> = ({
                       <Header>
                         <SAvatar
                           size={"sm"}
-                          url={nearCity.cityPhoto}
+                          url={nearCity.cityThumbnail}
                           city={true}
                         />
                         <HeaderColumn>
@@ -182,7 +182,7 @@ const NearCitiesPresenter: React.FunctionComponent<IProps> = ({
                       <Header>
                         <SAvatar
                           size={"sm"}
-                          url={nearCity.cityPhoto}
+                          url={nearCity.cityThumbnail}
                           city={true}
                         />
                         <HeaderColumn>

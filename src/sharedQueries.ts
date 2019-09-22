@@ -51,6 +51,7 @@ export const CITY_FRAGMENT = gql`
     cityName
     cityId
     cityPhoto
+    cityThumbnail
     distance
     country {
       countryName
@@ -90,7 +91,7 @@ export const COFFEE_FRAGMENT = gql`
     city {
       cityId
       cityName
-      cityPhoto
+      cityThumbnail
       country {
         countryName
       }
