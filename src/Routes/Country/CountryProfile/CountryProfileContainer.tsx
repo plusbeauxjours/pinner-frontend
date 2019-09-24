@@ -1,15 +1,9 @@
 import React from "react";
 import { Query, MutationFn, Mutation } from "react-apollo";
 import CountryProfilePresenter from "./CountryProfilePresenter";
-import {
-  CountryProfile,
-  CountryProfileVariables,
-  GetCoffees,
-  GetCoffeesVariables
-} from "../../../types/api";
+import { CountryProfile, CountryProfileVariables } from "../../../types/api";
 import { RouteComponentProps, withRouter } from "react-router";
 import { COUNTRY_PROFILE, GET_COUNTRIES } from "./CountryProfileQueries";
-import { GET_COFFEES } from "../../User/Coffees/CoffeesQueries";
 import { toast } from "react-toastify";
 import { SLACK_REPORT_LOCATIONS } from "../../../sharedQueries";
 import {
@@ -19,7 +13,6 @@ import {
   SlackReportLocationsVariables
 } from "../../../types/api";
 
-class GetCoffeesQuery extends Query<GetCoffees, GetCoffeesVariables> {}
 class CountryProfileQuery extends Query<
   CountryProfile,
   CountryProfileVariables
@@ -43,7 +36,6 @@ interface IState {
 
 class CountryProfileContainer extends React.Component<IProps, IState> {
   public data;
-  public coffeeData;
   public countriesData;
   public slackReportLocationsFn: MutationFn;
   constructor(props) {
@@ -97,50 +89,35 @@ class CountryProfileContainer extends React.Component<IProps, IState> {
               {({ data: countriesData, loading: countriesLoading }) => {
                 this.countriesData = countriesData;
                 return (
-                  <GetCoffeesQuery
-                    query={GET_COFFEES}
-                    variables={{
-                      countryCode,
-                      location: "country"
-                    }}
+                  <CountryProfileQuery
+                    query={COUNTRY_PROFILE}
+                    variables={{ countryCode }}
                   >
-                    {({ data: coffeeData, loading: coffeeLoading }) => {
-                      this.coffeeData = coffeeData;
+                    {({ data, loading }) => {
+                      this.data = data;
                       return (
-                        <CountryProfileQuery
-                          query={COUNTRY_PROFILE}
-                          variables={{ countryCode }}
-                        >
-                          {({ data, loading }) => {
-                            this.data = data;
-                            return (
-                              <CountryProfilePresenter
-                                reportModalOpen={reportModalOpen}
-                                toggleReportModal={this.toggleReportModal}
-                                slackReportLocations={this.slackReportLocations}
-                                loading={loading}
-                                data={data}
-                                countriesData={countriesData}
-                                countriesLoading={countriesLoading}
-                                coffeeData={coffeeData}
-                                coffeeLoading={coffeeLoading}
-                                countryName={countryName}
-                                onChange={this.onChange}
-                                search={search}
-                                cityList={cityList}
-                                countryCode={countryCode}
-                                currentCityId={currentCityId}
-                                back={this.back}
-                                searchSet={this.searchSet}
-                                mapMopdalOpen={mapMopdalOpen}
-                                toggleMapMopdal={this.toggleMapMopdal}
-                              />
-                            );
-                          }}
-                        </CountryProfileQuery>
+                        <CountryProfilePresenter
+                          reportModalOpen={reportModalOpen}
+                          toggleReportModal={this.toggleReportModal}
+                          slackReportLocations={this.slackReportLocations}
+                          loading={loading}
+                          data={data}
+                          countriesData={countriesData}
+                          countriesLoading={countriesLoading}
+                          countryName={countryName}
+                          onChange={this.onChange}
+                          search={search}
+                          cityList={cityList}
+                          countryCode={countryCode}
+                          currentCityId={currentCityId}
+                          back={this.back}
+                          searchSet={this.searchSet}
+                          mapMopdalOpen={mapMopdalOpen}
+                          toggleMapMopdal={this.toggleMapMopdal}
+                        />
                       );
                     }}
-                  </GetCoffeesQuery>
+                  </CountryProfileQuery>
                 );
               }}
             </GetCountriesQuery>

@@ -7,7 +7,6 @@ import Loader from "../../../Components/Loader";
 import Avatar from "../../../Components/Avatar";
 import Bold from "../../../Components/Bold";
 import CityLikeBtn from "../../../Components/CityLikeBtn";
-import CoffeeBox from "src/Components/CoffeeBox";
 import LocationBox from "src/Components/LocationBox";
 import { List, DropDown } from "../../../Icons";
 import { keyframes } from "styled-components";
@@ -32,8 +31,6 @@ const SText = styled(Bold)`
   font-weight: 100;
   text-transform: uppercase;
 `;
-
-
 
 const UserRow = styled.div`
   display: grid;
@@ -331,8 +328,6 @@ const DropDownIcon = styled.span`
 interface IProps {
   data?: any;
   loading: boolean;
-  coffeeData?: any;
-  coffeeLoading: boolean;
   countriesData: any;
   countriesLoading: boolean;
   countryName: string;
@@ -361,8 +356,6 @@ const CountryProfilePresenter: React.FunctionComponent<IProps> = ({
     } = {}
   } = {},
   loading,
-  coffeeData: { getCoffees: { coffees = null } = {} } = {},
-  coffeeLoading,
   countriesData: { getCountries: { countries = null } = {} } = {},
   countriesLoading,
   countryName,
@@ -581,13 +574,6 @@ const CountryProfilePresenter: React.FunctionComponent<IProps> = ({
               )}
             </UserContainer>
           </PHeader>
-          <CoffeeBox
-            coffees={coffees}
-            coffeeLoading={coffeeLoading}
-            cityId={currentCityId}
-            currentCountryCode={countryCode}
-            searchSet={searchSet}
-          />
           <LocationBox
             countries={countries}
             loading={countriesLoading}

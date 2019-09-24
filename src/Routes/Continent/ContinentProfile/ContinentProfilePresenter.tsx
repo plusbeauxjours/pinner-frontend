@@ -6,7 +6,6 @@ import Wrapper from "../../../Components/Wrapper";
 import Loader from "../../../Components/Loader";
 import Avatar from "../../../Components/Avatar";
 import Bold from "../../../Components/Bold";
-import CoffeeBox from "src/Components/CoffeeBox";
 import LocationBox from "src/Components/LocationBox";
 import { List, DropDown } from "../../../Icons";
 import { keyframes } from "styled-components";
@@ -30,7 +29,6 @@ const SText = styled(Bold)`
   font-weight: 100;
   text-transform: uppercase;
 `;
-
 
 const UserRow = styled.div`
   display: grid;
@@ -271,8 +269,6 @@ const DropDownIcon = styled.span`
 interface IProps {
   data?: any;
   loading: boolean;
-  coffeeData?: any;
-  coffeeLoading: boolean;
   continentCode: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   search: string;
@@ -296,8 +292,6 @@ const ContinentProfilePresenter: React.FunctionComponent<IProps> = ({
     } = {}
   } = {},
   loading,
-  coffeeData: { getCoffees: { coffees = null } = {} } = {},
-  coffeeLoading,
   continentCode,
   onChange,
   search,
@@ -322,16 +316,14 @@ const ContinentProfilePresenter: React.FunctionComponent<IProps> = ({
                   slackReportLocations(continent.continentCode, "PHOTO")
                 }
               >
-                INAPPROPRIATE PHOTOS
-                INAPPROPRIATE PHOTOS
+                INAPPROPRIATE PHOTOS INAPPROPRIATE PHOTOS
               </ModalLink>
               <ModalLink
                 onClick={() =>
                   slackReportLocations(continent.continentCode, "LOCATION")
                 }
               >
-                WRONG LOCATION
-                WRONG LOCATION
+                WRONG LOCATION WRONG LOCATION
               </ModalLink>
 
               <ModalLink
@@ -459,13 +451,6 @@ const ContinentProfilePresenter: React.FunctionComponent<IProps> = ({
               )}
             </UserContainer>
           </PHeader>
-          <CoffeeBox
-            coffees={coffees}
-            coffeeLoading={coffeeLoading}
-            cityId={currentCityId}
-            currentContinentCode={continentCode}
-            searchSet={searchSet}
-          />
           <LocationBox
             continents={continents}
             continentCode={continentCode}

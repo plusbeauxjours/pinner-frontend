@@ -3,13 +3,10 @@ import { Query, Mutation, MutationFn } from "react-apollo";
 import ContinentProfilePresenter from "./ContinentProfilePresenter";
 import {
   ContinentProfile,
-  ContinentProfileVariables,
-  GetCoffees,
-  GetCoffeesVariables
+  ContinentProfileVariables
 } from "../../../types/api";
 import { RouteComponentProps, withRouter } from "react-router";
 import { CONTINENT_PROFILE } from "./ContinentProfileQueries";
-import { GET_COFFEES } from "../../User/Coffees/CoffeesQueries";
 import { SLACK_REPORT_LOCATIONS } from "../../../sharedQueries";
 import {
   SlackReportLocations,
@@ -17,7 +14,6 @@ import {
 } from "../../../types/api";
 import { toast } from "react-toastify";
 
-class GetCoffeesQuery extends Query<GetCoffees, GetCoffeesVariables> {}
 class ContinentProfileQuery extends Query<
   ContinentProfile,
   ContinentProfileVariables
@@ -37,7 +33,6 @@ interface IState {
 }
 class ContinentProfileContainer extends React.Component<IProps, IState> {
   public data;
-  public coffeeData;
   public slackReportLocationsFn: MutationFn;
   constructor(props) {
     super(props);
@@ -79,34 +74,19 @@ class ContinentProfileContainer extends React.Component<IProps, IState> {
               {({ data, loading }) => {
                 this.data = data;
                 return (
-                  <GetCoffeesQuery
-                    query={GET_COFFEES}
-                    variables={{
-                      continentCode,
-                      location: "continent"
-                    }}
-                  >
-                    {({ data: coffeeData, loading: coffeeLoading }) => {
-                      this.coffeeData = coffeeData;
-                      return (
-                        <ContinentProfilePresenter
-                          reportModalOpen={reportModalOpen}
-                          toggleReportModal={this.toggleReportModal}
-                          slackReportLocations={this.slackReportLocations}
-                          data={data}
-                          loading={loading}
-                          coffeeData={coffeeData}
-                          coffeeLoading={coffeeLoading}
-                          continentCode={continentCode}
-                          onChange={this.onChange}
-                          search={search}
-                          countryList={countryList}
-                          currentCityId={currentCityId}
-                          searchSet={this.searchSet}
-                        />
-                      );
-                    }}
-                  </GetCoffeesQuery>
+                  <ContinentProfilePresenter
+                    reportModalOpen={reportModalOpen}
+                    toggleReportModal={this.toggleReportModal}
+                    slackReportLocations={this.slackReportLocations}
+                    data={data}
+                    loading={loading}
+                    continentCode={continentCode}
+                    onChange={this.onChange}
+                    search={search}
+                    countryList={countryList}
+                    currentCityId={currentCityId}
+                    searchSet={this.searchSet}
+                  />
                 );
               }}
             </ContinentProfileQuery>
