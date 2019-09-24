@@ -7,7 +7,6 @@ import Loader from "../../../Components/Loader";
 import Avatar from "../../../Components/Avatar";
 import Bold from "../../../Components/Bold";
 import CityLikeBtn from "../../../Components/CityLikeBtn";
-import UserBox from "src/Components/UserBox";
 import CoffeeBox from "src/Components/CoffeeBox";
 import LocationBox from "src/Components/LocationBox";
 import { List, DropDown } from "../../../Icons";
@@ -28,35 +27,13 @@ const PHeader = styled.header`
   }
 `;
 
-// const InfoRow = styled.div`
-//   display: flex;
-//   flex-wrap: nowrap;
-//   align-items: center;
-//   padding-left: 5px;
-//   margin-bottom: 5px;
-// `;
-
 const SText = styled(Bold)`
   font-size: 18px;
   font-weight: 100;
   text-transform: uppercase;
 `;
 
-// const SSText = styled(Bold)`
-//   width: 45px;
-//   font-size: 25px;
-//   font-weight: 200;
-//   text-align: center;
-// `;
 
-const GreyLine = styled.div`
-  margin-top: 10px;
-  margin-bottom: 10px;
-  border-bottom: 1px solid ${props => props.theme.borderColor};
-  @media screen and (max-width: 935px) {
-    margin: 10px 10px 0 10px;
-  }
-`;
 
 const UserRow = styled.div`
   display: grid;
@@ -380,8 +357,6 @@ const CountryProfilePresenter: React.FunctionComponent<IProps> = ({
       hasNextPage = null,
       count = null,
       cities = null,
-      usersNow = null,
-      usersBefore = null,
       country = null
     } = {}
   } = {},
@@ -406,7 +381,7 @@ const CountryProfilePresenter: React.FunctionComponent<IProps> = ({
 }) => {
   if (loading) {
     return <Loader />;
-  } else if (!loading && cities && usersNow && usersBefore && country) {
+  } else if (!loading && cities && country) {
     return (
       <>
         {mapMopdalOpen && (
@@ -606,26 +581,6 @@ const CountryProfilePresenter: React.FunctionComponent<IProps> = ({
               )}
             </UserContainer>
           </PHeader>
-          {usersNow && usersNow.length !== 0 ? (
-            <>
-              <GreyLine />
-              <UserBox
-                users={usersNow}
-                currentCountryCode={countryCode}
-                type={"usersNow"}
-              />
-            </>
-          ) : null}
-          {usersBefore && usersBefore.length !== 0 ? (
-            <>
-              <GreyLine />
-              <UserBox
-                users={usersBefore}
-                currentCountryCode={countryCode}
-                type={"usersBefore"}
-              />
-            </>
-          ) : null}
           <CoffeeBox
             coffees={coffees}
             coffeeLoading={coffeeLoading}

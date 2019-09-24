@@ -6,7 +6,6 @@ import Wrapper from "../../../Components/Wrapper";
 import Loader from "../../../Components/Loader";
 import Avatar from "../../../Components/Avatar";
 import Bold from "../../../Components/Bold";
-import UserBox from "src/Components/UserBox";
 import CoffeeBox from "src/Components/CoffeeBox";
 import LocationBox from "src/Components/LocationBox";
 import { List, DropDown } from "../../../Icons";
@@ -32,14 +31,6 @@ const SText = styled(Bold)`
   text-transform: uppercase;
 `;
 
-const GreyLine = styled.div`
-  margin-top: 10px;
-  margin-bottom: 10px;
-  border-bottom: 1px solid ${props => props.theme.borderColor};
-  @media screen and (max-width: 935px) {
-    margin: 0 10px 0 10px;
-  }
-`;
 
 const UserRow = styled.div`
   display: grid;
@@ -301,8 +292,6 @@ const ContinentProfilePresenter: React.FunctionComponent<IProps> = ({
       count = null,
       continent = null,
       countries = null,
-      usersNow = null,
-      usersBefore = null,
       continents = null
     } = {}
   } = {},
@@ -470,26 +459,6 @@ const ContinentProfilePresenter: React.FunctionComponent<IProps> = ({
               )}
             </UserContainer>
           </PHeader>
-          {usersNow && usersNow.length !== 0 ? (
-            <>
-              <GreyLine />
-              <UserBox
-                users={usersNow}
-                currentContinentCode={continentCode}
-                type={"usersNow"}
-              />
-            </>
-          ) : null}
-          {usersBefore && usersBefore.length !== 0 ? (
-            <>
-              <GreyLine />
-              <UserBox
-                users={usersBefore}
-                currentContinentCode={continentCode}
-                type={"usersBefore"}
-              />
-            </>
-          ) : null}
           <CoffeeBox
             coffees={coffees}
             coffeeLoading={coffeeLoading}
