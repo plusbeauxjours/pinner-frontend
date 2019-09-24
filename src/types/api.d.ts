@@ -778,56 +778,6 @@ export interface NearCitiesVariables {
 // GraphQL query operation: ContinentProfile
 // ====================================================
 
-export interface ContinentProfile_continentProfile_usersNow_currentCity_country {
-  __typename: "CountryType";
-  countryName: string | null;
-}
-
-export interface ContinentProfile_continentProfile_usersNow_currentCity {
-  __typename: "CityType";
-  cityName: string | null;
-  country: ContinentProfile_continentProfile_usersNow_currentCity_country;
-}
-
-export interface ContinentProfile_continentProfile_usersNow {
-  __typename: "ProfileType";
-  id: string;
-  username: string | null;
-  avatarUrl: string | null;
-  isSelf: boolean | null;
-  currentCity: ContinentProfile_continentProfile_usersNow_currentCity | null;
-}
-
-export interface ContinentProfile_continentProfile_usersBefore_actor_profile_currentCity_country {
-  __typename: "CountryType";
-  countryName: string | null;
-}
-
-export interface ContinentProfile_continentProfile_usersBefore_actor_profile_currentCity {
-  __typename: "CityType";
-  cityName: string | null;
-  country: ContinentProfile_continentProfile_usersBefore_actor_profile_currentCity_country;
-}
-
-export interface ContinentProfile_continentProfile_usersBefore_actor_profile {
-  __typename: "ProfileType";
-  id: string;
-  username: string | null;
-  avatarUrl: string | null;
-  isSelf: boolean | null;
-  currentCity: ContinentProfile_continentProfile_usersBefore_actor_profile_currentCity | null;
-}
-
-export interface ContinentProfile_continentProfile_usersBefore_actor {
-  __typename: "UserType";
-  profile: ContinentProfile_continentProfile_usersBefore_actor_profile | null;
-}
-
-export interface ContinentProfile_continentProfile_usersBefore {
-  __typename: "MoveNotificationType";
-  actor: ContinentProfile_continentProfile_usersBefore_actor;
-}
-
 export interface ContinentProfile_continentProfile_continent {
   __typename: "ContinentType";
   countryCount: number | null;
@@ -866,8 +816,6 @@ export interface ContinentProfile_continentProfile {
   __typename: "ContinentProfileResponse";
   count: number | null;
   hasNextPage: boolean | null;
-  usersNow: (ContinentProfile_continentProfile_usersNow | null)[] | null;
-  usersBefore: (ContinentProfile_continentProfile_usersBefore | null)[] | null;
   continent: ContinentProfile_continentProfile_continent | null;
   continents: (ContinentProfile_continentProfile_continents | null)[] | null;
   countries: (ContinentProfile_continentProfile_countries | null)[] | null;
@@ -1098,56 +1046,6 @@ export interface CountryProfile_countryProfile_country {
   continent: CountryProfile_countryProfile_country_continent | null;
 }
 
-export interface CountryProfile_countryProfile_usersNow_currentCity_country {
-  __typename: "CountryType";
-  countryName: string | null;
-}
-
-export interface CountryProfile_countryProfile_usersNow_currentCity {
-  __typename: "CityType";
-  cityName: string | null;
-  country: CountryProfile_countryProfile_usersNow_currentCity_country;
-}
-
-export interface CountryProfile_countryProfile_usersNow {
-  __typename: "ProfileType";
-  id: string;
-  username: string | null;
-  avatarUrl: string | null;
-  isSelf: boolean | null;
-  currentCity: CountryProfile_countryProfile_usersNow_currentCity | null;
-}
-
-export interface CountryProfile_countryProfile_usersBefore_actor_profile_currentCity_country {
-  __typename: "CountryType";
-  countryName: string | null;
-}
-
-export interface CountryProfile_countryProfile_usersBefore_actor_profile_currentCity {
-  __typename: "CityType";
-  cityName: string | null;
-  country: CountryProfile_countryProfile_usersBefore_actor_profile_currentCity_country;
-}
-
-export interface CountryProfile_countryProfile_usersBefore_actor_profile {
-  __typename: "ProfileType";
-  id: string;
-  username: string | null;
-  avatarUrl: string | null;
-  isSelf: boolean | null;
-  currentCity: CountryProfile_countryProfile_usersBefore_actor_profile_currentCity | null;
-}
-
-export interface CountryProfile_countryProfile_usersBefore_actor {
-  __typename: "UserType";
-  profile: CountryProfile_countryProfile_usersBefore_actor_profile | null;
-}
-
-export interface CountryProfile_countryProfile_usersBefore {
-  __typename: "MoveNotificationType";
-  actor: CountryProfile_countryProfile_usersBefore_actor;
-}
-
 export interface CountryProfile_countryProfile_cities_country {
   __typename: "CountryType";
   countryName: string | null;
@@ -1173,8 +1071,6 @@ export interface CountryProfile_countryProfile {
   count: number | null;
   hasNextPage: boolean | null;
   country: CountryProfile_countryProfile_country | null;
-  usersNow: (CountryProfile_countryProfile_usersNow | null)[] | null;
-  usersBefore: (CountryProfile_countryProfile_usersBefore | null)[] | null;
   cities: (CountryProfile_countryProfile_cities | null)[] | null;
 }
 
@@ -2649,7 +2545,6 @@ export interface GetTrips_getTrips_trip_city {
   __typename: "CityType";
   cityId: string | null;
   cityName: string | null;
-  cityPhoto: string | null;
   cityThumbnail: string | null;
   country: GetTrips_getTrips_trip_city_country;
 }
@@ -2698,7 +2593,6 @@ export interface AddTrip_addTrip_moveNotification_city {
   __typename: "CityType";
   cityId: string | null;
   cityName: string | null;
-  cityPhoto: string | null;
   cityThumbnail: string | null;
   country: AddTrip_addTrip_moveNotification_city_country;
 }
@@ -2745,7 +2639,6 @@ export interface EditTrip_editTrip_moveNotification_city {
   __typename: "CityType";
   cityId: string | null;
   cityName: string | null;
-  cityPhoto: string | null;
   cityThumbnail: string | null;
   country: EditTrip_editTrip_moveNotification_city_country;
 }
