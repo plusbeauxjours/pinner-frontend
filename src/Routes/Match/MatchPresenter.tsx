@@ -656,7 +656,6 @@ const MatchPresenter: React.FunctionComponent<IProps> = ({
                             <Noti />
                           </NotiICon>
                         )}
-
                         <Link to={`/${match.guest.profile.username}`}>
                           <UserHeader
                             username={match.guest.profile.username}
