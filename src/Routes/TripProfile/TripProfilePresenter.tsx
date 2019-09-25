@@ -451,7 +451,7 @@ const TripProfilePresenter: React.FunctionComponent<IProps> = ({
                 <LikeBtnAlign>
                   <CityLikeBtn
                     isLiked={city.isLiked}
-                    cityId={city.id}
+                    cityId={city.cityId}
                     likeCount={city.likeCount}
                     type={"row"}
                   />

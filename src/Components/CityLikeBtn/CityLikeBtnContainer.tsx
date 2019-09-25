@@ -49,7 +49,7 @@ class CityLikeBtnContainer extends React.Component<IProps, IState> {
     return (
       <ToggleLikeMutation
         mutation={TOGGLE_LIKE_CITY}
-        variables={{ cityId: parseInt(cityId, 10) }}
+        variables={{ cityId }}
         update={this.updateToggleLike}
       >
         {toggleLikeFn => {
@@ -125,10 +125,10 @@ class CityLikeBtnContainer extends React.Component<IProps, IState> {
       });
       if (data) {
         data.frequentVisits.cities.find(
-          i => i.id === toggleLikeCity.city.id
+          i => i.cityId === toggleLikeCity.city.cityId
         ).isLiked = toggleLikeCity.city.isLiked;
         data.frequentVisits.cities.find(
-          i => i.id === toggleLikeCity.city.id
+          i => i.cityId === toggleLikeCity.city.cityId
         ).likeCount = toggleLikeCity.city.likeCount;
         cache.writeQuery({
           query: FREQUENT_VISITS,
@@ -151,10 +151,10 @@ class CityLikeBtnContainer extends React.Component<IProps, IState> {
       });
       if (data) {
         data.countryProfile.cities.find(
-          i => i.id === toggleLikeCity.city.id
+          i => i.cityId === toggleLikeCity.city.cityId
         ).isLiked = toggleLikeCity.city.isLiked;
         data.countryProfile.cities.find(
-          i => i.id === toggleLikeCity.city.id
+          i => i.cityId === toggleLikeCity.city.cityId
         ).likeCount = toggleLikeCity.city.likeCount;
         cache.writeQuery({
           query: COUNTRY_PROFILE,

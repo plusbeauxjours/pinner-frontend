@@ -166,7 +166,7 @@ const NearCitiesPresenter: React.FunctionComponent<IProps> = ({
                     </Link>
                     <CityLikeBtn
                       isLiked={nearCity.isLiked}
-                      cityId={nearCity.id}
+                      cityId={nearCity.cityId}
                       likeCount={nearCity.likeCount}
                       type={"row"}
                     />
@@ -193,7 +193,7 @@ const NearCitiesPresenter: React.FunctionComponent<IProps> = ({
                     </Link>
                     <CityLikeBtn
                       isLiked={nearCity.isLiked}
-                      cityId={nearCity.id}
+                      cityId={nearCity.cityId}
                       likeCount={nearCity.likeCount}
                       type={"row"}
                     />

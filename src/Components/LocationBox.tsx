@@ -245,7 +245,7 @@ const LocationBox: React.FunctionComponent<IProps> = ({
                   </Link>
                   <CityLikeBtn
                     isLiked={samenameCity.isLiked}
-                    cityId={samenameCity.id}
+                    cityId={samenameCity.cityId}
                     likeCount={samenameCity.likeCount}
                     type={"row"}
                   />
@@ -364,7 +364,7 @@ const LocationBox: React.FunctionComponent<IProps> = ({
                   </Link>
                   <CityLikeBtn
                     isLiked={nearCity.isLiked}
-                    cityId={nearCity.id}
+                    cityId={nearCity.cityId}
                     likeCount={nearCity.likeCount}
                     type={"row"}
                   />
@@ -414,7 +414,7 @@ const LocationBox: React.FunctionComponent<IProps> = ({
                   </Link>
                   <CityLikeBtn
                     isLiked={city.isLiked}
-                    cityId={city.id}
+                    cityId={city.cityId}
                     likeCount={city.likeCount}
                     type={"row"}
                   />

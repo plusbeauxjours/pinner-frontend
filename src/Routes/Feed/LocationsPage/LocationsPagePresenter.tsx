@@ -169,7 +169,7 @@ const PeoplePagePresenter: React.FunctionComponent<IProps> = ({
                       </Link>
                       <CityLikeBtn
                         isLiked={city.isLiked}
-                        cityId={city.id}
+                        cityId={city.cityId}
                         likeCount={city.likeCount}
                         type={"row"}
                       />
@@ -200,7 +200,7 @@ const PeoplePagePresenter: React.FunctionComponent<IProps> = ({
                       </Link>
                       <CityLikeBtn
                         isLiked={city.isLiked}
-                        cityId={city.id}
+                        cityId={city.cityId}
                         likeCount={city.likeCount}
                         type={"row"}
                       />

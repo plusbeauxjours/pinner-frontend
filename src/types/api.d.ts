@@ -14,6 +14,7 @@ export interface ToggleLikeCity_toggleLikeCity_city_country {
 export interface ToggleLikeCity_toggleLikeCity_city {
   __typename: "CityType";
   id: string;
+  cityId: string | null;
   isLiked: boolean | null;
   likeCount: number | null;
   country: ToggleLikeCity_toggleLikeCity_city_country;
@@ -33,7 +34,7 @@ export interface ToggleLikeCity {
 }
 
 export interface ToggleLikeCityVariables {
-  cityId: number;
+  cityId: string;
 }
 
 /* tslint:disable */
