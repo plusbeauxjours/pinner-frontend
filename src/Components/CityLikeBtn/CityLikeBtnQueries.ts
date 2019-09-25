@@ -11,6 +11,7 @@ export const TOGGLE_LIKE_CITY = gql`
         likeCount
         country {
           countryName
+          countryCode
         }
       }
     }
