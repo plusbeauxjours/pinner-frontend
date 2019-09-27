@@ -338,7 +338,7 @@ const ToggleSettingsPresenter: React.FunctionComponent<IProps> = ({
           </ToggleContainer>
           <ExplainText>
             If you set your coutries hide, only you can see countries where
-            you've been before, otherwise only number of countries is shown.
+            You've been to before, otherwise only number of countries is shown.
           </ExplainText>
           <ToggleContainer>
             <ToggleText>HIDE CONTINENTS</ToggleText>
@@ -348,7 +348,7 @@ const ToggleSettingsPresenter: React.FunctionComponent<IProps> = ({
           </ToggleContainer>
           <ExplainText>
             If you set your coutries hide, only you can see countries where
-            you've been before, otherwise only number of countries is shown.
+            You've been to before, otherwise only number of countries is shown.
           </ExplainText>
           <ToggleContainer>
             <ToggleText>AUTO LOCATION REPORT</ToggleText>

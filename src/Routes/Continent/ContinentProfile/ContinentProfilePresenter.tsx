@@ -353,7 +353,7 @@ const ContinentProfilePresenter: React.FunctionComponent<IProps> = ({
                 </NameContainer>
                 {count !== 0 ? (
                   <CountText>
-                    You've been {continent.continentName} {count}
+                    You've been to {continent.continentName} {count}
                     {count === 1 ? " time" : " times"}
                   </CountText>
                 ) : null}

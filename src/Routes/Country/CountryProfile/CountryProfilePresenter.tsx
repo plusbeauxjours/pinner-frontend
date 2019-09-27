@@ -469,7 +469,7 @@ const CountryProfilePresenter: React.FunctionComponent<IProps> = ({
                 </NameContainer>
                 {count !== 0 ? (
                   <CountText>
-                    You've been {country.countryName} {count}
+                    You've been to {country.countryName} {count}
                     {count === 1 ? " time" : " times"}
                   </CountText>
                 ) : null}

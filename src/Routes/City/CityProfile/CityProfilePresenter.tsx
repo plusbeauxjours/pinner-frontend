@@ -656,7 +656,7 @@ const CityProfilePresenter: React.FunctionComponent<IProps> = ({
               </NameContainer>
               {count !== 0 ? (
                 <CountText>
-                  You've been {city.cityName} {count}
+                  You've been to {city.cityName} {count}
                   {count === 1 ? " time" : " times"}
                 </CountText>
               ) : null}
