@@ -36,7 +36,6 @@ interface IState {
   search: string;
   cityName: string;
   cityId: string;
-  cityPhoto: string;
   countryName: string;
   startDate: moment.Moment | null;
   endDate: moment.Moment | null;
@@ -59,7 +58,6 @@ class TripProfileContainer extends React.Component<IProps, IState> {
       search: "",
       cityName: state.cityName,
       cityId: state.cityId,
-      cityPhoto: state.cityPhoto,
       countryName: state.countryName,
       startDate: state.tripStartDate,
       endDate: state.tripEndDate,
@@ -78,7 +76,6 @@ class TripProfileContainer extends React.Component<IProps, IState> {
     const {
       search,
       cityName,
-      cityPhoto,
       countryName,
       startDate,
       endDate,
@@ -108,7 +105,11 @@ class TripProfileContainer extends React.Component<IProps, IState> {
                 loading: samenameCitiesLoading
               }) => {
                 return (
-                  <NearCitiesQuery query={NEAR_CITIES} variables={{ cityId }} fetchPolicy="no-cache">
+                  <NearCitiesQuery
+                    query={NEAR_CITIES}
+                    variables={{ cityId }}
+                    fetchPolicy="no-cache"
+                  >
                     {({ data: nearCitiesData, loading: nearCitiesLoading }) => {
                       return (
                         <TripProfileQuery
@@ -120,7 +121,6 @@ class TripProfileContainer extends React.Component<IProps, IState> {
                             return (
                               <TripProfilePresenter
                                 cityName={cityName}
-                                cityPhoto={cityPhoto}
                                 countryName={countryName}
                                 startDate={startDate}
                                 endDate={endDate}

@@ -317,6 +317,7 @@ const Square = styled.div`
 
 interface IProps {
   cityName: string;
+  cityPhoto: string;
   countryName: string;
   startDate: moment.Moment | null;
   endDate: moment.Moment | null;
@@ -341,6 +342,7 @@ interface IProps {
 
 const TripProfilePresenter: React.FunctionComponent<IProps> = ({
   cityName,
+  cityPhoto,
   countryName,
   startDate,
   endDate,
