@@ -107,7 +107,7 @@ interface IState {
   tripCitySearch: string;
   cityName: string;
   cityId: string;
-  cityPhoto: string;
+
   countryName: string;
   startDate: moment.Moment | null;
   endDate: moment.Moment | null;
@@ -168,7 +168,7 @@ class UserProfileContainer extends React.Component<IProps, IState> {
       tripCitySearch: "",
       cityName: props.cityName,
       cityId: props.cityId,
-      cityPhoto: props.cityPhoto,
+
       countryName: props.countryName,
       startDate: props.startDate,
       endDate: props.endDate,
@@ -222,7 +222,7 @@ class UserProfileContainer extends React.Component<IProps, IState> {
       tripCitySearch,
       cityName,
       cityId,
-      cityPhoto,
+
       countryName,
       startDate,
       endDate,
@@ -523,9 +523,6 @@ class UserProfileContainer extends React.Component<IProps, IState> {
                                                                                               }
                                                                                               cityId={
                                                                                                 cityId
-                                                                                              }
-                                                                                              cityPhoto={
-                                                                                                cityPhoto
                                                                                               }
                                                                                               countryName={
                                                                                                 countryName
@@ -842,7 +839,6 @@ class UserProfileContainer extends React.Component<IProps, IState> {
     moveNotificationId,
     cityName,
     cityId,
-    cityPhoto,
     countryName,
     tripStartDate,
     tripEndDate
@@ -853,7 +849,6 @@ class UserProfileContainer extends React.Component<IProps, IState> {
       moveNotificationId,
       cityName,
       cityId,
-      cityPhoto,
       countryName,
       tripStartDate,
       tripEndDate
@@ -991,7 +986,7 @@ class UserProfileContainer extends React.Component<IProps, IState> {
   public gotoTrip = (
     cityName,
     cityId,
-    cityPhoto,
+
     countryName,
     tripStartDate,
     tripEndDate
@@ -1006,7 +1001,7 @@ class UserProfileContainer extends React.Component<IProps, IState> {
         state: {
           cityName,
           cityId,
-          cityPhoto,
+
           countryName,
           tripStartDate,
           tripEndDate
@@ -1016,7 +1011,7 @@ class UserProfileContainer extends React.Component<IProps, IState> {
     this.setState({
       cityName: "",
       cityId: "",
-      cityPhoto: "",
+
       countryName: "",
       tripStartDate: null,
       tripEndDate: null

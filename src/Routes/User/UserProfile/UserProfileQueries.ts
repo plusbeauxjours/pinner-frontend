@@ -71,6 +71,7 @@ export const GET_TRIPS = gql`
         city {
           cityId
           cityName
+          cityPhoto
           cityThumbnail
           country {
             countryName

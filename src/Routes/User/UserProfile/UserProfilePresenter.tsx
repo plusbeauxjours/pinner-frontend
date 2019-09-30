@@ -776,7 +776,6 @@ interface IProps {
   tripCitySearch: string;
   cityName: string;
   cityId: string;
-  cityPhoto: string;
   countryName: string;
 
   startDate: moment.Moment | null;
@@ -808,7 +807,6 @@ interface IProps {
   gotoTrip: (
     cityName: string,
     cityId: string,
-    cityPhoto: string,
     countryName: string,
     tripStartDate: moment.Moment | null,
     tripEndDate: moment.Moment | null
@@ -893,7 +891,6 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
   tripCitySearch,
   cityName,
   cityId,
-  cityPhoto,
   countryName,
   startDate,
   endDate,
@@ -1219,7 +1216,6 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                   gotoTrip(
                     cityName,
                     cityId,
-                    cityPhoto,
                     countryName,
                     tripStartDate,
                     tripEndDate
@@ -1675,7 +1671,6 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                               gotoTrip(
                                 trip.city.cityName,
                                 trip.city.cityId,
-                                trip.city.cityPhoto,
                                 trip.city.country.countryName,
                                 trip.startDate,
                                 trip.endDate
@@ -1726,7 +1721,6 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                                     trip.id,
                                     trip.city.cityName,
                                     trip.city.cityId,
-                                    trip.city.cityPhoto,
                                     trip.city.country.countryName,
                                     trip.startDate,
                                     trip.endDate
@@ -1734,7 +1728,6 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                                 : gotoTrip(
                                     trip.city.cityName,
                                     trip.city.cityId,
-                                    trip.city.cityPhoto,
                                     trip.city.country.countryName,
                                     trip.startDate,
                                     trip.endDate
@@ -1755,7 +1748,6 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                               gotoTrip(
                                 trip.city.cityName,
                                 trip.city.cityId,
-                                trip.city.cityPhoto,
                                 trip.city.country.countryName,
                                 trip.startDate,
                                 trip.endDate
@@ -1806,7 +1798,6 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                                     trip.id,
                                     trip.city.cityName,
                                     trip.city.cityId,
-                                    trip.city.cityPhoto,
                                     trip.city.country.countryName,
                                     trip.startDate,
                                     trip.endDate
@@ -1814,7 +1805,6 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                                 : gotoTrip(
                                     trip.city.cityName,
                                     trip.city.cityId,
-                                    trip.city.cityPhoto,
                                     trip.city.country.countryName,
                                     trip.startDate,
                                     trip.endDate

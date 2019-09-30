@@ -317,7 +317,6 @@ const Square = styled.div`
 
 interface IProps {
   cityName: string;
-  cityPhoto: string;
   countryName: string;
   startDate: moment.Moment | null;
   endDate: moment.Moment | null;
@@ -342,7 +341,6 @@ interface IProps {
 
 const TripProfilePresenter: React.FunctionComponent<IProps> = ({
   cityName,
-  cityPhoto,
   countryName,
   startDate,
   endDate,
@@ -420,7 +418,7 @@ const TripProfilePresenter: React.FunctionComponent<IProps> = ({
             </Helmet>
             <AvatarContainer>
               <Square>
-                <CAvatar size="lg" url={cityPhoto} city={true} />
+                <CAvatar size="lg" url={city.cityPhoto} city={true} />
                 <LocationMapContainer onClick={toggleMapMopdal}>
                   <LocationMap
                     latitude={city.latitude}
