@@ -9,6 +9,7 @@
 export interface ToggleLikeCity_toggleLikeCity_city_country {
   __typename: "CountryType";
   countryName: string | null;
+  countryCode: string | null;
 }
 
 export interface ToggleLikeCity_toggleLikeCity_city {
@@ -2546,6 +2547,7 @@ export interface GetTrips_getTrips_trip_city {
   __typename: "CityType";
   cityId: string | null;
   cityName: string | null;
+  cityPhoto: string | null;
   cityThumbnail: string | null;
   country: GetTrips_getTrips_trip_city_country;
 }
