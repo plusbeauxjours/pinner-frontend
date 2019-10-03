@@ -116,6 +116,7 @@ const SearchPresenter: React.FunctionComponent<IProps> = ({
               key={prediction.id}
               onClick={() => onClick(prediction.place_id)}
             >
+              {console.log(prediction)}
               <Header>
                 <SAvatar size={"sm"} cityId={prediction.place_id} />
                 <HeaderColumn>
