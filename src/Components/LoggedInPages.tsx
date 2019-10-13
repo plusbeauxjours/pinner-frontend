@@ -14,14 +14,14 @@ import EditProfile from "../Routes/User/EditProfile";
 import EditEmailAddress from "../Routes/User/EditEmailAddress";
 import ToggleSettings from "../Routes/User/ToggleSettings";
 import UserAvatarDetail from "../Routes/User/UserAvatarDetail";
-import Coffees from "../Routes/User/Coffees";
+// import Coffees from "../Routes/User/Coffees";
 import Cities from "../Routes/User/Cities";
 import Countries from "../Routes/User/Countries";
 import Continents from "../Routes/User/Continents";
 
 import PeoplePage from "../Routes/Feed/PeoplePage";
 import LocationsPage from "../Routes/Feed/LocationsPage";
-import CoffeesPage from "../Routes/Feed/CoffeesPage";
+// import CoffeesPage from "../Routes/Feed/CoffeesPage";
 
 import CityUsersNow from "../Routes/City/CityUsersNow";
 import CityUsersBefore from "../Routes/City/CityUsersBefore";
@@ -112,14 +112,14 @@ class LoggedInPages extends React.Component<IProps> {
             component={CoffeeDetail}
           />
         )}
-        {coffeesModalOpen && (
+        {/* {coffeesModalOpen && (
           <Route
             onUpdate={window.scrollTo(0, 0)}
             path="/:username/coffees"
             exact={true}
             component={Coffees}
           />
-        )}
+        )} */}
         {cityModalOpen && (
           <Route
             onUpdate={window.scrollTo(0, 0)}
@@ -195,11 +195,11 @@ class LoggedInPages extends React.Component<IProps> {
             path="/continent/:continentCode/countries"
             component={CountriesPage}
           />
-          <Route
+          {/* <Route
             onUpdate={window.scrollTo(0, 0)}
             path="/continent/:continentCode/coffees"
             component={CoffeesPage}
-          />
+          /> */}
           <Route
             onUpdate={window.scrollTo(0, 0)}
             path="/continent/:continentCode/usersNow"
@@ -222,11 +222,11 @@ class LoggedInPages extends React.Component<IProps> {
             path="/country/:countryCode/cities"
             component={CitiesPage}
           />
-          <Route
+          {/* <Route
             onUpdate={window.scrollTo(0, 0)}
             path="/country/:countryCode/coffees"
             component={CoffeesPage}
-          />
+          /> */}
           <Route
             onUpdate={window.scrollTo(0, 0)}
             path="/country/:countryCode/usersNow"
@@ -244,11 +244,11 @@ class LoggedInPages extends React.Component<IProps> {
           />
 
           {/* CITY */}
-          <Route
+          {/* <Route
             onUpdate={window.scrollTo(0, 0)}
             path="/city/:cityId/coffees"
             component={CoffeesPage}
-          />
+          /> */}
           <Route
             onUpdate={window.scrollTo(0, 0)}
             path="/city/:cityId/nearCities"
@@ -296,12 +296,6 @@ class LoggedInPages extends React.Component<IProps> {
           />
 
           {/* USER */}
-          <Route
-            onUpdate={window.scrollTo(0, 0)}
-            path="/:username"
-            exact={true}
-            component={UserProfile}
-          />
           <Route
             onUpdate={window.scrollTo(0, 0)}
             path="/:username"
