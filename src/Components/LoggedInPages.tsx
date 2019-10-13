@@ -21,7 +21,7 @@ import Continents from "../Routes/User/Continents";
 
 import PeoplePage from "../Routes/Feed/PeoplePage";
 import LocationsPage from "../Routes/Feed/LocationsPage";
-// import CoffeesPage from "../Routes/Feed/CoffeesPage";
+import CoffeesPage from "../Routes/Feed/CoffeesPage";
 
 import CityUsersNow from "../Routes/City/CityUsersNow";
 import CityUsersBefore from "../Routes/City/CityUsersBefore";
@@ -244,11 +244,11 @@ class LoggedInPages extends React.Component<IProps> {
           />
 
           {/* CITY */}
-          {/* <Route
+          <Route
             onUpdate={window.scrollTo(0, 0)}
             path="/city/:cityId/coffees"
             component={CoffeesPage}
-          /> */}
+          />
           <Route
             onUpdate={window.scrollTo(0, 0)}
             path="/city/:cityId/nearCities"
