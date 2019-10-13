@@ -265,7 +265,7 @@ const CoffeeDetailPresenter: React.FunctionComponent<IProps> = ({
                     <UBold text={"KM"} />
                   </Row>
                 )}
-                {coffee.host.profile.coffeeCount !== 0 && (
+                {/* {coffee.host.profile.coffeeCount !== 0 && (
                   <Row>
                     <VBold text={String(coffee.host.profile.coffeeCount)} />
                     {coffee.host.profile.coffeeCount === 1 ? (
@@ -274,7 +274,7 @@ const CoffeeDetailPresenter: React.FunctionComponent<IProps> = ({
                       <UBold text={"COFFEES"} />
                     )}
                   </Row>
-                )}
+                )} */}
                 {coffee.host.profile.tripCount !== 0 && (
                   <Row>
                     <VBold text={String(coffee.host.profile.tripCount)} />
