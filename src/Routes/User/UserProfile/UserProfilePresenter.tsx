@@ -1463,7 +1463,7 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                   <VBold text={String(user.profile.tripCount)} />
                   <UBold text={"TRIPS"} />
                 </Row>
-                {user.profile.isHideCoffees ? (
+                {/* {user.profile.isHideCoffees ? (
                   <Row>
                     <VBold text={String(user.profile.coffeeCount)} />
                     {user.profile.cityCount === 1 ? (
@@ -1488,7 +1488,7 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                       )}
                     </Link>
                   </Row>
-                )}
+                )} */}
                 {user.profile.isHideCities ? (
                   <Row>
                     <VBold text={String(user.profile.cityCount)} />

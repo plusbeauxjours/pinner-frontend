@@ -275,7 +275,7 @@ const CoffeeDetailPresenter: React.FunctionComponent<IProps> = ({
                     )}
                   </Row>
                 )}
-                {coffee.host.profile.coffeeCount !== 0 && (
+                {coffee.host.profile.tripCount !== 0 && (
                   <Row>
                     <VBold text={String(coffee.host.profile.tripCount)} />
                     {coffee.host.profile.tripCount === 1 ? (

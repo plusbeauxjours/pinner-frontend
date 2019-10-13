@@ -310,16 +310,16 @@ const ToggleSettingsPresenter: React.FunctionComponent<IProps> = ({
             If you set your trips hide, only you can see your trips, otherwise
             only number of trips and your trip distance are shown.
           </ExplainText>
-          <ToggleContainer>
+          {/* <ToggleContainer>
             <ToggleText>HIDE COFFEES</ToggleText>
             <ToggleIcon onClick={() => onClickToggleIcon("HIDE_COFFEES")}>
               {isSelf && isHideCoffees ? <ToggleOn /> : <ToggleOff />}
             </ToggleIcon>
           </ToggleContainer>
           <ExplainText>
-            If you set your coffees hide, only you can see you coffees request,
+            If you set your coffees hide, only you can see your coffees request,
             otherwise only number of coffees request is shown.
-          </ExplainText>
+          </ExplainText> */}
           <ToggleContainer>
             <ToggleText>HIDE CITIES</ToggleText>
             <ToggleIcon onClick={() => onClickToggleIcon("HIDE_CITIES")}>
@@ -338,7 +338,7 @@ const ToggleSettingsPresenter: React.FunctionComponent<IProps> = ({
           </ToggleContainer>
           <ExplainText>
             If you set your coutries hide, only you can see countries where
-            You've been to before, otherwise only number of countries is shown.
+            you've been before, otherwise only number of countries is shown.
           </ExplainText>
           <ToggleContainer>
             <ToggleText>HIDE CONTINENTS</ToggleText>
@@ -348,7 +348,7 @@ const ToggleSettingsPresenter: React.FunctionComponent<IProps> = ({
           </ToggleContainer>
           <ExplainText>
             If you set your coutries hide, only you can see countries where
-            You've been to before, otherwise only number of countries is shown.
+            you've been before, otherwise only number of countries is shown.
           </ExplainText>
           <ToggleContainer>
             <ToggleText>AUTO LOCATION REPORT</ToggleText>
