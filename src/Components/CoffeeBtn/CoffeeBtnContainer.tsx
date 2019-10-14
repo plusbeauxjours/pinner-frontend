@@ -243,7 +243,7 @@ class CoffeeBtnContainer extends React.Component<IProps, IState> {
         query: GET_COFFEES,
         variables: { cityId: unMatch.cityId, location: "city" }
       });
-      if (unMatch.coffee.status !== "expired") {
+      if (unMatch.coffee.status !== "expired" && unMatch.coffee) {
         if (cityData) {
           cityData.getCoffees.coffees.push(unMatch.coffee);
           cache.writeQuery({
@@ -264,7 +264,7 @@ class CoffeeBtnContainer extends React.Component<IProps, IState> {
           location: "country"
         }
       });
-      if (unMatch.coffee.status !== "expired") {
+      if (unMatch.coffee.status !== "expired" && unMatch.coffee) {
         if (countryData) {
           countryData.getCoffees.coffees.push(unMatch.coffee);
           cache.writeQuery({
@@ -288,7 +288,7 @@ class CoffeeBtnContainer extends React.Component<IProps, IState> {
           location: "continent"
         }
       });
-      if (unMatch.coffee.status !== "expired") {
+      if (unMatch.coffee.status !== "expired" && unMatch.coffee) {
         if (continentData) {
           continentData.getCoffees.coffees.push(unMatch.coffee);
           cache.writeQuery({
