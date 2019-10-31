@@ -1105,7 +1105,7 @@ const EditProfilePresenter: React.FunctionComponent<IProps> = ({
 
               <ExplainText>
                 This action cannot be undone. This will permanently delete the
-                plusbeauxjours account, comments, trip history, and remove all
+                {username} account, comments, trip history, and remove all
                 photos. Please type in the name of your username to confirm.
               </ExplainText>
             </ModalInputContainer>
@@ -1258,7 +1258,7 @@ const EditProfilePresenter: React.FunctionComponent<IProps> = ({
             <Select value={gender} name={"gender"} onChange={onSelectChange}>
               <Option value={"MALE"}>Male</Option>
               <Option value={"FEMALE"}>Female</Option>
-              <Option value={"OTHER"}>OTHER</Option>
+              <Option value={"OTHER"}>Other</Option>
             </Select>
           </Conatainer>
           <ExplainText>Your gender to match</ExplainText>
