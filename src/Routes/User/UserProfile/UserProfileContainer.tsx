@@ -1023,19 +1023,23 @@ class UserProfileContainer extends React.Component<IProps, IState> {
     }
   };
   public onCompletedAddTrip = data => {
-    if (data.addTrip.moveNotification) {
-      toast.success("Trip added");
-      this.calculateDistanceFn();
-    } else {
-      toast.error("error");
+    try {
+      if (data.addTrip.moveNotification) {
+        toast.success("Trip added");
+        this.calculateDistanceFn();
+      }
+    } catch (e) {
+      toast.error("Overlapping dates! Please check your trip dates.");
     }
   };
   public onCompletedEditTrip = data => {
-    if (data.editTrip.moveNotification) {
-      toast.success("Trip updated");
-      this.calculateDistanceFn();
-    } else {
-      toast.error("error");
+    try {
+      if (data.editTrip.moveNotification) {
+        toast.success("Trip updated");
+        this.calculateDistanceFn();
+      }
+    } catch (e) {
+      toast.error("Overlapping dates! Please check your trip dates.");
     }
   };
   public onCompletedDeleteTrip = data => {
