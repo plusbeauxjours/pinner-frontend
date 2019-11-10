@@ -1674,7 +1674,7 @@ export interface GetMatches {
 }
 
 export interface GetMatchesVariables {
-  matchPage?: number | null;
+  page?: number | null;
 }
 
 /* tslint:disable */
