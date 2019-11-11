@@ -147,7 +147,6 @@ class UserProfileContainer extends React.Component<IProps, IState> {
   public calculateDistanceFn: MutationFn;
 
   public getTripsData;
-  public getTipsFetchMore;
   public data;
 
   constructor(props) {
@@ -362,11 +361,9 @@ class UserProfileContainer extends React.Component<IProps, IState> {
                                                                     >
                                                                       {({
                                                                         data: getTripsData,
-                                                                        loading: getTipsLoading,
-                                                                        fetchMore: getTipsFetchMore
+                                                                        loading: getTipsLoading
                                                                       }) => {
                                                                         this.getTripsData = getTripsData;
-                                                                        this.getTipsFetchMore = getTipsFetchMore;
                                                                         return (
                                                                           <AddTripMutation
                                                                             mutation={
@@ -688,10 +685,6 @@ class UserProfileContainer extends React.Component<IProps, IState> {
                                                                                               target={
                                                                                                 target
                                                                                               }
-                                                                                              loadMore={
-                                                                                                this
-                                                                                                  .loadMore
-                                                                                              }
                                                                                               warningToast={
                                                                                                 this
                                                                                                   .warningToast
@@ -744,37 +737,6 @@ class UserProfileContainer extends React.Component<IProps, IState> {
   }
   public logUserOut = () => {
     this.logUserOutFn();
-  };
-  public loadMore = page => {
-    const {
-      match: {
-        params: { username }
-      }
-    } = this.props;
-    this.getTipsFetchMore({
-      query: GET_TRIPS,
-      variables: {
-        username,
-        page
-      },
-      updateQuery: (previousResult, { fetchMoreResult }) => {
-        if (!fetchMoreResult) {
-          return previousResult;
-        }
-        const data = {
-          getTrips: {
-            ...previousResult.getTrips,
-            trip: [
-              ...previousResult.getTrips.trip,
-              ...fetchMoreResult.getTrips.trip
-            ],
-            page: fetchMoreResult.getTrips.page,
-            hasNextPage: fetchMoreResult.getTrips.hasNextPage
-          }
-        };
-        return data;
-      }
-    });
   };
   public onSelectGender = (gender: string) => {
     const { target } = this.state;

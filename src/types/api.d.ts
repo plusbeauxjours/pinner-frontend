@@ -2564,8 +2564,6 @@ export interface GetTrips_getTrips_trip {
 
 export interface GetTrips_getTrips {
   __typename: "TripResponse";
-  page: number | null;
-  hasNextPage: boolean | null;
   trip: (GetTrips_getTrips_trip | null)[] | null;
 }
 

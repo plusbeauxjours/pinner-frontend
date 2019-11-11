@@ -18,7 +18,6 @@ import { MutationFn } from "react-apollo";
 import Thin from "src/Components/Thin";
 import Helmet from "react-helmet";
 import { countries } from "../../../countryData";
-import InfiniteScroll from "react-infinite-scroller";
 import LoadingOverlay from "react-loading-overlay";
 import ClipLoader from "react-spinners/ClipLoader";
 
@@ -844,7 +843,6 @@ interface IProps {
   closeGenderModal: () => void;
   onSelectGender: (gender: string) => void;
   target: string;
-  loadMore: any;
   warningToast: (event: any) => void;
 }
 
@@ -855,9 +853,7 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
   avatarsData: { getAvatars: { avatars = null } = {} } = {},
   avatarsLoading,
 
-  getTripsData: {
-    getTrips: { trip: getTrips = null, hasNextPage = null } = {}
-  } = {},
+  getTripsData: { getTrips: { trip: getTrips = null } = {} } = {},
   getTipsLoading,
 
   coffeeData: { getCoffees: { coffees = null } = {} } = {},
@@ -931,7 +927,6 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
   closeGenderModal,
   onSelectGender,
   target,
-  loadMore,
   warningToast
 }) => {
   const REACT_APP_GOOGLE_PLACE_KEY = process.env.REACT_APP_GOOGLE_PLACE_KEY;
@@ -1658,164 +1653,154 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                       <Upload />
                     </TripIcon>
                   )}
-                  <InfiniteScroll
-                    hasMore={hasNextPage}
-                    loadMore={loadMore}
-                    pageStart={0}
-                  >
-                    {tripList.length !== 0 &&
-                      tripList.map(trip => (
-                        <TripRow key={trip.id}>
-                          <THeader
-                            onClick={() =>
-                              gotoTrip(
-                                trip.city.cityName,
-                                trip.city.cityId,
-                                trip.city.country.countryName,
-                                trip.startDate,
-                                trip.endDate
-                              )
-                            }
-                          >
-                            <SAvatar
-                              size={"sm"}
-                              url={trip.city.cityThumbnail}
-                              city={true}
-                            />
-                            <HeaderColumn>
-                              <HeaderText text={trip.city.cityName} />
-                              <Location>
-                                {trip.city.country.countryName}
-                              </Location>
-                            </HeaderColumn>
-                          </THeader>
-                          <GreyText
-                            text={
-                              trip.startDate
-                                ? moment(trip.startDate).format("MMM Do YY")
-                                : "-"
-                            }
-                          />
-                          <GreyText
-                            text={
+                  {tripList.length !== 0 &&
+                    tripList.map(trip => (
+                      <TripRow key={trip.id}>
+                        <THeader
+                          onClick={() =>
+                            gotoTrip(
+                              trip.city.cityName,
+                              trip.city.cityId,
+                              trip.city.country.countryName,
+                              trip.startDate,
                               trip.endDate
-                                ? moment(trip.endDate).format("MMM Do YY")
-                                : "-"
-                            }
+                            )
+                          }
+                        >
+                          <SAvatar
+                            size={"sm"}
+                            url={trip.city.cityThumbnail}
+                            city={true}
                           />
-                          {trip.diffDays ? (
-                            <GreyText
-                              text={
-                                trip.diffDays === 1
-                                  ? `${trip.diffDays} Day`
-                                  : `${trip.diffDays} Days`
-                              }
-                            />
-                          ) : (
-                            <div />
-                          )}
-                          <TripOverlay
-                            onClick={() => {
-                              user.profile.isSelf
-                                ? toggleTripModal(
-                                    trip.id,
-                                    trip.city.cityName,
-                                    trip.city.cityId,
-                                    trip.city.country.countryName,
-                                    trip.startDate,
-                                    trip.endDate
-                                  )
-                                : gotoTrip(
-                                    trip.city.cityName,
-                                    trip.city.cityId,
-                                    trip.city.country.countryName,
-                                    trip.startDate,
-                                    trip.endDate
-                                  );
-                            }}
-                          >
-                            <List />
-                          </TripOverlay>
-                        </TripRow>
-                      ))}
-                    {tripList.length === 0 &&
-                      !search &&
-                      getTrips &&
-                      getTrips.map(trip => (
-                        <TripRow key={trip.id}>
-                          <THeader
-                            onClick={() =>
-                              gotoTrip(
-                                trip.city.cityName,
-                                trip.city.cityId,
-                                trip.city.country.countryName,
-                                trip.startDate,
-                                trip.endDate
-                              )
-                            }
-                          >
-                            <SAvatar
-                              size={"sm"}
-                              url={trip.city.cityThumbnail}
-                              city={true}
-                            />
-                            <HeaderColumn>
-                              <HeaderText text={trip.city.cityName} />
-                              <Location>
-                                {trip.city.country.countryName}
-                              </Location>
-                            </HeaderColumn>
-                          </THeader>
+                          <HeaderColumn>
+                            <HeaderText text={trip.city.cityName} />
+                            <Location>{trip.city.country.countryName}</Location>
+                          </HeaderColumn>
+                        </THeader>
+                        <GreyText
+                          text={
+                            trip.startDate
+                              ? moment(trip.startDate).format("MMM Do YY")
+                              : "-"
+                          }
+                        />
+                        <GreyText
+                          text={
+                            trip.endDate
+                              ? moment(trip.endDate).format("MMM Do YY")
+                              : "-"
+                          }
+                        />
+                        {trip.diffDays ? (
                           <GreyText
                             text={
-                              trip.startDate
-                                ? moment(trip.startDate).format("MMM Do YY")
-                                : "-"
+                              trip.diffDays === 1
+                                ? `${trip.diffDays} Day`
+                                : `${trip.diffDays} Days`
                             }
                           />
-                          <GreyText
-                            text={
+                        ) : (
+                          <div />
+                        )}
+                        <TripOverlay
+                          onClick={() => {
+                            user.profile.isSelf
+                              ? toggleTripModal(
+                                  trip.id,
+                                  trip.city.cityName,
+                                  trip.city.cityId,
+                                  trip.city.country.countryName,
+                                  trip.startDate,
+                                  trip.endDate
+                                )
+                              : gotoTrip(
+                                  trip.city.cityName,
+                                  trip.city.cityId,
+                                  trip.city.country.countryName,
+                                  trip.startDate,
+                                  trip.endDate
+                                );
+                          }}
+                        >
+                          <List />
+                        </TripOverlay>
+                      </TripRow>
+                    ))}
+                  {tripList.length === 0 &&
+                    !search &&
+                    getTrips &&
+                    getTrips.map(trip => (
+                      <TripRow key={trip.id}>
+                        <THeader
+                          onClick={() =>
+                            gotoTrip(
+                              trip.city.cityName,
+                              trip.city.cityId,
+                              trip.city.country.countryName,
+                              trip.startDate,
                               trip.endDate
-                                ? moment(trip.endDate).format("MMM Do YY")
-                                : "-"
+                            )
+                          }
+                        >
+                          <SAvatar
+                            size={"sm"}
+                            url={trip.city.cityThumbnail}
+                            city={true}
+                          />
+                          <HeaderColumn>
+                            <HeaderText text={trip.city.cityName} />
+                            <Location>{trip.city.country.countryName}</Location>
+                          </HeaderColumn>
+                        </THeader>
+                        <GreyText
+                          text={
+                            trip.startDate
+                              ? moment(trip.startDate).format("MMM Do YY")
+                              : "-"
+                          }
+                        />
+                        <GreyText
+                          text={
+                            trip.endDate
+                              ? moment(trip.endDate).format("MMM Do YY")
+                              : "-"
+                          }
+                        />
+                        {trip.diffDays ? (
+                          <GreyText
+                            text={
+                              trip.diffDays === 1
+                                ? `${trip.diffDays} Day`
+                                : `${trip.diffDays} Days`
                             }
                           />
-                          {trip.diffDays ? (
-                            <GreyText
-                              text={
-                                trip.diffDays === 1
-                                  ? `${trip.diffDays} Day`
-                                  : `${trip.diffDays} Days`
-                              }
-                            />
-                          ) : (
-                            <div />
-                          )}
-                          <TripOverlay
-                            onClick={() => {
-                              user.profile.isSelf
-                                ? toggleTripModal(
-                                    trip.id,
-                                    trip.city.cityName,
-                                    trip.city.cityId,
-                                    trip.city.country.countryName,
-                                    trip.startDate,
-                                    trip.endDate
-                                  )
-                                : gotoTrip(
-                                    trip.city.cityName,
-                                    trip.city.cityId,
-                                    trip.city.country.countryName,
-                                    trip.startDate,
-                                    trip.endDate
-                                  );
-                            }}
-                          >
-                            <List />
-                          </TripOverlay>
-                        </TripRow>
-                      ))}
-                  </InfiniteScroll>
+                        ) : (
+                          <div />
+                        )}
+                        <TripOverlay
+                          onClick={() => {
+                            user.profile.isSelf
+                              ? toggleTripModal(
+                                  trip.id,
+                                  trip.city.cityName,
+                                  trip.city.cityId,
+                                  trip.city.country.countryName,
+                                  trip.startDate,
+                                  trip.endDate
+                                )
+                              : gotoTrip(
+                                  trip.city.cityName,
+                                  trip.city.cityId,
+                                  trip.city.country.countryName,
+                                  trip.startDate,
+                                  trip.endDate
+                                );
+                          }}
+                        >
+                          <List />
+                        </TripOverlay>
+                      </TripRow>
+                    ))}
                 </TripContainer>
               )}
             </Container>
