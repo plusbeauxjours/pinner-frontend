@@ -1241,7 +1241,7 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                 INAPPROPRIATE PHOTOS
               </ModalLink>
               <ModalLink onClick={() => slackReportUsers("SPAM")}>
-                WRONG LOCATION
+                LOOKS LIKE SPAM
               </ModalLink>
               <ModalLink onClick={() => slackReportUsers("MESSAGE")}>
                 INAPPROPRIATE MESSAGE
