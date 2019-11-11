@@ -499,7 +499,7 @@ const TripProfilePresenter: React.FunctionComponent<IProps> = ({
                   <Earth
                     src={require(`../../Images/animations/hideTrip.png`)}
                   />
-                  There is no user now
+                  There was no user at that time
                 </EmptyContainer>
               )}
               {usersBeforeList.length !== 0 &&
