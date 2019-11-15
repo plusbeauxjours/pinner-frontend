@@ -928,7 +928,8 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
   closeGenderModal,
   onSelectGender,
   target,
-  warningToast
+  warningToast,
+  formatDistance
 }) => {
   const REACT_APP_GOOGLE_PLACE_KEY = process.env.REACT_APP_GOOGLE_PLACE_KEY;
   const { results, isLoading } = useGoogleAutocomplete({
