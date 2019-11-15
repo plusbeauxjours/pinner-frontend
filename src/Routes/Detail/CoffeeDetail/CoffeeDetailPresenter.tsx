@@ -195,6 +195,7 @@ interface IProps {
   toggleModal: () => void;
   deleteCoffee: () => void;
   from: string;
+  formatDistance: any;
 }
 
 const CoffeeDetailPresenter: React.FunctionComponent<IProps> = ({
@@ -204,7 +205,8 @@ const CoffeeDetailPresenter: React.FunctionComponent<IProps> = ({
   toggleModal,
   back,
   deleteCoffee,
-  from
+  from,
+  formatDistance
 }) => {
   if (loading) {
     return <Loader />;
@@ -261,7 +263,9 @@ const CoffeeDetailPresenter: React.FunctionComponent<IProps> = ({
                 )}
                 {coffee.host.profile.distance !== 0 && (
                   <Row>
-                    <VBold text={coffee.host.profile.distance} />
+                    <VBold
+                      text={formatDistance(coffee.host.profile.distance)}
+                    />
                     <UBold text={"KM"} />
                   </Row>
                 )}

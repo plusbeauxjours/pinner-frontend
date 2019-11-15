@@ -689,6 +689,10 @@ class UserProfileContainer extends React.Component<IProps, IState> {
                                                                                                 this
                                                                                                   .warningToast
                                                                                               }
+                                                                                              formatDistance={
+                                                                                                this
+                                                                                                  .formatDistance
+                                                                                              }
                                                                                             />
                                                                                           );
                                                                                         }}
@@ -1379,6 +1383,25 @@ class UserProfileContainer extends React.Component<IProps, IState> {
       toast.success("Mark As Main updated");
     } else {
       toast.error("error Marking As Main");
+    }
+  };
+  public formatDistance = (distance: number) => {
+    if (distance < 1e3) {
+      return distance;
+    }
+    if (distance >= 1e3 && distance < 1e5) {
+      return +(distance / 1e3).toFixed(2) + "K";
+    }
+    if (distance >= 1e5 && distance < 1e8) {
+      return +(distance / 1e6).toFixed(2) + "M";
+    }
+    if (distance >= 1e8 && distance < 1e11) {
+      return +(distance / 1e9).toFixed(2) + "B";
+    }
+    if (distance >= 1e11) {
+      return +(distance / 1e12).toFixed(1) + "T";
+    } else {
+      return null;
     }
   };
 }

@@ -844,6 +844,7 @@ interface IProps {
   onSelectGender: (gender: string) => void;
   target: string;
   warningToast: (event: any) => void;
+  formatDistance: any;
 }
 
 const UserProfilePresenter: React.FunctionComponent<IProps> = ({
@@ -1450,7 +1451,7 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                 )}
                 {user.profile.distance !== 0 && (
                   <Row>
-                    <VBold text={user.profile.distance} />
+                    <VBold text={formatDistance(user.profile.distance)} />
                     <UBold text={"KM"} />
                   </Row>
                 )}
