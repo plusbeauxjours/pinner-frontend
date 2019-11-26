@@ -433,7 +433,7 @@ class EditProfileContainer extends React.Component<IProps, IState> {
                                                                             .toggleResidenceModal
                                                                         }
                                                                         onSelectNationality={this.onSelectNationality}
-onSelectResidence={this.onSelectResidence}
+                                                                        onSelectResidence={this.onSelectResidence}
                                                                         toggleDeleteConfirmModal={
                                                                           this
                                                                             .toggleDeleteConfirmModal
