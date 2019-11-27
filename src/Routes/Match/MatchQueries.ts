@@ -35,7 +35,7 @@ export const REQUEST_COFFEE = gql`
 `;
 
 export const MARK_AS_READ_MATCH = gql`
-  mutation MarkAsReadMatch($matchId: String!) {
+  mutation MarkAsReadMatch($matchId: Int!) {
     markAsReadMatch(matchId: $matchId) {
       ok
       matchId

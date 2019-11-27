@@ -49,7 +49,7 @@ class CoffeeBtnContainer extends React.Component<IProps, IState> {
     return (
       <UnMatchMutation
         mutation={UNMATCH}
-        variables={{ matchId }}
+        variables={{ matchId: parseInt(matchId, 10) }}
         onCompleted={this.onCompletedUnMatch}
         update={this.updateUnMatch}
       >

@@ -290,8 +290,8 @@ const CountryText = styled.div`
 `;
 
 const Space = styled.div`
-margin-bottom:50px;
-`
+  margin-bottom: 50px;
+`;
 
 interface IProps {
   me: any;
@@ -507,7 +507,7 @@ const MatchPresenter: React.FunctionComponent<IProps> = ({
                       <MatchUserRow
                         onClick={() =>
                           markAsReadMatchFn({
-                            variables: { matchId: match.id }
+                            variables: { matchId: parseInt(match.id, 10) }
                           })
                         }
                       >
@@ -550,7 +550,7 @@ const MatchPresenter: React.FunctionComponent<IProps> = ({
                       <MatchUserRow
                         onClick={() =>
                           markAsReadMatchFn({
-                            variables: { matchId: match.id }
+                            variables: { matchId: parseInt(match.id, 10) }
                           })
                         }
                       >
@@ -604,7 +604,7 @@ const MatchPresenter: React.FunctionComponent<IProps> = ({
                       <MatchUserRow
                         onClick={() =>
                           markAsReadMatchFn({
-                            variables: { matchId: match.id }
+                            variables: { matchId: parseInt(match.id, 10) }
                           })
                         }
                       >
@@ -647,7 +647,7 @@ const MatchPresenter: React.FunctionComponent<IProps> = ({
                       <MatchUserRow
                         onClick={() =>
                           markAsReadMatchFn({
-                            variables: { matchId: match.id }
+                            variables: { matchId: parseInt(match.id, 10) }
                           })
                         }
                       >
