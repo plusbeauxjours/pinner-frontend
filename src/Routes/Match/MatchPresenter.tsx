@@ -507,7 +507,7 @@ const MatchPresenter: React.FunctionComponent<IProps> = ({
                       <MatchUserRow
                         onClick={() =>
                           markAsReadMatchFn({
-                            variables: { matchId: parseInt(match.id, 10) }
+                            variables: { matchId: match.id) }
                           })
                         }
                       >
@@ -550,7 +550,7 @@ const MatchPresenter: React.FunctionComponent<IProps> = ({
                       <MatchUserRow
                         onClick={() =>
                           markAsReadMatchFn({
-                            variables: { matchId: parseInt(match.id, 10) }
+                            variables: { matchId: match.id) }
                           })
                         }
                       >
@@ -604,7 +604,7 @@ const MatchPresenter: React.FunctionComponent<IProps> = ({
                       <MatchUserRow
                         onClick={() =>
                           markAsReadMatchFn({
-                            variables: { matchId: parseInt(match.id, 10) }
+                            variables: { matchId: match.id) }
                           })
                         }
                       >
@@ -647,7 +647,7 @@ const MatchPresenter: React.FunctionComponent<IProps> = ({
                       <MatchUserRow
                         onClick={() =>
                           markAsReadMatchFn({
-                            variables: { matchId: parseInt(match.id, 10) }
+                            variables: { matchId: match.id) }
                           })
                         }
                       >
