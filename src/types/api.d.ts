@@ -237,7 +237,7 @@ export interface UnMatch {
 }
 
 export interface UnMatchVariables {
-  matchId: string;
+  matchId: number;
 }
 
 /* tslint:disable */
@@ -1776,7 +1776,7 @@ export interface MarkAsReadMatch {
 }
 
 export interface MarkAsReadMatchVariables {
-  matchId: string;
+  matchId: number;
 }
 
 /* tslint:disable */
