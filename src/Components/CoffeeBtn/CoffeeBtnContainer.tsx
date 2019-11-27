@@ -156,55 +156,6 @@ class CoffeeBtnContainer extends React.Component<IProps, IState> {
     } catch (e) {
       console.log(e);
     }
-    try {
-      const countryData = cache.readQuery({
-        query: GET_COFFEES,
-        variables: {
-          countryCode: match.countryCode,
-          location: "country"
-        }
-      });
-      if (countryData) {
-        countryData.getCoffees.coffees = countryData.getCoffees.coffees.filter(
-          i => i.uuid !== match.coffeeId
-        );
-        cache.writeQuery({
-          query: GET_COFFEES,
-          variables: {
-            countryCode: match.countryCode,
-            location: "country"
-          },
-          data: countryData
-        });
-      }
-    } catch (e) {
-      console.log(e);
-    }
-    try {
-      const continentData = cache.readQuery({
-        query: GET_COFFEES,
-        variables: {
-          continentCode: match.continentCode,
-          location: "continent"
-        }
-      });
-      console.log(continentData.getCoffees.coffees, match.coffeeId);
-      if (continentData) {
-        continentData.getCoffees.coffees = continentData.getCoffees.coffees.filter(
-          i => i.uuid !== match.coffeeId
-        );
-        cache.writeQuery({
-          query: GET_COFFEES,
-          variables: {
-            continentCode: match.continentCode,
-            location: "continent"
-          },
-          data: continentData
-        });
-      }
-    } catch (e) {
-      console.log(e);
-    }
   };
 
   public onCompletedUnMatch = data => {
@@ -250,54 +201,6 @@ class CoffeeBtnContainer extends React.Component<IProps, IState> {
             query: GET_COFFEES,
             variables: { cityId: unMatch.cityId, location: "city" },
             data: cityData
-          });
-        }
-      }
-    } catch (e) {
-      console.log(e);
-    }
-    try {
-      const countryData = cache.readQuery({
-        query: GET_COFFEES,
-        variables: {
-          countryCode: unMatch.countryCode,
-          location: "country"
-        }
-      });
-      if (unMatch.coffee.status !== "expired" && unMatch.coffee) {
-        if (countryData) {
-          countryData.getCoffees.coffees.push(unMatch.coffee);
-          cache.writeQuery({
-            query: GET_COFFEES,
-            variables: {
-              countryCode: unMatch.countryCode,
-              location: "country"
-            },
-            data: countryData
-          });
-        }
-      }
-    } catch (e) {
-      console.log(e);
-    }
-    try {
-      const continentData = cache.readQuery({
-        query: GET_COFFEES,
-        variables: {
-          continentCode: unMatch.continentCode,
-          location: "continent"
-        }
-      });
-      if (unMatch.coffee.status !== "expired" && unMatch.coffee) {
-        if (continentData) {
-          continentData.getCoffees.coffees.push(unMatch.coffee);
-          cache.writeQuery({
-            query: GET_COFFEES,
-            variables: {
-              continentCode: unMatch.continentCode,
-              location: "continent"
-            },
-            data: continentData
           });
         }
       }
