@@ -6,13 +6,13 @@ import {
   Redirect
 } from "react-router-dom";
 
-import Home from "../Routes/Login/Home";
 import HomeHome from "../Routes/Login/HomeHome";
-import Verification from "../Routes/Login/Verification";
-import EditEmailAddress from "../Routes/User/EditEmailAddress";
-import Approach from "../Routes/Login/Approach";
-import NotFound from "./NotFound";
-import NoValid from "./NoValid";
+// import Home from "../Routes/Login/Home";
+// import Verification from "../Routes/Login/Verification";
+// import EditEmailAddress from "../Routes/User/EditEmailAddress";
+// import Approach from "../Routes/Login/Approach";
+// import NotFound from "./NotFound";
+// import NoValid from "./NoValid";
 
 import LoggedInPages from "./LoggedInPages";
 
@@ -23,8 +23,8 @@ interface IProps {
 }
 
 const LoggedOutPages = () => (
-  <SSwitch>
-  <Route path="/" exact={true} component={HomeHome} />
+  <Switch>
+    <Route path="/" exact={true} component={HomeHome} />
     {/* <Route path="/" exact={true} component={Home} />
     <Route path="/verification/:key" component={Verification} />
     <Route path="/confirm/:key" component={EditEmailAddress} />
