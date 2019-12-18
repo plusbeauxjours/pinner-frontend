@@ -38,7 +38,7 @@ interface IState {
 }
 
 class HeaderContainer extends React.Component<IProps, IState> {
-  public ReportLocationFn: MutationFn;
+  public reportLocationFn: MutationFn;
   public searchData;
   constructor(props) {
     super(props);
@@ -87,8 +87,8 @@ class HeaderContainer extends React.Component<IProps, IState> {
         {({ data: me }) => {
           return (
             <ReportLocationMutation mutation={REPORT_LOCATION}>
-              {ReportLocationFn => {
-                this.ReportLocationFn = ReportLocationFn;
+              {reportLocationFn => {
+                this.reportLocationFn = reportLocationFn;
                 return (
                   <HeaderQuery
                     query={GET_HEADER}
@@ -182,7 +182,7 @@ class HeaderContainer extends React.Component<IProps, IState> {
     currentCountryCode: string
   ) => {
     try {
-      this.ReportLocationFn({
+      this.reportLocationFn({
         variables: {
           currentLat: latitude,
           currentLng: longitude,

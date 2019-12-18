@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 
 import Home from "../Routes/Login/Home";
+import HomeHome from "../Routes/Login/HomeHome";
 import Verification from "../Routes/Login/Verification";
 import EditEmailAddress from "../Routes/User/EditEmailAddress";
 import Approach from "../Routes/Login/Approach";
@@ -22,14 +23,15 @@ interface IProps {
 }
 
 const LoggedOutPages = () => (
-  <Switch>
-    <Route path="/" exact={true} component={Home} />
+  <SSwitch>
+  <Route path="/" exact={true} component={HomeHome} />
+    {/* <Route path="/" exact={true} component={Home} />
     <Route path="/verification/:key" component={Verification} />
     <Route path="/confirm/:key" component={EditEmailAddress} />
     <Route path="/verification" component={Verification} />
     <Route path="/approach" component={Approach} />
     <Route path="/404" exact={true} component={NotFound} />
-    <Route path="/novalid" exact={true} component={NoValid} />
+    <Route path="/novalid" exact={true} component={NoValid} /> */}
     <Redirect from="*" to="/" />
   </Switch>
 );
