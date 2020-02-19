@@ -181,6 +181,7 @@ const UserBox: React.FunctionComponent<IProps> = ({
               </IconRow>
             )}
             {isStaying &&
+              coffees &&
               coffees.length !== 0 &&
               coffees.find(coffee => !coffee.host.profile.isSelf) && (
                 <IconRow>
