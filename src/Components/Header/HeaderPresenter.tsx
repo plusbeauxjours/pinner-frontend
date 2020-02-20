@@ -271,7 +271,7 @@ const HeaderPresenter: React.FunctionComponent<IProps> = ({
             <Icon>
               <Link
                 to={{
-                  pathname: `/${user ? user.username : ""}`,
+                  pathname: `/${user ? user.uuid : ""}`,
                   state: {
                     currentCountryCode,
                     currentLat,
