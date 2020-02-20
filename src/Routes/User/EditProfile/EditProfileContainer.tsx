@@ -94,6 +94,7 @@ interface IState {
   avatarModalOpen: boolean;
 
   username: string;
+  uuid: string;
   isSelf: boolean;
   isDarkMode: boolean;
   isHideTrips: boolean;
@@ -176,6 +177,7 @@ class EditProfileContainer extends React.Component<IProps, IState> {
       isAutoLocationReport: state.isAutoLocationReport,
 
       username: state.username,
+      uuid: state.uuid,
       bio: state.bio,
       gender: state.gender,
       firstName: state.firstName,
@@ -244,6 +246,7 @@ class EditProfileContainer extends React.Component<IProps, IState> {
       isAutoLocationReport,
 
       username,
+      uuid,
       bio,
       gender,
       firstName,
@@ -341,7 +344,7 @@ class EditProfileContainer extends React.Component<IProps, IState> {
                                                 <GetAvatarsQuery
                                                   query={GET_AVATARS}
                                                   variables={{
-                                                    userName: username
+                                                    uuid
                                                   }}
                                                 >
                                                   {({
@@ -432,8 +435,14 @@ class EditProfileContainer extends React.Component<IProps, IState> {
                                                                           this
                                                                             .toggleResidenceModal
                                                                         }
-                                                                        onSelectNationality={this.onSelectNationality}
-                                                                        onSelectResidence={this.onSelectResidence}
+                                                                        onSelectNationality={
+                                                                          this
+                                                                            .onSelectNationality
+                                                                        }
+                                                                        onSelectResidence={
+                                                                          this
+                                                                            .onSelectResidence
+                                                                        }
                                                                         toggleDeleteConfirmModal={
                                                                           this
                                                                             .toggleDeleteConfirmModal
@@ -556,6 +565,9 @@ class EditProfileContainer extends React.Component<IProps, IState> {
                                                                         // new
                                                                         username={
                                                                           username
+                                                                        }
+                                                                        uuid={
+                                                                          uuid
                                                                         }
                                                                         bio={
                                                                           bio

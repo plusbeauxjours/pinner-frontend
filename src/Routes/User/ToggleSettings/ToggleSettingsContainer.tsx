@@ -18,6 +18,7 @@ interface IProps extends RouteComponentProps<any> {}
 
 interface IState {
   username: string;
+  uuid: string;
   isSelf: boolean;
   isDarkMode: boolean;
   isHideTrips: boolean;
@@ -54,6 +55,7 @@ class ToggleSettingsContainer extends React.Component<IProps, IState> {
     }
     this.state = {
       username: state.username,
+      uuid: state.uuid,
       isSelf: state.isSelf,
       isDarkMode: state.isDarkMode,
       isHideTrips: state.isHideTrips,
@@ -88,6 +90,7 @@ class ToggleSettingsContainer extends React.Component<IProps, IState> {
   public render() {
     const {
       username,
+      uuid,
       isSelf,
       isDarkMode,
       isHideTrips,
@@ -126,6 +129,7 @@ class ToggleSettingsContainer extends React.Component<IProps, IState> {
                 return (
                   <ToggleSettingsPresenter
                     username={username}
+                    uuid={uuid}
                     isSelf={isSelf}
                     isDarkMode={isDarkMode}
                     isHideTrips={isHideTrips}

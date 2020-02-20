@@ -690,6 +690,7 @@ interface IProps {
   isAutoLocationReport: boolean;
 
   username: string;
+  uuid: string;
   bio: string;
   gender: string;
   firstName: string;
@@ -782,6 +783,7 @@ const EditProfilePresenter: React.FunctionComponent<IProps> = ({
   isAutoLocationReport,
 
   username,
+  uuid,
   bio,
   gender,
   firstName,
@@ -1151,6 +1153,7 @@ const EditProfilePresenter: React.FunctionComponent<IProps> = ({
               pathname: `/account/edit`,
               state: {
                 username,
+                uuid,
                 isSelf,
                 isDarkMode,
                 isHideTrips,
@@ -1182,6 +1185,7 @@ const EditProfilePresenter: React.FunctionComponent<IProps> = ({
               pathname: `/account/settings`,
               state: {
                 username,
+                uuid,
                 isSelf,
                 isDarkMode,
                 isHideTrips,

@@ -14,7 +14,6 @@ import Avatar from "../../../Components/Avatar";
 import Bold from "../../../Components/Bold";
 import useGoogleAutocomplete from "../../../autocompleteHelpers";
 import { BACKEND_URL } from "src/constants";
-import { MutationFn } from "react-apollo";
 import Thin from "src/Components/Thin";
 import Helmet from "react-helmet";
 import { countries } from "../../../countryData";
@@ -841,6 +840,7 @@ interface IProps {
   target: string;
   warningToast: (event: any) => void;
   formatDistance: any;
+  deleteAvatarFn: any;
 }
 
 const UserProfilePresenter: React.FunctionComponent<IProps> = ({
@@ -1135,6 +1135,7 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                   pathname: `/account/edit`,
                   state: {
                     username: user.username,
+                    uuid: user.uuid
                     isSelf: user.profile.isSelf,
                     isDarkMode: user.profile.isDarkMode,
                     isHideTrips: user.profile.isHideTrips,
@@ -1166,6 +1167,7 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                   pathname: `/account/settings`,
                   state: {
                     username: user.username,
+                    uuid: user.uuid
                     isSelf: user.profile.isSelf,
                     isDarkMode: user.profile.isDarkMode,
                     isHideTrips: user.profile.isHideTrips,

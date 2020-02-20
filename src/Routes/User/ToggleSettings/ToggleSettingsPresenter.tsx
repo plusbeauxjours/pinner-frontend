@@ -144,6 +144,7 @@ const GreyText = styled(MenuText)`
 
 interface IProps {
   username: string;
+  uuid: string;
   isSelf: boolean;
   isDarkMode: boolean;
   isHideTrips: boolean;
@@ -176,6 +177,7 @@ interface IProps {
 
 const ToggleSettingsPresenter: React.FunctionComponent<IProps> = ({
   username,
+  uuid,
   isSelf,
   isDarkMode,
   isHideTrips,
@@ -227,6 +229,7 @@ const ToggleSettingsPresenter: React.FunctionComponent<IProps> = ({
               pathname: `/account/edit`,
               state: {
                 username,
+                uuid,
                 isSelf,
                 isDarkMode,
                 isHideTrips,
@@ -258,6 +261,7 @@ const ToggleSettingsPresenter: React.FunctionComponent<IProps> = ({
               pathname: `/account/settings`,
               state: {
                 username,
+                uuid,
                 isSelf,
                 isDarkMode,
                 isHideTrips,
