@@ -25,9 +25,6 @@ export const UNMATCH = gql`
       cityId
       countryCode
       continentCode
-      coffee {
-        ...CoffeeParts
-      }
     }
   }
   ${COFFEE_FRAGMENT}

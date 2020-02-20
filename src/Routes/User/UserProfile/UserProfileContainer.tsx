@@ -135,7 +135,6 @@ class UserProfileContainer extends React.Component<IProps, IState> {
   public addTripFn: MutationFn;
   public editTripFn: MutationFn;
   public deleteTripFn: MutationFn;
-  public deleteCoffeeFn: MutationFn;
   public requestCoffeeFn: MutationFn;
   public createCityFn: MutationFn;
 
@@ -203,7 +202,7 @@ class UserProfileContainer extends React.Component<IProps, IState> {
   public render() {
     const {
       match: {
-        params: { username }
+        params: { uuid }
       }
     } = this.props;
     const {
@@ -284,7 +283,7 @@ class UserProfileContainer extends React.Component<IProps, IState> {
                                         return (
                                           <GetAvatarsQuery
                                             query={GET_AVATARS}
-                                            variables={{ userName: username }}
+                                            variables={{ uuid }}
                                             onCompleted={
                                               this.onCompletedGetAvatar
                                             }
@@ -824,11 +823,11 @@ class UserProfileContainer extends React.Component<IProps, IState> {
   public slackReportUsers = payload => {
     const {
       match: {
-        params: { username }
+        params: { uuid }
       }
     } = this.props;
     this.slackReportUsersFn({
-      variables: { targetUsername: username, payload }
+      variables: { targetUuid: uuid, payload }
     });
     this.setState({ reportModalOpen: false });
   };
@@ -1002,13 +1001,13 @@ class UserProfileContainer extends React.Component<IProps, IState> {
   public updateDeleteTrip = (cache, { data: { deleteTrip } }) => {
     const {
       match: {
-        params: { username }
+        params: { uuid }
       }
     } = this.props;
     try {
       const data = cache.readQuery({
         query: GET_TRIPS,
-        variables: { username }
+        variables: { uuid }
       });
       if (data) {
         data.getTrips.trip = data.getTrips.trip.filter(
@@ -1016,7 +1015,7 @@ class UserProfileContainer extends React.Component<IProps, IState> {
         );
         cache.writeQuery({
           query: GET_TRIPS,
-          variables: { username },
+          variables: { uuid },
           data
         });
       }
@@ -1166,19 +1165,19 @@ class UserProfileContainer extends React.Component<IProps, IState> {
   public updateCalculateDistance = (cache, { data: { calculateDistance } }) => {
     const {
       match: {
-        params: { username }
+        params: { uuid }
       }
     } = this.props;
     try {
       const data = cache.readQuery({
         query: GET_USER,
-        variables: { username }
+        variables: { uuid }
       });
       if (data) {
         data.userProfile.user.profile.distance = calculateDistance.distance;
         cache.writeQuery({
           query: GET_USER,
-          variables: { username },
+          variables: { uuid },
           data
         });
       }
@@ -1189,13 +1188,13 @@ class UserProfileContainer extends React.Component<IProps, IState> {
   public updatUploadAvatar = (cache, { data: { uploadAvatar } }) => {
     const {
       match: {
-        params: { username }
+        params: { uuid }
       }
     } = this.props;
     try {
       const data = cache.readQuery({
         query: GET_AVATARS,
-        variables: { userName: username }
+        variables: { uuid }
       });
       if (data) {
         data.getAvatars.avatars.unshift(uploadAvatar.avatar);
@@ -1207,7 +1206,7 @@ class UserProfileContainer extends React.Component<IProps, IState> {
         ).isMain = true;
         cache.writeQuery({
           query: GET_AVATARS,
-          variables: { userName: username },
+          variables: { uuid },
           data
         });
       }
@@ -1217,13 +1216,13 @@ class UserProfileContainer extends React.Component<IProps, IState> {
     try {
       const data = cache.readQuery({
         query: GET_USER,
-        variables: { username }
+        variables: { uuid }
       });
       if (data) {
         data.userProfile.user.profile.avatarUrl = uploadAvatar.avatar.thumbnail;
         cache.writeQuery({
           query: GET_USER,
-          variables: { username },
+          variables: { uuid },
           data
         });
       }
@@ -1258,13 +1257,13 @@ class UserProfileContainer extends React.Component<IProps, IState> {
   public updateDeleteAvatar = (cache, { data: { deleteAvatar } }) => {
     const {
       match: {
-        params: { username }
+        params: { uuid }
       }
     } = this.props;
     try {
       const data = cache.readQuery({
         query: GET_AVATARS,
-        variables: { userName: username }
+        variables: { uuid }
       });
       if (data) {
         data.getAvatars.avatars = data.getAvatars.avatars.filter(
@@ -1272,7 +1271,7 @@ class UserProfileContainer extends React.Component<IProps, IState> {
         );
         cache.writeQuery({
           query: GET_AVATARS,
-          variables: { userName: username },
+          variables: { uuid },
           data
         });
       }
@@ -1300,19 +1299,19 @@ class UserProfileContainer extends React.Component<IProps, IState> {
   public updateMarkAsMain = (cache, { data: { markAsMain } }) => {
     const {
       match: {
-        params: { username }
+        params: { uuid }
       }
     } = this.props;
     try {
       const data = cache.readQuery({
         query: GET_USER,
-        variables: { username }
+        variables: { uuid }
       });
       if (data) {
         data.userProfile.user.profile.avatarUrl = markAsMain.avatar.thumbnail;
         cache.writeQuery({
           query: GET_USER,
-          variables: { username },
+          variables: { uuid },
           data
         });
       }
@@ -1336,7 +1335,7 @@ class UserProfileContainer extends React.Component<IProps, IState> {
     try {
       const data = cache.readQuery({
         query: GET_AVATARS,
-        variables: { userName: username }
+        variables: { uuid }
       });
       if (data) {
         data.getAvatars.avatars.find(
@@ -1347,7 +1346,7 @@ class UserProfileContainer extends React.Component<IProps, IState> {
         ).isMain = true;
         cache.writeQuery({
           query: GET_AVATARS,
-          variables: { userName: username },
+          variables: { uuid },
           data
         });
       }

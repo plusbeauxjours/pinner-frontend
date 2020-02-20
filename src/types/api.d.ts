@@ -169,67 +169,13 @@ export interface MatchVariables {
 // GraphQL mutation operation: UnMatch
 // ====================================================
 
-export interface UnMatch_unMatch_coffee_city_country {
-  __typename: "CountryType";
-  countryName: string | null;
-}
-
-export interface UnMatch_unMatch_coffee_city {
-  __typename: "CityType";
-  cityId: string | null;
-  cityName: string | null;
-  cityThumbnail: string | null;
-  country: UnMatch_unMatch_coffee_city_country;
-}
-
-export interface UnMatch_unMatch_coffee_host_profile_currentCity_country {
-  __typename: "CountryType";
-  countryName: string | null;
-}
-
-export interface UnMatch_unMatch_coffee_host_profile_currentCity {
-  __typename: "CityType";
-  cityName: string | null;
-  country: UnMatch_unMatch_coffee_host_profile_currentCity_country;
-}
-
-export interface UnMatch_unMatch_coffee_host_profile {
-  __typename: "ProfileType";
-  avatarUrl: string | null;
-  isSelf: boolean | null;
-  currentCity: UnMatch_unMatch_coffee_host_profile_currentCity | null;
-}
-
-export interface UnMatch_unMatch_coffee_host {
-  __typename: "UserType";
-  id: string;
-  /**
-   * Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
-   */
-  username: string;
-  profile: UnMatch_unMatch_coffee_host_profile | null;
-}
-
-export interface UnMatch_unMatch_coffee {
-  __typename: "CoffeeType";
-  id: string;
-  uuid: any | null;
-  city: UnMatch_unMatch_coffee_city;
-  host: UnMatch_unMatch_coffee_host;
-  status: string | null;
-  naturalTime: string | null;
-  target: CoffeeTarget;
-  createdAt: any;
-}
-
 export interface UnMatch_unMatch {
   __typename: "UnMatchResponse";
   ok: boolean | null;
-  matchId: string | null;
+  matchId: number | null;
   cityId: string | null;
   countryCode: string | null;
   continentCode: string | null;
-  coffee: UnMatch_unMatch_coffee | null;
 }
 
 export interface UnMatch {
@@ -365,31 +311,6 @@ export interface SearchTermsVariables {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL mutation operation: logIn
-// ====================================================
-
-export interface logIn_logIn {
-  __typename: "ObtainJSONWebToken";
-  token: string | null;
-}
-
-export interface logIn {
-  /**
-   * Obtain JSON Web Token mutation
-   */
-  logIn: logIn_logIn;
-}
-
-export interface logInVariables {
-  username: string;
-  password: string;
-}
-
-/* tslint:disable */
-/* eslint-disable */
-// This file was automatically generated and should not be edited.
-
-// ====================================================
 // GraphQL mutation operation: CreateCity
 // ====================================================
 
@@ -425,31 +346,6 @@ export interface GetCityPhoto {
 
 export interface GetCityPhotoVariables {
   cityId?: string | null;
-}
-
-/* tslint:disable */
-/* eslint-disable */
-// This file was automatically generated and should not be edited.
-
-// ====================================================
-// GraphQL mutation operation: signUp
-// ====================================================
-
-export interface signUp_createAccount {
-  __typename: "CreateAccountResponse";
-  token: string | null;
-}
-
-export interface signUp {
-  createAccount: signUp_createAccount;
-}
-
-export interface signUpVariables {
-  email: string;
-  firstName: string;
-  lastName: string;
-  password: string;
-  username: string;
 }
 
 /* tslint:disable */
@@ -1324,7 +1220,7 @@ export interface DeleteCoffee_deleteCoffee {
   __typename: "DeleteCoffeeResponse";
   ok: boolean | null;
   coffeeId: string | null;
-  username: string | null;
+  uuid: string | null;
 }
 
 export interface DeleteCoffee {
@@ -1933,7 +1829,7 @@ export interface FrequentVisits {
 }
 
 export interface FrequentVisitsVariables {
-  userName: string;
+  uuid: string;
 }
 
 /* tslint:disable */
@@ -2010,7 +1906,7 @@ export interface GetCoffeesVariables {
   cityId?: string | null;
   countryCode?: string | null;
   continentCode?: string | null;
-  userName?: string | null;
+  uuid?: string | null;
   location: string;
 }
 
@@ -2042,7 +1938,7 @@ export interface TopContinents {
 }
 
 export interface TopContinentsVariables {
-  userName: string;
+  uuid: string;
 }
 
 /* tslint:disable */
@@ -2081,7 +1977,7 @@ export interface TopCountries {
 }
 
 export interface TopCountriesVariables {
-  userName: string;
+  uuid: string;
 }
 
 /* tslint:disable */
@@ -2526,7 +2422,7 @@ export interface UserProfile {
 }
 
 export interface UserProfileVariables {
-  username: string;
+  uuid: string;
 }
 
 /* tslint:disable */
@@ -2572,7 +2468,7 @@ export interface GetTrips {
 }
 
 export interface GetTripsVariables {
-  username: string;
+  uuid: string;
   page?: number | null;
 }
 
@@ -2722,7 +2618,7 @@ export interface GetAvatars {
 }
 
 export interface GetAvatarsVariables {
-  userName: string;
+  uuid: string;
 }
 
 /* tslint:disable */
@@ -2850,7 +2746,7 @@ export interface SlackReportUsers {
 }
 
 export interface SlackReportUsersVariables {
-  targetUsername: string;
+  targetUuid: string;
   payload: string;
 }
 

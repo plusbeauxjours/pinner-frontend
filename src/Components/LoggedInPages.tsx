@@ -112,18 +112,10 @@ class LoggedInPages extends React.Component<IProps> {
             component={CoffeeDetail}
           />
         )}
-        {/* {coffeesModalOpen && (
-          <Route
-            onUpdate={window.scrollTo(0, 0)}
-            path="/:username/coffees"
-            exact={true}
-            component={Coffees}
-          />
-        )} */}
         {cityModalOpen && (
           <Route
             onUpdate={window.scrollTo(0, 0)}
-            path="/:username/cities"
+            path="/:uuid/cities"
             exact={true}
             component={Cities}
           />
@@ -131,7 +123,7 @@ class LoggedInPages extends React.Component<IProps> {
         {countryModalOpen && (
           <Route
             onUpdate={window.scrollTo(0, 0)}
-            path="/:username/countries"
+            path="/:uuid/countries"
             exact={true}
             component={Countries}
           />
@@ -139,7 +131,7 @@ class LoggedInPages extends React.Component<IProps> {
         {continentModalOpen && (
           <Route
             onUpdate={window.scrollTo(0, 0)}
-            path="/:username/continents"
+            path="/:uuid/continents"
             exact={true}
             component={Continents}
           />
@@ -147,7 +139,7 @@ class LoggedInPages extends React.Component<IProps> {
         {avatarModalOpen && (
           <Route
             onUpdate={window.scrollTo(0, 0)}
-            path="/:username/:uuid"
+            path="/:uuid/:avatarUuid"
             exact={true}
             component={UserAvatarDetail}
           />
@@ -298,7 +290,7 @@ class LoggedInPages extends React.Component<IProps> {
           {/* USER */}
           <Route
             onUpdate={window.scrollTo(0, 0)}
-            path="/:username"
+            path="/:uuid"
             exact={true}
             component={UserProfile}
           />

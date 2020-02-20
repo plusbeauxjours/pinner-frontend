@@ -116,12 +116,12 @@ class CityLikeBtnContainer extends React.Component<IProps, IState> {
     try {
       const {
         match: {
-          params: { username }
+          params: { uuid }
         }
       } = this.props;
       const data = cache.readQuery({
         query: FREQUENT_VISITS,
-        variables: { userName: username }
+        variables: { uuid }
       });
       if (data) {
         data.frequentVisits.cities.find(
@@ -132,7 +132,7 @@ class CityLikeBtnContainer extends React.Component<IProps, IState> {
         ).likeCount = toggleLikeCity.city.likeCount;
         cache.writeQuery({
           query: FREQUENT_VISITS,
-          variables: { userName: username },
+          variables: { uuid },
           data
         });
       }

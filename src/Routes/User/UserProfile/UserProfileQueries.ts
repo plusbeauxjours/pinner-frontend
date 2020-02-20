@@ -2,8 +2,8 @@ import gql from "graphql-tag";
 import { COUNTRY_FRAGMENT } from "src/sharedQueries";
 
 export const GET_USER = gql`
-  query UserProfile($username: String!) {
-    userProfile(username: $username) {
+  query UserProfile($uuid: String!) {
+    userProfile(uuid: $uuid) {
       user {
         id
         username
@@ -62,8 +62,8 @@ export const GET_USER = gql`
 `;
 
 export const GET_TRIPS = gql`
-  query GetTrips($username: String!, $page: Int) {
-    getTrips(username: $username, page: $page) {
+  query GetTrips($uuid: String!, $page: Int) {
+    getTrips(uuid: $uuid, page: $page) {
       trip {
         id
         city {
@@ -156,8 +156,8 @@ export const DELETE_TRIP = gql`
 `;
 
 export const GET_AVATARS = gql`
-  query GetAvatars($userName: String!) {
-    getAvatars(userName: $userName) {
+  query GetAvatars($uuid: String!) {
+    getAvatars(uuid: $uuid) {
       avatars {
         id
         uuid
@@ -224,8 +224,8 @@ export const CALCULATE_DISTANCE = gql`
 `;
 
 export const SLACK_REPORT_USERS = gql`
-  mutation SlackReportUsers($targetUsername: String!, $payload: String!) {
-    slackReportUsers(targetUsername: $targetUsername, payload: $payload) {
+  mutation SlackReportUsers($targetUuid: String!, $payload: String!) {
+    slackReportUsers(targetUuid: $targetUuid, payload: $payload) {
       ok
     }
   }

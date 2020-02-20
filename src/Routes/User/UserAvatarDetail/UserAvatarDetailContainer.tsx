@@ -26,14 +26,14 @@ class UserAvatarDetailContainer extends React.Component<IProps, IState> {
   public render() {
     const {
       match: {
-        params: { uuid }
+        params: { avatarUuid }
       }
     } = this.props;
     const { modalOpen } = this.state;
     return (
       <GetAvatarDetailQuery
         query={GET_AVATAR_DETAIL}
-        variables={{ avatarId: uuid }}
+        variables={{ avatarId: avatarUuid }}
       >
         {({ data, loading }) => {
           return (

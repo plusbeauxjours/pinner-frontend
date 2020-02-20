@@ -34,15 +34,12 @@ class CountriesContainer extends React.Component<IProps, IState> {
   public render() {
     const {
       match: {
-        params: { username }
+        params: { uuid }
       }
     } = this.props;
     const { search, countryList } = this.state;
     return (
-      <GetCountriesQuery
-        query={TOP_COUNTRIES}
-        variables={{ userName: username }}
-      >
+      <GetCountriesQuery query={TOP_COUNTRIES} variables={{ uuid }}>
         {({ data, loading }) => {
           this.data = data;
           return (
@@ -81,12 +78,12 @@ class CountriesContainer extends React.Component<IProps, IState> {
   public back = async event => {
     const {
       match: {
-        params: { username }
+        params: { uuid }
       }
     } = this.props;
     const { history } = this.props;
     await event.stopPropagation();
-    history.push(`/${username}`);
+    history.push(`/${uuid}`);
   };
 }
 
