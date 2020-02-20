@@ -15,8 +15,6 @@ import {
   DeleteTripVariables,
   RequestCoffee,
   RequestCoffeeVariables,
-  GetCoffeesVariables,
-  GetCoffees,
   CreateCity,
   CreateCityVariables,
   GetAvatars,
@@ -327,7 +325,7 @@ class UserProfileContainer extends React.Component<IProps, IState> {
                                                                 .onCompletedUserProfile
                                                             }
                                                             variables={{
-                                                              username
+                                                              uuid
                                                             }}
                                                           >
                                                             {({
@@ -339,7 +337,7 @@ class UserProfileContainer extends React.Component<IProps, IState> {
                                                                   GET_TRIPS
                                                                 }
                                                                 variables={{
-                                                                  username
+                                                                  uuid
                                                                 }}
                                                               >
                                                                 {({
@@ -361,7 +359,7 @@ class UserProfileContainer extends React.Component<IProps, IState> {
                                                                         {
                                                                           query: GET_TRIPS,
                                                                           variables: {
-                                                                            username
+                                                                            uuid
                                                                           }
                                                                         }
                                                                       ]}
@@ -390,7 +388,7 @@ class UserProfileContainer extends React.Component<IProps, IState> {
                                                                               {
                                                                                 query: GET_TRIPS,
                                                                                 variables: {
-                                                                                  username
+                                                                                  uuid
                                                                                 }
                                                                               }
                                                                             ]}
