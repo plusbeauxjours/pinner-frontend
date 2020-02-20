@@ -1135,7 +1135,7 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                   pathname: `/account/edit`,
                   state: {
                     username: user.username,
-                    uuid: user.uuid
+                    uuid: user.uuid,
                     isSelf: user.profile.isSelf,
                     isDarkMode: user.profile.isDarkMode,
                     isHideTrips: user.profile.isHideTrips,
@@ -1167,7 +1167,7 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                   pathname: `/account/settings`,
                   state: {
                     username: user.username,
-                    uuid: user.uuid
+                    uuid: user.uuid,
                     isSelf: user.profile.isSelf,
                     isDarkMode: user.profile.isDarkMode,
                     isHideTrips: user.profile.isHideTrips,

@@ -556,9 +556,6 @@ class UserProfileContainer extends React.Component<IProps, IState> {
                                                                                         uuid={
                                                                                           uuid
                                                                                         }
-                                                                                        username={
-                                                                                          username
-                                                                                        }
                                                                                         search={
                                                                                           search
                                                                                         }
