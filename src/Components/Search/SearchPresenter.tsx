@@ -97,7 +97,7 @@ const SearchPresenter: React.FunctionComponent<IProps> = ({
           users.length > 0 &&
           users.map(user => (
             <UserRow key={user.profile.id}>
-              <Link to={`/${user.profile.username}`}>
+              <Link to={`/${user.profile.uuid}`}>
                 <UserHeader
                   username={user.profile.username}
                   currentCity={user.profile.currentCity.cityName}

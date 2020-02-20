@@ -235,7 +235,7 @@ const CoffeeDetailPresenter: React.FunctionComponent<IProps> = ({
               <Icon onClick={toggleModal}>
                 <List />
               </Icon>
-              <Link to={`/${coffee.host.profile.username}`}>
+              <Link to={`/${coffee.host.profile.uuid}`}>
                 <SAvatar url={coffee.host.profile.avatarUrl} size="lg" />
               </Link>
               <SText text={coffee.host.profile.username} />

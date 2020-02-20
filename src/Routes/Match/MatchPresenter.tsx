@@ -516,7 +516,7 @@ const MatchPresenter: React.FunctionComponent<IProps> = ({
                             <Noti />
                           </NotiICon>
                         )}
-                        <Link to={`/${match.host.profile.username}`}>
+                        <Link to={`/${match.host.profile.uuid}`}>
                           <UserHeader
                             username={match.host.profile.username}
                             currentCity={
@@ -529,7 +529,7 @@ const MatchPresenter: React.FunctionComponent<IProps> = ({
                             size={"sm"}
                           />
                         </Link>
-                        <Link to={`/${match.host.profile.username}`}>
+                        <Link to={`/${match.host.profile.uuid}`}>
                           <Column>
                             <GreyText
                               text={`Matched in ${match.city.cityName}`}
@@ -559,7 +559,7 @@ const MatchPresenter: React.FunctionComponent<IProps> = ({
                             <Noti />
                           </NotiICon>
                         )}
-                        <Link to={`/${match.guest.profile.username}`}>
+                        <Link to={`/${match.guest.profile.uuid}`}>
                           <UserHeader
                             username={match.guest.profile.username}
                             currentCity={
@@ -573,7 +573,7 @@ const MatchPresenter: React.FunctionComponent<IProps> = ({
                             size={"sm"}
                           />
                         </Link>
-                        <Link to={`/${match.host.profile.username}`}>
+                        <Link to={`/${match.host.profile.uuid}`}>
                           <Column>
                             <GreyText
                               text={`Matched in ${match.city.cityName}`}
@@ -613,7 +613,7 @@ const MatchPresenter: React.FunctionComponent<IProps> = ({
                             <Noti />
                           </NotiICon>
                         )}
-                        <Link to={`/${match.host.profile.username}`}>
+                        <Link to={`/${match.host.profile.uuid}`}>
                           <UserHeader
                             username={match.host.profile.username}
                             currentCity={
@@ -626,7 +626,7 @@ const MatchPresenter: React.FunctionComponent<IProps> = ({
                             size={"sm"}
                           />
                         </Link>
-                        <Link to={`/${match.host.profile.username}`}>
+                        <Link to={`/${match.host.profile.uuid}`}>
                           <Column>
                             <GreyText
                               text={`Matched in ${match.city.cityName}`}
@@ -656,7 +656,7 @@ const MatchPresenter: React.FunctionComponent<IProps> = ({
                             <Noti />
                           </NotiICon>
                         )}
-                        <Link to={`/${match.guest.profile.username}`}>
+                        <Link to={`/${match.guest.profile.uuid}`}>
                           <UserHeader
                             username={match.guest.profile.username}
                             currentCity={
@@ -670,7 +670,7 @@ const MatchPresenter: React.FunctionComponent<IProps> = ({
                             size={"sm"}
                           />
                         </Link>
-                        <Link to={`/${match.host.profile.username}`}>
+                        <Link to={`/${match.host.profile.uuid}`}>
                           <Column>
                             <GreyText
                               text={`Matched in ${match.city.cityName}`}

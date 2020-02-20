@@ -210,7 +210,7 @@ const UserBox: React.FunctionComponent<IProps> = ({
                     users.map(user => {
                       return (
                         <UserRow key={user.actor.profile.id}>
-                          <Link to={`/${user.actor.profile.username}`}>
+                          <Link to={`/${user.actor.profile.uuid}`}>
                             <UserHeader
                               username={user.actor.profile.username}
                               currentCity={

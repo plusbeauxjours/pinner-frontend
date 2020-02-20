@@ -128,7 +128,7 @@ const CountryUsersBeforePresenter: React.FunctionComponent<IProps> = ({
               {usersBeforeList.length !== 0 &&
                 usersBeforeList.map(user => (
                   <React.Fragment key={user.actor.profile.id}>
-                    <Link to={`/${user.actor.profile.username}`}>
+                    <Link to={`/${user.actor.profile.uuid}`}>
                       <UserRow key={user.actor.profile.id}>
                         <UserHeader
                           username={user.actor.profile.username}
@@ -149,7 +149,7 @@ const CountryUsersBeforePresenter: React.FunctionComponent<IProps> = ({
                 usersBefore &&
                 usersBefore.map(user => (
                   <React.Fragment key={user.actor.profile.id}>
-                    <Link to={`/${user.actor.profile.username}`}>
+                    <Link to={`/${user.actor.profile.uuid}`}>
                       <UserRow key={user.actor.profile.id}>
                         <UserHeader
                           username={user.actor.profile.username}

@@ -505,7 +505,7 @@ const TripProfilePresenter: React.FunctionComponent<IProps> = ({
               {usersBeforeList.length !== 0 &&
                 usersBeforeList.map(user => (
                   <UserRow key={user.actor.profile.id}>
-                    <Link to={`/${user.actor.profile.username}`}>
+                    <Link to={`/${user.actor.uuid}`}>
                       <UserHeader
                         username={user.actor.profile.username}
                         currentCity={user.actor.profile.currentCity.cityName}
@@ -523,7 +523,7 @@ const TripProfilePresenter: React.FunctionComponent<IProps> = ({
                 usersBefore &&
                 usersBefore.map(user => (
                   <UserRow key={user.actor.profile.id}>
-                    <Link to={`/${user.actor.profile.username}`}>
+                    <Link to={`/${user.actor.profile.uuid}`}>
                       <UserHeader
                         username={user.actor.profile.username}
                         currentCity={user.actor.profile.currentCity.cityName}
