@@ -324,9 +324,7 @@ class UserProfileContainer extends React.Component<IProps, IState> {
                                                               this
                                                                 .onCompletedUserProfile
                                                             }
-                                                            variables={{
-                                                              uuid
-                                                            }}
+                                                            variables={{ uuid }}
                                                           >
                                                             {({
                                                               data: userProfileData,
@@ -554,6 +552,9 @@ class UserProfileContainer extends React.Component<IProps, IState> {
                                                                                         submitCoffee={
                                                                                           this
                                                                                             .submitCoffee
+                                                                                        }
+                                                                                        uuid={
+                                                                                          uuid
                                                                                         }
                                                                                         username={
                                                                                           username

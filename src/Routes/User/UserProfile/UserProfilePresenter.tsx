@@ -811,7 +811,7 @@ interface IProps {
   submitCoffee: any;
   onSearchInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 
-  username: string;
+  uuid: string;
 
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   search: string;
@@ -825,7 +825,6 @@ interface IProps {
   onSubmitImage: (event) => void;
   imagePreviewUrl: string;
   removeImagePreviewUrl: () => void;
-  deleteAvatarFn: MutationFn;
   markAsMainFn: any;
   logUserOut: () => void;
   logoutConfirmModal: boolean;
@@ -892,7 +891,7 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
   onFocusChange,
   submitCoffee,
 
-  username,
+  uuid,
   search,
   onChange,
   tripList,
@@ -936,7 +935,7 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
   });
   if (userProfileLoading) {
     return <Loader />;
-  } else if (user &&  avatars) {
+  } else if (user && avatars) {
     return (
       <>
         {(uploadAvatarLoading || avatarsLoading) && (
@@ -1044,7 +1043,7 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                         {avatar.image ? (
                           <Link
                             to={{
-                              pathname: `/${username}/${avatar.uuid}`,
+                              pathname: `/${uuid}/${avatar.uuid}`,
                               state: { avatarModalOpen: true }
                             }}
                           >
@@ -1467,7 +1466,7 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                   <Row>
                     <Link
                       to={{
-                        pathname: `/${username}/cities`,
+                        pathname: `/${uuid}/cities`,
                         state: { cityModalOpen: true }
                       }}
                     >
@@ -1493,7 +1492,7 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                   <Row>
                     <Link
                       to={{
-                        pathname: `/${username}/countries`,
+                        pathname: `/${uuid}/countries`,
                         state: { countryModalOpen: true }
                       }}
                     >
@@ -1519,7 +1518,7 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                   <Row>
                     <Link
                       to={{
-                        pathname: `/${username}/continents`,
+                        pathname: `/${uuid}/continents`,
                         state: { continentModalOpen: true }
                       }}
                     >
