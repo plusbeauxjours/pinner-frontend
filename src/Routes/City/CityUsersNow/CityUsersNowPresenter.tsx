@@ -120,7 +120,7 @@ const CityUsersNowPresenter: React.FunctionComponent<IProps> = ({
               {usersNowList.length !== 0 &&
                 usersNowList.map((user, index) => (
                   <UserRow key={user.id}>
-                    <Link to={`/${user.username}`}>
+                    <Link to={`/${user.uuid}`}>
                       <UserHeader
                         username={user.username}
                         currentCity={user.currentCity.cityName}
@@ -136,7 +136,7 @@ const CityUsersNowPresenter: React.FunctionComponent<IProps> = ({
                 usersNow &&
                 usersNow.map((user, index) => (
                   <UserRow key={user.id}>
-                    <Link to={`/${user.username}`}>
+                    <Link to={`/${user.uuid}`}>
                       <UserHeader
                         username={user.username}
                         currentCity={user.currentCity.cityName}

@@ -459,7 +459,7 @@ const MatchPresenter: React.FunctionComponent<IProps> = ({
                     users.length !== 0 &&
                     users.map(user => (
                       <UserRow key={user.id}>
-                        <Link to={`/${user.username}`}>
+                        <Link to={`/${user.uuid}`}>
                           <UserHeader
                             username={user.username}
                             currentCity={user.currentCity.cityName}

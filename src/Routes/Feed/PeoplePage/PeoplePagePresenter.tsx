@@ -118,7 +118,7 @@ const PeoplePagePresenter: React.FunctionComponent<IProps> = ({
                 recommendUserList.map(user => {
                   return (
                     <UserRow key={user.id}>
-                      <Link to={`/${user.username}`}>
+                      <Link to={`/${user.uuid}`}>
                         <UserHeader
                           username={user.username}
                           currentCity={user.currentCity.cityName}
@@ -136,7 +136,7 @@ const PeoplePagePresenter: React.FunctionComponent<IProps> = ({
                 users.map(user => {
                   return (
                     <UserRow key={user.id}>
-                      <Link to={`/${user.username}`}>
+                      <Link to={`/${user.uuid}`}>
                         <UserHeader
                           username={user.username}
                           currentCity={user.currentCity.cityName}
