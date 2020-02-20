@@ -99,12 +99,12 @@ class CoffeeDetailContainer extends React.Component<IProps, IState> {
     }
   };
   public updateDeleteCoffee = (cache, { data: { deleteCoffee } }) => {
-    const { username } = deleteCoffee;
+    const { uuid } = deleteCoffee;
     const currentCity = localStorage.getItem("cityId");
     try {
       const profileData = cache.readQuery({
         query: GET_COFFEES,
-        variables: { userName: username, location: "profile" }
+        variables: { uuid, location: "profile" }
       });
       if (profileData) {
         profileData.getCoffees.coffees = profileData.getCoffees.coffees.filter(
@@ -112,7 +112,7 @@ class CoffeeDetailContainer extends React.Component<IProps, IState> {
         );
         cache.writeQuery({
           query: GET_COFFEES,
-          variables: { userName: username, location: "profile" },
+          variables: { uuid, location: "profile" },
           data: profileData
         });
       }

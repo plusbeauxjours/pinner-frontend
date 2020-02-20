@@ -759,9 +759,6 @@ interface IProps {
   getTripsData?: any;
   getTipsLoading: boolean;
 
-  coffeeData?: any;
-  coffeeLoading: boolean;
-
   modalOpen: boolean;
   reportModalOpen: boolean;
   avatarPreviewModalOpen: boolean;
@@ -857,9 +854,6 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
   getTripsData: { getTrips: { trip: getTrips = null } = {} } = {},
   getTipsLoading,
 
-  coffeeData: { getCoffees: { coffees = null } = {} } = {},
-  coffeeLoading,
-
   modalOpen,
   reportModalOpen,
   avatarPreviewModalOpen,
@@ -942,7 +936,7 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
   });
   if (userProfileLoading) {
     return <Loader />;
-  } else if (user && coffees && avatars) {
+  } else if (user &&  avatars) {
     return (
       <>
         {(uploadAvatarLoading || avatarsLoading) && (
@@ -1460,32 +1454,6 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                   <VBold text={String(user.profile.tripCount)} />
                   <UBold text={"TRIPS"} />
                 </Row>
-                {/* {user.profile.isHideCoffees ? (
-                  <Row>
-                    <VBold text={String(user.profile.coffeeCount)} />
-                    {user.profile.cityCount === 1 ? (
-                      <GreyUBold text={"COFFEE🔒"} />
-                    ) : (
-                      <GreyUBold text={"COFFEES🔒"} />
-                    )}
-                  </Row>
-                ) : (
-                  <Row>
-                    <Link
-                      to={{
-                        pathname: `/${username}/coffees`,
-                        state: { coffeesModalOpen: true }
-                      }}
-                    >
-                      <VBold text={String(user.profile.coffeeCount)} />
-                      {user.profile.cityCount === 1 ? (
-                        <UBold text={"COFFEE"} />
-                      ) : (
-                        <UBold text={"COFFEES"} />
-                      )}
-                    </Link>
-                  </Row>
-                )} */}
                 {user.profile.isHideCities ? (
                   <Row>
                     <VBold text={String(user.profile.cityCount)} />
@@ -1586,52 +1554,6 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                     </Link>
                   </Row>
                 )}
-                {user.profile.isSelf && coffees && coffees.length === 0 && (
-                  <Row>
-                    <CoffeeIcon onClick={toggleRequestModal}>
-                      <Upload />
-                    </CoffeeIcon>
-                    <UBold text={"COFFEE"} />
-                  </Row>
-                )}
-                {user.profile.isSelf &&
-                  coffees &&
-                  coffees.length !== 0 &&
-                  coffees.map(coffee => (
-                    <Row key={coffee.id}>
-                      <Link
-                        to={{
-                          pathname: `/c/${coffee.uuid}`,
-                          state: {
-                            from: location.pathname,
-                            coffeeModalOpen: true
-                          }
-                        }}
-                      >
-                        <VBold text={"☕️"} />
-                        <UBold text={"COFFEE"} />
-                      </Link>
-                    </Row>
-                  ))}
-                {!user.profile.isSelf &&
-                  coffees &&
-                  coffees.length !== 0 &&
-                  coffees.map(coffee => (
-                    <Row key={coffee.id}>
-                      <Link
-                        to={{
-                          pathname: `/c/${coffee.uuid}`,
-                          state: {
-                            from: location.pathname,
-                            coffeeModalOpen: true
-                          }
-                        }}
-                      >
-                        <VBold text={"☕️"} />
-                        <UBold text={"COFFEE"} />
-                      </Link>
-                    </Row>
-                  ))}
               </InfoContainer>
               {!user.profile.isSelf && user.profile.isHideTrips ? (
                 <EmptyContainer>

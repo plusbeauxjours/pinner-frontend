@@ -385,19 +385,21 @@ class CityProfileContainer extends React.Component<IProps, IState> {
     }
     const {
       coffee: {
-        host: { username }
+        host: {
+          profile: { uuid }
+        }
       }
     } = requestCoffee;
     try {
       const profileData = cache.readQuery({
         query: GET_COFFEES,
-        variables: { userName: username, location: "profile" }
+        variables: { uuid, location: "profile" }
       });
       if (profileData) {
         profileData.getCoffees.coffees.push(requestCoffee.coffee);
         cache.writeQuery({
           query: GET_COFFEES,
-          variables: { userName: username, location: "profile" },
+          variables: { uuid, location: "profile" },
           data: profileData
         });
       }
