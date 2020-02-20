@@ -10,6 +10,8 @@ export const GET_USER = gql`
         firstName
         lastName
         profile {
+          id
+          uuid
           bio
           gender
           avatarUrl

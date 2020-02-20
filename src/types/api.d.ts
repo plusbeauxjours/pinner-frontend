@@ -72,6 +72,7 @@ export interface Match_match_match_host_profile_currentCity {
 export interface Match_match_match_host_profile {
   __typename: "ProfileType";
   id: string;
+  uuid: any | null;
   username: string | null;
   avatarUrl: string | null;
   isSelf: boolean | null;
@@ -97,6 +98,7 @@ export interface Match_match_match_guest_profile_currentCity {
 export interface Match_match_match_guest_profile {
   __typename: "ProfileType";
   id: string;
+  uuid: any | null;
   username: string | null;
   avatarUrl: string | null;
   isSelf: boolean | null;
@@ -246,6 +248,7 @@ export interface SearchTerms_searchUsers_users_profile_currentCity {
 export interface SearchTerms_searchUsers_users_profile {
   __typename: "ProfileType";
   id: string;
+  uuid: any | null;
   username: string | null;
   avatarUrl: string | null;
   isSelf: boolean | null;
@@ -397,6 +400,7 @@ export interface CityProfile_cityProfile_usersNow_currentCity {
 export interface CityProfile_cityProfile_usersNow {
   __typename: "ProfileType";
   id: string;
+  uuid: any | null;
   username: string | null;
   avatarUrl: string | null;
   isSelf: boolean | null;
@@ -417,6 +421,7 @@ export interface CityProfile_cityProfile_usersBefore_actor_profile_currentCity {
 export interface CityProfile_cityProfile_usersBefore_actor_profile {
   __typename: "ProfileType";
   id: string;
+  uuid: any | null;
   username: string | null;
   avatarUrl: string | null;
   isSelf: boolean | null;
@@ -547,6 +552,7 @@ export interface CityUsersBefore_cityUsersBefore_usersBefore_actor_profile_curre
 export interface CityUsersBefore_cityUsersBefore_usersBefore_actor_profile {
   __typename: "ProfileType";
   id: string;
+  uuid: any | null;
   username: string | null;
   avatarUrl: string | null;
   isSelf: boolean | null;
@@ -602,6 +608,7 @@ export interface CityUsersNow_cityUsersNow_usersNow_currentCity {
 export interface CityUsersNow_cityUsersNow_usersNow {
   __typename: "ProfileType";
   id: string;
+  uuid: any | null;
   username: string | null;
   avatarUrl: string | null;
   isSelf: boolean | null;
@@ -750,6 +757,7 @@ export interface ContinentUsersBefore_continentUsersBefore_usersBefore_actor_pro
 export interface ContinentUsersBefore_continentUsersBefore_usersBefore_actor_profile {
   __typename: "ProfileType";
   id: string;
+  uuid: any | null;
   username: string | null;
   avatarUrl: string | null;
   isSelf: boolean | null;
@@ -805,6 +813,7 @@ export interface ContinentUsersNow_continentUsersNow_usersNow_currentCity {
 export interface ContinentUsersNow_continentUsersNow_usersNow {
   __typename: "ProfileType";
   id: string;
+  uuid: any | null;
   username: string | null;
   avatarUrl: string | null;
   isSelf: boolean | null;
@@ -1040,6 +1049,7 @@ export interface CountryUsersBefore_countryUsersBefore_usersBefore_actor_profile
 export interface CountryUsersBefore_countryUsersBefore_usersBefore_actor_profile {
   __typename: "ProfileType";
   id: string;
+  uuid: any | null;
   username: string | null;
   avatarUrl: string | null;
   isSelf: boolean | null;
@@ -1095,6 +1105,7 @@ export interface CountryUsersNow_countryUsersNow_usersNow_currentCity {
 export interface CountryUsersNow_countryUsersNow_usersNow {
   __typename: "ProfileType";
   id: string;
+  uuid: any | null;
   username: string | null;
   avatarUrl: string | null;
   isSelf: boolean | null;
@@ -1166,6 +1177,7 @@ export interface CoffeeDetail_coffeeDetail_coffee_host_profile_residence {
 export interface CoffeeDetail_coffeeDetail_coffee_host_profile {
   __typename: "ProfileType";
   username: string | null;
+  uuid: any | null;
   isSelf: boolean | null;
   avatarUrl: string | null;
   gender: ProfileGender | null;
@@ -1296,6 +1308,7 @@ export interface RecommendUsers_recommendUsers_users_currentCity {
 export interface RecommendUsers_recommendUsers_users {
   __typename: "ProfileType";
   id: string;
+  uuid: any | null;
   username: string | null;
   avatarUrl: string | null;
   isSelf: boolean | null;
@@ -1426,6 +1439,7 @@ export interface CompleteEmailVerification_completeEmailVerification_user_profil
 
 export interface CompleteEmailVerification_completeEmailVerification_user_profile {
   __typename: "ProfileType";
+  uuid: any | null;
   avatarUrl: string | null;
   currentCity: CompleteEmailVerification_completeEmailVerification_user_profile_currentCity | null;
 }
@@ -1489,6 +1503,7 @@ export interface GetMatches_getMatches_matches_host_profile_currentCity {
 export interface GetMatches_getMatches_matches_host_profile {
   __typename: "ProfileType";
   id: string;
+  uuid: any | null;
   username: string | null;
   avatarUrl: string | null;
   isSelf: boolean | null;
@@ -1514,6 +1529,7 @@ export interface GetMatches_getMatches_matches_guest_profile_currentCity {
 export interface GetMatches_getMatches_matches_guest_profile {
   __typename: "ProfileType";
   id: string;
+  uuid: any | null;
   username: string | null;
   avatarUrl: string | null;
   isSelf: boolean | null;
@@ -1607,6 +1623,7 @@ export interface RequestCoffee_requestCoffee_coffee_host_profile_currentCity {
 
 export interface RequestCoffee_requestCoffee_coffee_host_profile {
   __typename: "ProfileType";
+  uuid: any | null;
   avatarUrl: string | null;
   isSelf: boolean | null;
   currentCity: RequestCoffee_requestCoffee_coffee_host_profile_currentCity | null;
@@ -1731,6 +1748,7 @@ export interface TripProfile_tripProfile_usersBefore_actor_profile_currentCity {
 export interface TripProfile_tripProfile_usersBefore_actor_profile {
   __typename: "ProfileType";
   id: string;
+  uuid: any | null;
   username: string | null;
   avatarUrl: string | null;
   isSelf: boolean | null;
@@ -1749,6 +1767,7 @@ export interface TripProfile_tripProfile_usersBefore {
 
 export interface TripProfile_tripProfile_coffees_host_profile {
   __typename: "ProfileType";
+  uuid: any | null;
   avatarUrl: string | null;
 }
 
@@ -1866,6 +1885,7 @@ export interface GetCoffees_getCoffees_coffees_host_profile_currentCity {
 
 export interface GetCoffees_getCoffees_coffees_host_profile {
   __typename: "ProfileType";
+  uuid: any | null;
   avatarUrl: string | null;
   isSelf: boolean | null;
   currentCity: GetCoffees_getCoffees_coffees_host_profile_currentCity | null;
@@ -1996,6 +2016,7 @@ export interface CompleteEditEmailVerification_completeEditEmailVerification_use
 
 export interface CompleteEditEmailVerification_completeEditEmailVerification_user_profile {
   __typename: "ProfileType";
+  uuid: any | null;
   avatarUrl: string | null;
   currentCity: CompleteEditEmailVerification_completeEditEmailVerification_user_profile_currentCity | null;
 }
@@ -2085,6 +2106,7 @@ export interface EditProfile_editProfile_user_profile_currentCity {
 export interface EditProfile_editProfile_user_profile {
   __typename: "ProfileType";
   bio: string | null;
+  uuid: any | null;
   gender: ProfileGender | null;
   avatarUrl: string | null;
   website: string | null;
@@ -2245,6 +2267,8 @@ export interface StartEditEmailVerificationVariables {
 
 export interface ToggleSettings_toggleSettings_user_profile {
   __typename: "ProfileType";
+  id: string;
+  uuid: any | null;
   isSelf: boolean | null;
   isDarkMode: boolean;
   isHideTrips: boolean;
@@ -2370,6 +2394,8 @@ export interface UserProfile_userProfile_user_profile_currentCity {
 
 export interface UserProfile_userProfile_user_profile {
   __typename: "ProfileType";
+  id: string;
+  uuid: any | null;
   bio: string | null;
   gender: ProfileGender | null;
   avatarUrl: string | null;
@@ -2780,6 +2806,7 @@ export interface Me_me_user_profile_currentCity {
 
 export interface Me_me_user_profile {
   __typename: "ProfileType";
+  uuid: any | null;
   gender: ProfileGender | null;
   residence: Me_me_user_profile_residence | null;
   nationality: Me_me_user_profile_nationality | null;
@@ -2850,6 +2877,7 @@ export interface ProfileParts_currentCity {
 export interface ProfileParts {
   __typename: "ProfileType";
   id: string;
+  uuid: any | null;
   username: string | null;
   avatarUrl: string | null;
   isSelf: boolean | null;
@@ -2958,6 +2986,7 @@ export interface CoffeeParts_host_profile_currentCity {
 
 export interface CoffeeParts_host_profile {
   __typename: "ProfileType";
+  uuid: any | null;
   avatarUrl: string | null;
   isSelf: boolean | null;
   currentCity: CoffeeParts_host_profile_currentCity | null;
@@ -3019,6 +3048,7 @@ export interface MatchParts_host_profile_currentCity {
 export interface MatchParts_host_profile {
   __typename: "ProfileType";
   id: string;
+  uuid: any | null;
   username: string | null;
   avatarUrl: string | null;
   isSelf: boolean | null;
@@ -3044,6 +3074,7 @@ export interface MatchParts_guest_profile_currentCity {
 export interface MatchParts_guest_profile {
   __typename: "ProfileType";
   id: string;
+  uuid: any | null;
   username: string | null;
   avatarUrl: string | null;
   isSelf: boolean | null;

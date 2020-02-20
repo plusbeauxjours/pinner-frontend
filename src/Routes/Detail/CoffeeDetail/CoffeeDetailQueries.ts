@@ -21,6 +21,7 @@ export const COFFEE_DETAIL = gql`
           id
           profile {
             username
+            uuid
             isSelf
             avatarUrl
             gender

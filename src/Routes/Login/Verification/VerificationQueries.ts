@@ -29,6 +29,7 @@ export const COMPLETE_EMAIL_SIGN_IN = gql`
       user {
         username
         profile {
+          uuid
           avatarUrl
           currentCity {
             cityId

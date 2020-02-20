@@ -8,6 +8,8 @@ export const TOGGLE_SETTINGS = gql`
         id
         username
         profile {
+          id
+          uuid
           isSelf
           isDarkMode
           isHideTrips

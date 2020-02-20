@@ -6,6 +6,7 @@ export const ME = gql`
       user {
         username
         profile {
+          uuid
           gender
           residence {
             countryCode
@@ -31,6 +32,7 @@ export const ME = gql`
 export const PROFILE_FRAGMENT = gql`
   fragment ProfileParts on ProfileType {
     id
+    uuid
     username
     avatarUrl
     isSelf
@@ -100,6 +102,7 @@ export const COFFEE_FRAGMENT = gql`
       id
       username
       profile {
+        uuid
         avatarUrl
         isSelf
         currentCity {
@@ -131,6 +134,7 @@ export const MATCH_FRAGMENT = gql`
     host {
       profile {
         id
+        uuid
         username
         avatarUrl
         isSelf
@@ -145,6 +149,7 @@ export const MATCH_FRAGMENT = gql`
     guest {
       profile {
         id
+        uuid
         username
         avatarUrl
         isSelf

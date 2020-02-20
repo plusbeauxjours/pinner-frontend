@@ -8,6 +8,7 @@ export const COMPLETE_EDIT_EMAIL_VERIFICATION = gql`
       user {
         username
         profile {
+          uuid
           avatarUrl
           currentCity {
             cityId
