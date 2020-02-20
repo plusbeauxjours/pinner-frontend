@@ -252,12 +252,6 @@ const Icon = styled.span`
   }
 `;
 
-const CoffeeIcon = styled(Icon)`
-  margin: 0;
-  justify-content: center;
-  margin-bottom: 5px;
-`;
-
 const TripIcon = styled(Icon)`
   align-self: center;
   justify-self: center;
