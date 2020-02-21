@@ -271,7 +271,7 @@ const HeaderPresenter: React.FunctionComponent<IProps> = ({
             <Icon>
               <Link
                 to={{
-                  pathname: `/${user ? user.uuid : ""}`,
+                  pathname: `/${user ? user.profile.uuid : ""}`,
                   state: {
                     currentCountryCode,
                     currentLat,
@@ -280,7 +280,7 @@ const HeaderPresenter: React.FunctionComponent<IProps> = ({
                   }
                 }}
               >
-                <Avatar size={"sm"} url={user.profile.avatarUrl} />
+                <Avatar size={"sm"} url={user.profile.appAvatarUrl} />
               </Link>
             </Icon>
           </Column>
