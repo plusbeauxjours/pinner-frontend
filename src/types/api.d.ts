@@ -584,6 +584,7 @@ export interface CityUsersBefore {
 export interface CityUsersBeforeVariables {
   page?: number | null;
   cityId: string;
+  payload?: string | null;
 }
 
 /* tslint:disable */
@@ -2811,6 +2812,7 @@ export interface Me_me_user_profile {
   residence: Me_me_user_profile_residence | null;
   nationality: Me_me_user_profile_nationality | null;
   avatarUrl: string | null;
+  appAvatarUrl: string | null;
   currentCity: Me_me_user_profile_currentCity | null;
 }
 
