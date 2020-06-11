@@ -3,10 +3,10 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect
+  Redirect,
 } from "react-router-dom";
 
-// import HomeHome from "../Routes/Login/HomeHome";
+import HomeHome from "../Routes/Login/HomeHome";
 import Home from "../Routes/Login/Home";
 import Verification from "../Routes/Login/Verification";
 import EditEmailAddress from "../Routes/User/EditEmailAddress";
@@ -24,7 +24,7 @@ interface IProps {
 
 const LoggedOutPages = () => (
   <Switch>
-    {/* <Route path="/" exact={true} component={HomeHome} /> */}
+    <Route path="/privacypolicy" exact={true} component={HomeHome} />
     <Route path="/" exact={true} component={Home} />
     <Route path="/verification/:key" component={Verification} />
     <Route path="/confirm/:key" component={EditEmailAddress} />
@@ -39,7 +39,7 @@ const LoggedOutPages = () => (
 const AppRouter: React.FunctionComponent<IProps> = ({
   isLoggedIn,
   history,
-  onUpdate
+  onUpdate,
 }) => {
   return <Router>{isLoggedIn ? <LoggedInPages /> : <LoggedOutPages />}</Router>;
 };
