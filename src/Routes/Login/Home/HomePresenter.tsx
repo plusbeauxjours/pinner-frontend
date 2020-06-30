@@ -58,7 +58,7 @@ const ModalOverlay = styled.div`
   width: 100%;
   position: fixed;
   top: 0;
-  background-color: ${props => props.theme.modalOverlayColor};
+  background-color: ${(props) => props.theme.modalOverlayColor};
 `;
 
 const ModalContainer = styled.div`
@@ -67,14 +67,15 @@ const ModalContainer = styled.div`
   justify-content: center;
   align-items: center;
   position: fixed;
+  flex-direction: column;
   height: 100%;
   width: 100%;
   top: 0;
 `;
 
 const Modal = styled.div`
-  background-color: ${props => props.theme.modalBgColor};
-  border: 1px solid ${props => props.theme.borderColor};
+  background-color: ${(props) => props.theme.modalBgColor};
+  border: 1px solid ${(props) => props.theme.borderColor};
   margin: 0 15px 0 15px;
   width: 340px;
   border-radius: 12px;
@@ -92,8 +93,14 @@ const ModalLink = styled.div`
   align-items: center;
   justify-content: center;
   :not(:last-child) {
-    border-bottom: 1px solid ${props => props.theme.borderColor};
+    border-bottom: 1px solid ${(props) => props.theme.borderColor};
   }
+`;
+
+const PolicyRow = styled.div`
+  margin-top: 10px;
+  z-index: 8;
+  color: white;
 `;
 
 const Icon = styled.span`
@@ -131,6 +138,9 @@ const LogoContnainer = styled.span`
   top: 10px;
   left: 10px;
 `;
+const Text = styled.p`
+  font-size: 10px;
+`;
 
 interface IProps {
   isLogIn: boolean;
@@ -155,7 +165,7 @@ const HomePresenter: React.FunctionComponent<IProps> = ({
   countryCode,
   countryPhone,
   toggleModal,
-  changeMode
+  changeMode,
 }) => {
   return (
     <>
@@ -175,8 +185,8 @@ const HomePresenter: React.FunctionComponent<IProps> = ({
                   countryCode,
                   countryPhone,
                   cityId,
-                  cityName
-                }
+                  cityName,
+                },
               }}
             >
               <ModalLink>
@@ -187,6 +197,15 @@ const HomePresenter: React.FunctionComponent<IProps> = ({
               </ModalLink>
             </Link>
           </Modal>
+          <PolicyRow>
+            <Link
+              to={{
+                pathname: `/privacypolicy`,
+              }}
+            >
+              <Text>Private policy </Text>
+            </Link>
+          </PolicyRow>
         </ModalContainer>
       )}
       <ProgressiveImage
