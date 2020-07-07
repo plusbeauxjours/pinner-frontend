@@ -49,7 +49,7 @@
     "build": "react-scripts-ts build",
     "test": "react-scripts-ts test --env=jsdom",
     "eject": "react-scripts-ts eject",
-    "precodegen": "apollo schema:download --endpoint=https://pinner-backend.herokuapp.com/graphql",
+    "precodegen": "apollo schema:download --endpoint=http://localhost:8000/graphql/",
     "codegen": "apollo codegen:generate src/types/api.d.ts --localSchemaFile=schema.json --includes='src/**/!(*.local).ts' --target typescript --outputFlat",
     "predeploy": "yarn run build",
     "deploy": "gh-pages -d dist"

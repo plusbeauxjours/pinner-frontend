@@ -11,12 +11,10 @@ import Weather from "src/Components/Weather";
 import UserHeader from "../../../Components/UserHeader";
 import CityLikeBtn from "../../../Components/CityLikeBtn";
 import UserBox from "src/Components/UserBox";
-import CoffeeBox from "src/Components/CoffeeBox";
 import LocationBox from "src/Components/LocationBox";
 import { List, DropDown } from "../../../Icons";
 import LocationMap from "src/Components/LocationMap";
 import Helmet from "react-helmet";
-import { countries } from "src/countryData";
 
 const SWrapper = styled(Wrapper)`
   z-index: 1;
@@ -56,7 +54,7 @@ const ModalContainer = styled.div`
 const GreyLine = styled.div`
   margin-top: 10px;
   margin-bottom: 10px;
-  border-bottom: 1px solid ${props => props.theme.borderColor};
+  border-bottom: 1px solid ${(props) => props.theme.borderColor};
   @media screen and (max-width: 935px) {
     margin: 10px 15px 0 15px;
   }
@@ -68,7 +66,7 @@ const ModalOverlay = styled.div`
   width: 100%;
   position: fixed;
   top: 0;
-  background-color: ${props => props.theme.modalOverlayColor};
+  background-color: ${(props) => props.theme.modalOverlayColor};
 `;
 
 const ModalLink = styled.div`
@@ -80,13 +78,13 @@ const ModalLink = styled.div`
   align-items: center;
   justify-content: center;
   :not(:last-child) {
-    border-bottom: 1px solid ${props => props.theme.borderColor};
+    border-bottom: 1px solid ${(props) => props.theme.borderColor};
   }
 `;
 
 const Modal = styled.div`
-  background-color: ${props => props.theme.modalBgColor};
-  border: 1px solid ${props => props.theme.borderColor};
+  background-color: ${(props) => props.theme.modalBgColor};
+  border: 1px solid ${(props) => props.theme.borderColor};
   margin: 0 15px 0 15px;
   width: 340px;
   border-radius: 12px;
@@ -123,10 +121,10 @@ const UserRow = styled.div`
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
   &:hover {
-    background-color: ${props => props.theme.hoverColor};
+    background-color: ${(props) => props.theme.hoverColor};
   }
   &:not(:last-child) {
-    border-bottom: 1px solid ${props => props.theme.borderColor};
+    border-bottom: 1px solid ${(props) => props.theme.borderColor};
   }
 `;
 
@@ -147,9 +145,9 @@ const AvatarContainer = styled.div`
 const Input = styled.input`
   width: 215px;
   border: 0;
-  border-bottom: 1px solid ${props => props.theme.borderColor};
+  border-bottom: 1px solid ${(props) => props.theme.borderColor};
   padding: 5px;
-  color: ${props => props.theme.color};
+  color: ${(props) => props.theme.color};
   font-size: 12px;
   font-weight: 100;
   &:focus {
@@ -159,7 +157,7 @@ const Input = styled.input`
     }
   }
   &::placeholder {
-    color: ${props => props.theme.greyColor};
+    color: ${(props) => props.theme.greyColor};
     text-align: right;
   }
 `;
@@ -184,14 +182,6 @@ const SAvatar = styled(Avatar)`
   border-radius: 3px;
   height: 45px;
   width: 45px;
-`;
-
-const Location = styled.span`
-  display: flex;
-  margin-top: 5px;
-  display: block;
-  font-size: 12px;
-  font-weight: 200;
 `;
 
 const LocationName = styled.span`
@@ -223,10 +213,10 @@ const ListIcon = styled.span`
   flex-direction: row;
   cursor: pointer;
   svg {
-    fill: ${props => props.theme.iconColor};
+    fill: ${(props) => props.theme.iconColor};
     transition: fill 0.2s ease-in-out;
     &:hover {
-      fill: ${props => props.theme.hoverColor};
+      fill: ${(props) => props.theme.hoverColor};
     }
   }
 `;
@@ -238,33 +228,20 @@ const DropDownIcon = styled.span`
   margin-top: 15px;
   cursor: pointer;
   svg {
-    fill: ${props => props.theme.iconColor};
+    fill: ${(props) => props.theme.iconColor};
     transition: fill 0.2s ease-in-out;
     &:hover {
-      fill: ${props => props.theme.hoverColor};
+      fill: ${(props) => props.theme.hoverColor};
     }
   }
 `;
-
-// const RightIcon = styled.div`
-//   position: absolute;
-//   display: flex;
-//   margin-left: 941px;
-//   top: 40%;
-//   svg {
-//     fill: ${props => props.theme.iconColor};
-//   }
-// `;
-
-// const LeftIcon = styled.div`
-//   position: absolute;
-//   display: flex;
-//   margin-left: -30px;
-//   top: 40%;
-//   svg {
-//     fill: ${props => props.theme.iconColor};
-//   }
-// `;
+const Location = styled.span`
+  display: flex;
+  margin-top: 5px;
+  display: block;
+  font-size: 12px;
+  font-weight: 200;
+`;
 
 const CountText = styled(Location)`
   padding-left: 15px;
@@ -324,7 +301,7 @@ const LocationMapContainer = styled.div`
 `;
 
 const MapModal = styled(Modal)`
-  border: 1px solid ${props => props.theme.borderColor};
+  border: 1px solid ${(props) => props.theme.borderColor};
   border-radius: 3px;
   display: flex;
   height: 701px;
@@ -340,204 +317,64 @@ const Square = styled.div`
   display: flex;
 `;
 
-const EditPhoneModal = styled.div`
-  background-color: ${props => props.theme.modalBgColor};
-  border: 1px solid ${props => props.theme.borderColor};
-  border-radius: 12px;
-  margin: 0 15px 0 15px;
-  width: 540px;
-  height: 240px;
-  z-index: 5;
-  animation: ${ModalAnimation} 0.1s linear;
-`;
-
-const SearchModalContainer = styled(ModalContainer)`
-  z-index: 10;
-`;
-const SearchModalOverlay = styled(ModalOverlay)`
-  z-index: 10;
-`;
-const SearchModal = styled(EditPhoneModal)`
-  z-index: 5;
-  padding: 30px;
-  height: 700px;
-  z-index: 10;
-`;
-const CountryContainer = styled.div`
-  z-index: 10;
-  display: flex;
-  align-content: center;
-  width: 480px;
-  height: 640px;
-  flex-direction: column;
-  overflow-y: auto;
-  -ms-overflow-style: -ms-autohiding-scrollbar;
-  ::-webkit-scrollbar {
-    display: none !important;
-    width: 3px;
-    background: none;
-  }
-  &::-webkit-scrollbar-track {
-    background: none;
-  }
-`;
-const CountryRow = styled.div`
-  z-index: 10;
-  height: 40px;
-  width: 480px;
-  font-size: 18px;
-  display: flex;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  cursor: pointer;
-  &:not(:last-child) {
-    border-bottom: 1px solid ${props => props.theme.borderColor};
-  }
-  &:hover {
-    background-color: ${props => props.theme.hoverColor};
-  }
-`;
-const CountryText = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
-
-const GenderModalContainer = styled(ModalContainer)`
-  z-index: 10;
-`;
-const GenderModalOverlay = styled(ModalOverlay)`
-  z-index: 10;
-`;
-const GenderModal = styled(Modal)`
-  z-index: 10;
-`;
-const GenderModalLink = styled(ModalLink)`
-  z-index: 10;
-`;
-
 interface IProps {
   me: any;
-  coffeeData: any;
-  coffeeLoading: boolean;
   cityData?: any;
   cityLoading: boolean;
   nearCitiesData?: any;
   nearCitiesLoading: boolean;
   samenameCitiesData: any;
   samenameCitiesLoading: boolean;
-  requestModalOpen: boolean;
-  toggleCoffeeRequestModal: () => void;
   isStaying: boolean;
   cityId: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   search: string;
   usersNowList: any;
-  submitCoffee: any;
   reportModalOpen: boolean;
   toggleReportModal: () => void;
   mapMopdalOpen: boolean;
   toggleMapMopdal: () => void;
   slackReportLocations: (targetLocationId: string, payload: string) => void;
   searchSet: () => void;
-  countryModalOpen: boolean;
-  openCountryModal: (taget: string) => void;
-  closeCountryModal: () => void;
-  onSelectCountry: (countryPhoneCode: string) => void;
-  genderModalOpen: boolean;
-  openGenderModal: (taget: string) => void;
-  closeGenderModal: () => void;
-  onSelectGender: (gender: string) => void;
   target: string;
 }
 
 const CityProfilePresenter: React.FunctionComponent<IProps> = ({
   me: { me: { user: me = null } = {} } = {},
-  coffeeData: { getCoffees: { coffees = null } = {} } = {},
-  coffeeLoading,
   cityData: {
     cityProfile: {
       hasNextPage = null,
       count = null,
       usersNow = null,
       usersBefore = null,
-      city = null
-    } = {}
+      city = null,
+    } = {},
   } = {},
   cityLoading,
   nearCitiesData: { nearCities: { cities: nearCities = null } = {} } = {},
   nearCitiesLoading,
   samenameCitiesData: {
-    getSamenameCities: { cities: samenameCities = null } = {}
+    getSamenameCities: { cities: samenameCities = null } = {},
   } = {},
   samenameCitiesLoading,
-  requestModalOpen,
-  toggleCoffeeRequestModal,
   toggleMapMopdal,
   isStaying,
   cityId,
   search,
   onChange,
   usersNowList,
-  submitCoffee,
   reportModalOpen,
   mapMopdalOpen,
   toggleReportModal,
   slackReportLocations,
   searchSet,
-  countryModalOpen,
-  openCountryModal,
-  closeCountryModal,
-  onSelectCountry,
-  genderModalOpen,
-  openGenderModal,
-  closeGenderModal,
-  onSelectGender,
-  target
+  target,
 }) => {
   if (cityLoading) {
     return <Loader />;
   } else if (!cityLoading && city) {
     return (
       <>
-        {genderModalOpen && (
-          <GenderModalContainer>
-            <GenderModalOverlay onClick={closeGenderModal} />
-            <GenderModal>
-              <GenderModalLink onClick={() => onSelectGender("MALE")}>
-                MALE
-              </GenderModalLink>
-              <GenderModalLink onClick={() => onSelectGender("FEMALE")}>
-                FEMALE
-              </GenderModalLink>
-              <GenderModalLink onClick={() => onSelectGender("OTHER")}>
-                OTHER
-              </GenderModalLink>
-              <GenderModalLink onClick={closeGenderModal}>
-                CANCEL
-              </GenderModalLink>
-            </GenderModal>
-          </GenderModalContainer>
-        )}
-        {countryModalOpen && (
-          <SearchModalContainer>
-            <SearchModalOverlay onClick={closeCountryModal} />
-            <SearchModal>
-              <CountryContainer>
-                {countries.map((country, index) => (
-                  <CountryRow
-                    key={index}
-                    onClick={() => onSelectCountry(country.code)}
-                  >
-                    <CountryText>
-                      <p>&nbsp;{country.name}</p>
-                      <p>&nbsp;{country.emoji}</p>
-                    </CountryText>
-                  </CountryRow>
-                ))}
-              </CountryContainer>
-            </SearchModal>
-          </SearchModalContainer>
-        )}
         {mapMopdalOpen && (
           <ModalContainer>
             <ModalOverlay onClick={toggleMapMopdal} />
@@ -574,65 +411,7 @@ const CityProfilePresenter: React.FunctionComponent<IProps> = ({
             </Modal>
           </ModalContainer>
         )}
-        {requestModalOpen && (
-          <ModalContainer>
-            <ModalOverlay onClick={toggleCoffeeRequestModal} />
-            <Modal>
-              <ModalLink onClick={() => submitCoffee("everyone")}>
-                EVERYONE
-              </ModalLink>
-              <ModalLink
-                onClick={
-                  me.profile.nationality
-                    ? () => submitCoffee("nationality")
-                    : () => openCountryModal("nationality")
-                }
-              >
-                NATIONALITY
-              </ModalLink>
-              <ModalLink
-                onClick={
-                  me.profile.residence
-                    ? () => submitCoffee("residence")
-                    : () => openCountryModal("residence")
-                }
-              >
-                RESIDENCE
-              </ModalLink>
-              <ModalLink
-                onClick={
-                  me.profile.gender
-                    ? () => submitCoffee("gender")
-                    : () => openGenderModal("gender")
-                }
-              >
-                GENDER
-              </ModalLink>
-              <ModalLink onClick={toggleCoffeeRequestModal}>CANCEL</ModalLink>
-            </Modal>
-          </ModalContainer>
-        )}
         <SWrapper>
-          {/* <LeftIcon>
-            <Link
-              to={{
-                pathname: `/country/${city.country.countryCode}`,
-                state: { countryName: city.country.countryName }
-              }}
-            >
-              <Left />
-            </Link>
-          </LeftIcon> */}
-          {/* <RightIcon>
-            <Link
-              to={{
-                pathname: `/country/${city.country.countryCode}`,
-                state: { countryName: city.country.countryName }
-              }}
-            >
-              <Right />
-            </Link>
-          </RightIcon> */}
           <PHeader>
             <Helmet>
               <title>City | Pinner</title>
@@ -680,7 +459,7 @@ const CityProfilePresenter: React.FunctionComponent<IProps> = ({
                 <Link
                   to={{
                     pathname: `/country/${city.country.countryCode}`,
-                    state: { countryName: city.country.countryName }
+                    state: { countryName: city.country.countryName },
                   }}
                 >
                   <Header>
@@ -714,7 +493,7 @@ const CityProfilePresenter: React.FunctionComponent<IProps> = ({
                 </EmptyContainer>
               )}
               {usersNowList.length !== 0 &&
-                usersNowList.map(user => (
+                usersNowList.map((user) => (
                   <UserRow key={user.id}>
                     <Link to={`/${user.uuid}`}>
                       <UserHeader
@@ -730,7 +509,7 @@ const CityProfilePresenter: React.FunctionComponent<IProps> = ({
               {usersNowList.length === 0 &&
                 !search &&
                 usersNow &&
-                usersNow.map(user => (
+                usersNow.map((user) => (
                   <UserRow key={user.id}>
                     <Link to={`/${user.uuid}`}>
                       <UserHeader
@@ -762,14 +541,6 @@ const CityProfilePresenter: React.FunctionComponent<IProps> = ({
               />
             </>
           ) : null}
-          <CoffeeBox
-            coffeeLoading={coffeeLoading}
-            currentCityId={cityId}
-            toggleCoffeeRequestModal={toggleCoffeeRequestModal}
-            coffees={coffees}
-            isStaying={isStaying}
-            searchSet={searchSet}
-          />
           <LocationBox
             nearCities={nearCities}
             cityId={cityId}

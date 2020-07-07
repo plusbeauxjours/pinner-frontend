@@ -7,13 +7,11 @@ export const COMPLETE_EDIT_EMAIL_VERIFICATION = gql`
       token
       user {
         username
-        profile {
-          uuid
-          avatarUrl
-          currentCity {
-            cityId
-            cityName
-          }
+        uuid
+        avatarUrl
+        currentCity {
+          cityId
+          cityName
         }
       }
     }

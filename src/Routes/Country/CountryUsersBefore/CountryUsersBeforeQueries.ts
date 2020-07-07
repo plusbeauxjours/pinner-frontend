@@ -1,5 +1,4 @@
 import gql from "graphql-tag";
-import { PROFILE_FRAGMENT } from "src/sharedQueries";
 
 export const COUNTRY_USERS_BEFORE = gql`
   query CountryUsersBefore($page: Int, $countryCode: String!) {
@@ -9,12 +8,19 @@ export const COUNTRY_USERS_BEFORE = gql`
       usersBefore {
         naturalTime
         actor {
-          profile {
-            ...ProfileParts
+          id
+          uuid
+          username
+          avatarUrl
+          isSelf
+          currentCity {
+            cityName
+            country {
+              countryName
+            }
           }
         }
       }
     }
   }
-  ${PROFILE_FRAGMENT}
 `;

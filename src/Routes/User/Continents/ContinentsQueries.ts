@@ -6,7 +6,6 @@ export const TOP_CONTINENTS = gql`
     topContinents(uuid: $uuid) {
       continents {
         count
-        diff
         ...ContinentParts
       }
     }

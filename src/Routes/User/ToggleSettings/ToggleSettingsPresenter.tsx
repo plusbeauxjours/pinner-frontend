@@ -61,7 +61,7 @@ const ExplainText = styled.p`
 `;
 
 const GreyLine = styled.div`
-  border-left: 1px solid ${props => props.theme.hoverColor};
+  border-left: 1px solid ${(props) => props.theme.hoverColor};
   height: 80vh;
   margin: 0px 10px;
   @media screen and (max-width: 735px) {
@@ -100,8 +100,8 @@ const ModalContainer = styled.div`
 `;
 
 const Modal = styled.div`
-  background-color: ${props => props.theme.modalBgColor};
-  border: 1px solid ${props => props.theme.borderColor};
+  background-color: ${(props) => props.theme.modalBgColor};
+  border: 1px solid ${(props) => props.theme.borderColor};
   border-radius: 12px;
   margin: 0 15px 0 15px;
   width: 540px;
@@ -119,7 +119,7 @@ const ModalOverlay = styled.div`
   width: 100%;
   position: fixed;
   top: 0;
-  background-color: ${props => props.theme.modalOverlayColor};
+  background-color: ${(props) => props.theme.modalOverlayColor};
 `;
 
 const ModalLink = styled.div`
@@ -131,14 +131,14 @@ const ModalLink = styled.div`
   align-items: center;
   justify-content: center;
   :not(:last-child) {
-    border-bottom: 1px solid ${props => props.theme.borderColor};
+    border-bottom: 1px solid ${(props) => props.theme.borderColor};
   }
 `;
 
 const GreyText = styled(MenuText)`
   color: grey;
   &:hover {
-    color: ${props => props.theme.color};
+    color: ${(props) => props.theme.color};
   }
 `;
 
@@ -148,7 +148,6 @@ interface IProps {
   isSelf: boolean;
   isDarkMode: boolean;
   isHideTrips: boolean;
-  isHideCoffees: boolean;
   isHideCities: boolean;
   isHideCountries: boolean;
   isHideContinents: boolean;
@@ -181,7 +180,6 @@ const ToggleSettingsPresenter: React.FunctionComponent<IProps> = ({
   isSelf,
   isDarkMode,
   isHideTrips,
-  isHideCoffees,
   isHideCities,
   isHideCountries,
   isHideContinents,
@@ -205,7 +203,7 @@ const ToggleSettingsPresenter: React.FunctionComponent<IProps> = ({
   logoutConfirmModalOpen,
   toggleConfirmModal,
   logUserOutFn,
-  back
+  back,
 }) => {
   const { theme = isDarkMode, toggleTheme } = useTheme();
   return (
@@ -233,7 +231,6 @@ const ToggleSettingsPresenter: React.FunctionComponent<IProps> = ({
                 isSelf,
                 isDarkMode,
                 isHideTrips,
-                isHideCoffees,
                 isHideCities,
                 isHideCountries,
                 isHideContinents,
@@ -250,8 +247,8 @@ const ToggleSettingsPresenter: React.FunctionComponent<IProps> = ({
                 countryPhoneCode,
                 emailAddress,
                 isVerifiedPhoneNumber,
-                isVerifiedEmailAddress
-              }
+                isVerifiedEmailAddress,
+              },
             }}
           >
             <GreyText>EDIT PROFILE</GreyText>
@@ -265,7 +262,6 @@ const ToggleSettingsPresenter: React.FunctionComponent<IProps> = ({
                 isSelf,
                 isDarkMode,
                 isHideTrips,
-                isHideCoffees,
                 isHideCities,
                 isHideCountries,
                 isHideContinents,
@@ -282,8 +278,8 @@ const ToggleSettingsPresenter: React.FunctionComponent<IProps> = ({
                 countryPhoneCode,
                 emailAddress,
                 isVerifiedPhoneNumber,
-                isVerifiedEmailAddress
-              }
+                isVerifiedEmailAddress,
+              },
             }}
           >
             <MenuText>SETTINGS</MenuText>
@@ -314,16 +310,7 @@ const ToggleSettingsPresenter: React.FunctionComponent<IProps> = ({
             If you set your trips hide, only you can see your trips, otherwise
             only number of trips and your trip distance are shown.
           </ExplainText>
-          {/* <ToggleContainer>
-            <ToggleText>HIDE COFFEES</ToggleText>
-            <ToggleIcon onClick={() => onClickToggleIcon("HIDE_COFFEES")}>
-              {isSelf && isHideCoffees ? <ToggleOn /> : <ToggleOff />}
-            </ToggleIcon>
-          </ToggleContainer>
-          <ExplainText>
-            If you set your coffees hide, only you can see your coffees request,
-            otherwise only number of coffees request is shown.
-          </ExplainText> */}
+
           <ToggleContainer>
             <ToggleText>HIDE CITIES</ToggleText>
             <ToggleIcon onClick={() => onClickToggleIcon("HIDE_CITIES")}>

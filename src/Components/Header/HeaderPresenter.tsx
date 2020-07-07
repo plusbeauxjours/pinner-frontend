@@ -13,14 +13,14 @@ import Bold from "../Bold";
 import Weather from "src/Components/Weather";
 
 const Header = styled.header`
-  background-color: ${props => props.theme.bgColor};
+  background-color: ${(props) => props.theme.bgColor};
   height: 45px;
   width: 100%;
   border-top: none;
   position: fixed;
   top: 0;
   z-index: 10;
-  border-bottom: 1px solid ${props => props.theme.greyColor};
+  border-bottom: 1px solid ${(props) => props.theme.greyColor};
 `;
 
 const SWrapper = styled(Wrapper)`
@@ -49,7 +49,7 @@ const Column = styled.div`
 
 const Icon = styled.span`
   svg {
-    fill: ${props => props.theme.color};
+    fill: ${(props) => props.theme.color};
   }
   &:not(:first-child) {
     margin-left: 10px;
@@ -86,7 +86,7 @@ const ModalOverlay = styled.div`
   width: 100%;
   position: fixed;
   top: 0;
-  background-color: ${props => props.theme.modalOverlayColor};
+  background-color: ${(props) => props.theme.modalOverlayColor};
 `;
 
 const Modal = styled.div`
@@ -107,9 +107,9 @@ const Input = styled.input`
   width: 100%;
   display: flex;
   align-self: center;
-  border-bottom: 1px solid ${props => props.theme.greyColor};
+  border-bottom: 1px solid ${(props) => props.theme.greyColor};
   padding: 5px;
-  color: ${props => props.theme.color};
+  color: ${(props) => props.theme.color};
   background-color: transparent;
   font-size: 34px;
   font-weight: 100;
@@ -118,7 +118,7 @@ const Input = styled.input`
     outline: none;
   }
   &::placeholder {
-    color: ${props => props.theme.greyColor};
+    color: ${(props) => props.theme.greyColor};
   }
   animation: ${ModalAnimation} 0.1s linear;
 `;
@@ -207,7 +207,7 @@ const HeaderPresenter: React.FunctionComponent<IProps> = ({
   search,
   toggleModal,
   onChange,
-  warningToast
+  warningToast,
 }) => {
   if (loading) {
     return null;
@@ -271,16 +271,16 @@ const HeaderPresenter: React.FunctionComponent<IProps> = ({
             <Icon>
               <Link
                 to={{
-                  pathname: `/${user ? user.profile.uuid : ""}`,
+                  pathname: `/${user ? user.uuid : ""}`,
                   state: {
                     currentCountryCode,
                     currentLat,
                     currentLng,
-                    currentCityName
-                  }
+                    currentCityName,
+                  },
                 }}
               >
-                <Avatar size={"sm"} url={user.profile.appAvatarUrl} />
+                <Avatar size={"sm"} url={user.appAvatarUrl} />
               </Link>
             </Icon>
           </Column>

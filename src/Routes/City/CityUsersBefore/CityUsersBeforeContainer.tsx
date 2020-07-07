@@ -25,7 +25,7 @@ class CityUsersBeforeContainer extends React.Component<IProps, IState> {
     this.state = {
       modalOpen: false,
       search: "",
-      usersBeforeList: []
+      usersBeforeList: [],
     };
   }
   public componentDidUpdate(prevProps) {
@@ -37,15 +37,15 @@ class CityUsersBeforeContainer extends React.Component<IProps, IState> {
   public render() {
     const {
       match: {
-        params: { cityId }
-      }
+        params: { cityId },
+      },
     } = this.props;
     const { modalOpen, search, usersBeforeList } = this.state;
     return (
       <CityUsersBeforeQuery
         query={CITY_USERS_BEFORE}
         variables={{
-          cityId
+          cityId,
         }}
       >
         {({ data, loading, fetchMore }) => {
@@ -71,37 +71,37 @@ class CityUsersBeforeContainer extends React.Component<IProps, IState> {
   public toggleModal = () => {
     const { modalOpen } = this.state;
     this.setState({
-      modalOpen: !modalOpen
+      modalOpen: !modalOpen,
     } as any);
   };
-  public onChange: React.ChangeEventHandler<HTMLInputElement> = event => {
+  public onChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
     const {
-      target: { value }
+      target: { value },
     } = event;
     const {
-      cityUsersBefore: { usersBefore = null }
+      cityUsersBefore: { usersBefore = null },
     } = this.data;
     const userSearch = (list, text) =>
-      list.filter(i =>
-        i.actor.profile.username.toLowerCase().includes(text.toLowerCase())
+      list.filter((i) =>
+        i.actor.username.toLowerCase().includes(text.toLowerCase())
       );
     const usersBeforeList = userSearch(usersBefore, value);
     this.setState({
       search: value,
-      usersBeforeList
+      usersBeforeList,
     } as any);
   };
-  public loadMore = page => {
+  public loadMore = (page) => {
     const {
       match: {
-        params: { cityId }
-      }
+        params: { cityId },
+      },
     } = this.props;
     this.fetchMore({
       query: CITY_USERS_BEFORE,
       variables: {
         cityId,
-        page
+        page,
       },
       updateQuery: (previousResult, { fetchMoreResult }) => {
         if (!fetchMoreResult) {
@@ -112,14 +112,14 @@ class CityUsersBeforeContainer extends React.Component<IProps, IState> {
             ...previousResult.cityUsersBefore,
             usersBefore: [
               ...previousResult.cityUsersBefore.usersBefore,
-              ...fetchMoreResult.cityUsersBefore.usersBefore
+              ...fetchMoreResult.cityUsersBefore.usersBefore,
             ],
             page: fetchMoreResult.cityUsersBefore.page,
-            hasNextPage: fetchMoreResult.cityUsersBefore.hasNextPage
-          }
+            hasNextPage: fetchMoreResult.cityUsersBefore.hasNextPage,
+          },
         };
         return data;
-      }
+      },
     });
   };
 }

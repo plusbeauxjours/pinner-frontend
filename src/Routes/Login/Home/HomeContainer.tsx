@@ -38,7 +38,7 @@ class HomeContainer extends React.Component<IProps, IState> {
       cityId: "",
       cityName: "",
       countryCode: "",
-      countryPhone: ""
+      countryPhone: "",
     };
   }
   public componentDidMount() {
@@ -56,7 +56,7 @@ class HomeContainer extends React.Component<IProps, IState> {
       cityId,
       cityName,
       countryCode,
-      countryPhone
+      countryPhone,
     } = this.state;
     return (
       <CreateCityQuery mutation={CREATE_CITY}>
@@ -82,7 +82,7 @@ class HomeContainer extends React.Component<IProps, IState> {
   }
   public handleGeoSuccess = (position: Position) => {
     const {
-      coords: { latitude, longitude }
+      coords: { latitude, longitude },
     } = position;
     this.getAddress(latitude, longitude);
   };
@@ -98,15 +98,15 @@ class HomeContainer extends React.Component<IProps, IState> {
         cityName: address.storableLocation.cityName,
         countryCode: address.storableLocation.countryCode,
         countryPhone: countries.find(
-          i => i.code === address.storableLocation.countryCode
-        ).phone
+          (i) => i.code === address.storableLocation.countryCode
+        ).phone,
       });
     }
     return {
       countryCode: address.storableLocation.countryCode,
       countryPhone: countries.find(
-        i => i.code === address.storableLocation.countryCode
-      ).phone
+        (i) => i.code === address.storableLocation.countryCode
+      ).phone,
     };
   };
 
@@ -116,13 +116,13 @@ class HomeContainer extends React.Component<IProps, IState> {
   public toggleModal = () => {
     const { modalOpen } = this.state;
     this.setState({
-      modalOpen: !modalOpen
+      modalOpen: !modalOpen,
     });
   };
   public changeMode = () => {
-    this.setState(state => {
+    this.setState((state) => {
       return {
-        isLogIn: !state.isLogIn
+        isLogIn: !state.isLogIn,
       };
     });
   };

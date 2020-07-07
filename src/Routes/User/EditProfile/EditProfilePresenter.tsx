@@ -20,9 +20,10 @@ const PAvatar = styled(Avatar)`
   display: flex;
   margin-left: 20px;
   align-self: center;
-  box-shadow: 0.5px 0.5px 30px 30px ${props => props.theme.shadowColor};
-  -webkit-box-shadow: 0.5px 0.5px 30px 30px ${props => props.theme.shadowColor};
-  -moz-box-shadow: 0.5px 0.5px 30px 30px ${props => props.theme.shadowColor};
+  box-shadow: 0.5px 0.5px 30px 30px ${(props) => props.theme.shadowColor};
+  -webkit-box-shadow: 0.5px 0.5px 30px 30px
+    ${(props) => props.theme.shadowColor};
+  -moz-box-shadow: 0.5px 0.5px 30px 30px ${(props) => props.theme.shadowColor};
 `;
 
 const ModalAnimation = keyframes`
@@ -36,8 +37,8 @@ const ModalAnimation = keyframes`
 	  }
   `;
 const EditPhoneModal = styled.div`
-  background-color: ${props => props.theme.modalBgColor};
-  border: 1px solid ${props => props.theme.borderColor};
+  background-color: ${(props) => props.theme.modalBgColor};
+  border: 1px solid ${(props) => props.theme.borderColor};
   border-radius: 12px;
   margin: 0 15px 0 15px;
   width: 540px;
@@ -65,8 +66,8 @@ const LoaderContainer = styled(ModalContainer)`
 `;
 
 const Modal = styled.div`
-  background-color: ${props => props.theme.modalBgColor};
-  border: 1px solid ${props => props.theme.borderColor};
+  background-color: ${(props) => props.theme.modalBgColor};
+  border: 1px solid ${(props) => props.theme.borderColor};
   border-radius: 12px;
   margin: 0 15px 0 15px;
   width: 540px;
@@ -84,7 +85,7 @@ const ModalOverlay = styled.div`
   width: 100%;
   position: fixed;
   top: 0;
-  background-color: ${props => props.theme.modalOverlayColor};
+  background-color: ${(props) => props.theme.modalOverlayColor};
 `;
 
 const LoaderModalOverlay = styled(ModalOverlay)`
@@ -100,7 +101,7 @@ const ModalLink = styled.div`
   align-items: center;
   justify-content: center;
   :not(:last-child) {
-    border-bottom: 1px solid ${props => props.theme.borderColor};
+    border-bottom: 1px solid ${(props) => props.theme.borderColor};
   }
 `;
 
@@ -125,8 +126,8 @@ const Input = styled.input`
   width: 250px;
   z-index: 2;
   border: 0;
-  border-bottom: 1px solid ${props => props.theme.greyColor};
-  color: ${props => props.theme.color};
+  border-bottom: 1px solid ${(props) => props.theme.greyColor};
+  color: ${(props) => props.theme.color};
   background-color: transparent;
   font-size: 18px;
   font-weight: 100;
@@ -134,7 +135,7 @@ const Input = styled.input`
     outline: none;
   }
   &::placeholder {
-    color: ${props => props.theme.greyColor};
+    color: ${(props) => props.theme.greyColor};
   }
 `;
 
@@ -152,8 +153,8 @@ const Select = styled.select`
   width: 250px;
   font-size: 18px;
   font-weight: 100;
-  border-bottom: 1px solid ${props => props.theme.greyColor};
-  color: ${props => props.theme.color};
+  border-bottom: 1px solid ${(props) => props.theme.greyColor};
+  color: ${(props) => props.theme.color};
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -201,7 +202,7 @@ const MenuText = styled.p`
 `;
 
 const GreyLine = styled.div`
-  border-left: 1px solid ${props => props.theme.hoverColor};
+  border-left: 1px solid ${(props) => props.theme.hoverColor};
   height: 80vh;
   margin: 0px 10px;
   @media screen and (max-width: 735px) {
@@ -253,7 +254,7 @@ const AvatarConatainer = styled(Conatainer)`
 `;
 
 const DeleteConatainer = styled.div`
-  border: 1px solid ${props => props.theme.borderColor};
+  border: 1px solid ${(props) => props.theme.borderColor};
   padding: 10px 15px 4px 15px;
   margin-top: 30px;
   margin-bottom: 45px;
@@ -278,7 +279,7 @@ const DButton = styled.button`
   align-self: center;
   border: 0;
   color: white;
-  background-color: ${props => props.theme.blueColor};
+  background-color: ${(props) => props.theme.blueColor};
   opacity: 0.8;
   font-weight: 600;
   border-radius: 4px;
@@ -295,7 +296,7 @@ const ConfirmText = styled.p`
 const GreyText = styled(MenuText)`
   color: grey;
   &:hover {
-    color: ${props => props.theme.color};
+    color: ${(props) => props.theme.color};
   }
 `;
 
@@ -367,10 +368,10 @@ const AvatarUploadIcon = styled.div`
   cursor: pointer;
   overflow: hidden;
   svg {
-    fill: ${props => props.theme.iconColor};
+    fill: ${(props) => props.theme.iconColor};
     transition: fill 0.2s ease-in-out;
     &:hover {
-      fill: ${props => props.theme.hoverColor};
+      fill: ${(props) => props.theme.hoverColor};
     }
   }
 `;
@@ -401,7 +402,7 @@ const AvatarDeleteIcon = styled.div`
   svg {
     opacity: 0;
     transition: all 0.1s ease-in-out;
-    fill: ${props => props.theme.whiteColor};
+    fill: ${(props) => props.theme.whiteColor};
   }
 `;
 
@@ -429,7 +430,7 @@ const WhitePinIcon = styled(RedPinIcon)`
   svg {
     opacity: 0;
     transition: all 0.1s ease-in-out;
-    fill: ${props => props.theme.whiteColor};
+    fill: ${(props) => props.theme.whiteColor};
   }
 `;
 
@@ -438,7 +439,7 @@ const CheckIcon = styled.div`
   width: 250px;
   justify-content: flex-end;
   svg {
-    fill: ${props => props.theme.iconColor};
+    fill: ${(props) => props.theme.iconColor};
   }
 `;
 
@@ -483,10 +484,10 @@ const CountryRow = styled.div`
   padding-bottom: 10px;
   cursor: pointer;
   &:not(:last-child) {
-    border-bottom: 1px solid ${props => props.theme.borderColor};
+    border-bottom: 1px solid ${(props) => props.theme.borderColor};
   }
   &:hover {
-    background-color: ${props => props.theme.hoverColor};
+    background-color: ${(props) => props.theme.hoverColor};
   }
 `;
 
@@ -520,7 +521,7 @@ const NumberUnderline = styled.div`
   font-size: 18px;
   font-weight: 100;
   align-items: center;
-  border-bottom: 1px solid ${props => props.theme.greyColor};
+  border-bottom: 1px solid ${(props) => props.theme.greyColor};
 `;
 
 const Container = styled.div`
@@ -541,7 +542,7 @@ const PhoneNumberContainer = styled.div`
 `;
 
 const EmailAddressContainer = styled(PhoneNumberContainer)`
-  border-bottom: 1px solid ${props => props.theme.greyColor};
+  border-bottom: 1px solid ${(props) => props.theme.greyColor};
 `;
 
 const Form = styled.form``;
@@ -556,7 +557,7 @@ const CountryPhone = styled.div`
   display: flex;
   flex-direction: row;
   align-items: baseline;
-  border-bottom: 1px solid ${props => props.theme.greyColor};
+  border-bottom: 1px solid ${(props) => props.theme.greyColor};
   font-size: 18px;
 `;
 
@@ -570,14 +571,14 @@ const BaseForm = styled.form``;
 const PhoneNumberInput = styled.input`
   border: 0;
   display: flex;
-  color: ${props => props.theme.color};
+  color: ${(props) => props.theme.color};
   background-color: transparent;
   font-size: 18px;
   &:focus {
     outline: none;
   }
   &::placeholder {
-    color: ${props => props.theme.greyColor};
+    color: ${(props) => props.theme.greyColor};
   }
 `;
 
@@ -608,9 +609,9 @@ const STextArea = styled(Textarea)`
   font-size: 12px;
   font-weight: 100;
   padding: 10px 15px 4px 15px;
-  color: ${props => props.theme.color};
+  color: ${(props) => props.theme.color};
   margin-bottom: 10px;
-  border: 1px solid ${props => props.theme.borderColor};
+  border: 1px solid ${(props) => props.theme.borderColor};
   overflow-y: auto;
   -ms-overflow-style: -ms-autohiding-scrollbar;
   ::-webkit-scrollbar {
@@ -635,7 +636,7 @@ const CodeInputStyle = {
   fontSize: "32px",
   boxSizing: "border-box",
   color: "rgba(0,0,0,.65)",
-  backgroundColor: "white"
+  backgroundColor: "white",
 };
 
 interface IProps {
@@ -683,7 +684,6 @@ interface IProps {
   isSelf: boolean;
   isDarkMode: boolean;
   isHideTrips: boolean;
-  isHideCoffees: boolean;
   isHideCities: boolean;
   isHideCountries: boolean;
   isHideContinents: boolean;
@@ -776,7 +776,6 @@ const EditProfilePresenter: React.FunctionComponent<IProps> = ({
   isSelf,
   isDarkMode,
   isHideTrips,
-  isHideCoffees,
   isHideCities,
   isHideCountries,
   isHideContinents,
@@ -813,7 +812,7 @@ const EditProfilePresenter: React.FunctionComponent<IProps> = ({
   closeVerifyPhoneNumberModal,
   closeVerifyEmailAddressModal,
   toggleVerifyEmailAddressModal,
-  markAsMain
+  markAsMain,
 }) => {
   return (
     <>
@@ -1024,7 +1023,7 @@ const EditProfilePresenter: React.FunctionComponent<IProps> = ({
       )}
       {avatarModalOpen && (
         <AvatarModalContainer>
-          <ModalOverlay onClick={e => onSubmitImage(e)} />
+          <ModalOverlay onClick={(e) => onSubmitImage(e)} />
           <ModalAvatars>
             {isSelf && imagePreviewUrl.length === 0 && (
               <AvatarUploadIcon>
@@ -1035,7 +1034,7 @@ const EditProfilePresenter: React.FunctionComponent<IProps> = ({
                   id="file"
                   type="file"
                   accept="image/*"
-                  onChange={e => onChangeImage(e)}
+                  onChange={(e) => onChangeImage(e)}
                 />
               </AvatarUploadIcon>
             )}
@@ -1052,14 +1051,14 @@ const EditProfilePresenter: React.FunctionComponent<IProps> = ({
             {!avatarsLoading &&
               avatars &&
               avatars.length !== 0 &&
-              avatars.map(avatarS => {
+              avatars.map((avatarS) => {
                 return (
                   <AvatarKeyContainer key={avatarS.id}>
                     <AvatarImage>
                       <Link
                         to={{
                           pathname: `/${username}/${avatarS.uuid}`,
-                          state: { avatarModalOpen: true }
+                          state: { avatarModalOpen: true },
                         }}
                       >
                         <ModalAvatarImage
@@ -1085,7 +1084,7 @@ const EditProfilePresenter: React.FunctionComponent<IProps> = ({
                       <AvatarDeleteIcon
                         onClick={() =>
                           deleteAvatarFn({
-                            variables: { uuid: avatarS.uuid }
+                            variables: { uuid: avatarS.uuid },
                           })
                         }
                       >
@@ -1157,7 +1156,6 @@ const EditProfilePresenter: React.FunctionComponent<IProps> = ({
                 isSelf,
                 isDarkMode,
                 isHideTrips,
-                isHideCoffees,
                 isHideCities,
                 isHideCountries,
                 isHideContinents,
@@ -1174,8 +1172,8 @@ const EditProfilePresenter: React.FunctionComponent<IProps> = ({
                 countryPhoneCode,
                 emailAddress,
                 isVerifiedPhoneNumber,
-                isVerifiedEmailAddress
-              }
+                isVerifiedEmailAddress,
+              },
             }}
           >
             <MenuText>EDIT PROFILE</MenuText>
@@ -1189,7 +1187,6 @@ const EditProfilePresenter: React.FunctionComponent<IProps> = ({
                 isSelf,
                 isDarkMode,
                 isHideTrips,
-                isHideCoffees,
                 isHideCities,
                 isHideCountries,
                 isHideContinents,
@@ -1206,8 +1203,8 @@ const EditProfilePresenter: React.FunctionComponent<IProps> = ({
                 countryPhoneCode,
                 emailAddress,
                 isVerifiedPhoneNumber,
-                isVerifiedEmailAddress
-              }
+                isVerifiedEmailAddress,
+              },
             }}
           >
             <GreyText>SETTINGS</GreyText>
@@ -1239,10 +1236,13 @@ const EditProfilePresenter: React.FunctionComponent<IProps> = ({
           <Conatainer>
             <TitleText>NATIONALITY</TitleText>
             <CountrySelectText onClick={toggleNationalityModal}>
-              {countries.find(country => country.code === nationalityCode).name}
+              {
+                countries.find((country) => country.code === nationalityCode)
+                  .name
+              }
               &nbsp;
               {
-                countries.find(country => country.code === nationalityCode)
+                countries.find((country) => country.code === nationalityCode)
                   .emoji
               }
             </CountrySelectText>
@@ -1251,9 +1251,12 @@ const EditProfilePresenter: React.FunctionComponent<IProps> = ({
           <Conatainer>
             <TitleText>RESIDENCE</TitleText>
             <CountrySelectText onClick={toggleResidenceModal}>
-              {countries.find(country => country.code === residenceCode).name}
+              {countries.find((country) => country.code === residenceCode).name}
               &nbsp;
-              {countries.find(country => country.code === residenceCode).emoji}
+              {
+                countries.find((country) => country.code === residenceCode)
+                  .emoji
+              }
             </CountrySelectText>
           </Conatainer>
           <ExplainText>Your Residence to match</ExplainText>
@@ -1326,9 +1329,9 @@ const EditProfilePresenter: React.FunctionComponent<IProps> = ({
           {isVerifiedPhoneNumber ? (
             <ExplainText>
               Your phone number in{" "}
-              {countries.find(i => i.code === countryPhoneCode).name}
-              {countries.find(i => i.code === countryPhoneCode).emoji}&nbsp; is
-              already verified. <br />
+              {countries.find((i) => i.code === countryPhoneCode).name}
+              {countries.find((i) => i.code === countryPhoneCode).emoji}&nbsp;
+              is already verified. <br />
               If you want to change your phone number,&nbsp;
               <Underline onClick={toggleEditPhoneNumberModal}>
                 click here

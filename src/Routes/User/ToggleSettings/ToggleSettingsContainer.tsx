@@ -22,7 +22,6 @@ interface IState {
   isSelf: boolean;
   isDarkMode: boolean;
   isHideTrips: boolean;
-  isHideCoffees: boolean;
   isHideCities: boolean;
   isHideCountries: boolean;
   isHideContinents: boolean;
@@ -59,7 +58,6 @@ class ToggleSettingsContainer extends React.Component<IProps, IState> {
       isSelf: state.isSelf,
       isDarkMode: state.isDarkMode,
       isHideTrips: state.isHideTrips,
-      isHideCoffees: state.isHideCoffees,
       isHideCities: state.isHideCities,
       isHideCountries: state.isHideCountries,
       isHideContinents: state.isHideContinents,
@@ -84,7 +82,7 @@ class ToggleSettingsContainer extends React.Component<IProps, IState> {
       countryPhoneCode: state.countryPhoneCode || "",
       emailAddress: state.emailAddress || "",
       isVerifiedPhoneNumber: state.isVerifiedPhoneNumber,
-      isVerifiedEmailAddress: state.isVerifiedEmailAddress
+      isVerifiedEmailAddress: state.isVerifiedEmailAddress,
     };
   }
   public render() {
@@ -94,7 +92,6 @@ class ToggleSettingsContainer extends React.Component<IProps, IState> {
       isSelf,
       isDarkMode,
       isHideTrips,
-      isHideCoffees,
       isHideCities,
       isHideCountries,
       isHideContinents,
@@ -113,18 +110,18 @@ class ToggleSettingsContainer extends React.Component<IProps, IState> {
       countryPhoneCode,
       emailAddress,
       isVerifiedPhoneNumber,
-      isVerifiedEmailAddress
+      isVerifiedEmailAddress,
     } = this.state;
     return (
       <ToggleSettingsMutation
         mutation={TOGGLE_SETTINGS}
         update={this.updateToggleSettings}
       >
-        {toggleSettingsFn => {
+        {(toggleSettingsFn) => {
           this.toggleSettingsFn = toggleSettingsFn;
           return (
             <LogOutMutation mutation={LOG_USER_OUT}>
-              {logUserOutFn => {
+              {(logUserOutFn) => {
                 this.logUserOutFn = logUserOutFn;
                 return (
                   <ToggleSettingsPresenter
@@ -133,7 +130,6 @@ class ToggleSettingsContainer extends React.Component<IProps, IState> {
                     isSelf={isSelf}
                     isDarkMode={isDarkMode}
                     isHideTrips={isHideTrips}
-                    isHideCoffees={isHideCoffees}
                     isHideCities={isHideCities}
                     isHideCountries={isHideCountries}
                     isHideContinents={isHideContinents}
@@ -171,43 +167,38 @@ class ToggleSettingsContainer extends React.Component<IProps, IState> {
     const {
       isDarkMode,
       isHideTrips,
-      isHideCoffees,
       isHideCities,
       isHideCountries,
       isHideContinents,
-      isAutoLocationReport
+      isAutoLocationReport,
     } = this.state;
     if (payload === "DARK_MODE") {
       this.setState({
-        isDarkMode: !isDarkMode
+        isDarkMode: !isDarkMode,
       });
     } else if (payload === "HIDE_TRIPS") {
       this.setState({
-        isHideTrips: !isHideTrips
-      });
-    } else if (payload === "HIDE_COFFEES") {
-      this.setState({
-        isHideCoffees: !isHideCoffees
+        isHideTrips: !isHideTrips,
       });
     } else if (payload === "HIDE_CITIES") {
       this.setState({
-        isHideCities: !isHideCities
+        isHideCities: !isHideCities,
       });
     } else if (payload === "HIDE_COUNTRIES") {
       this.setState({
-        isHideCountries: !isHideCountries
+        isHideCountries: !isHideCountries,
       });
     } else if (payload === "HIDE_CONTINENTS") {
       this.setState({
-        isHideContinents: !isHideContinents
+        isHideContinents: !isHideContinents,
       });
     } else if (payload === "AUTO_LOCATION_REPORT") {
       this.setState({
-        isAutoLocationReport: !isAutoLocationReport
+        isAutoLocationReport: !isAutoLocationReport,
       });
     }
     this.toggleSettingsFn({
-      variables: { payload }
+      variables: { payload },
     });
   };
   public updateToggleSettings = (cache, { data: { toggleSettings } }) => {
@@ -215,27 +206,22 @@ class ToggleSettingsContainer extends React.Component<IProps, IState> {
     try {
       const data = cache.readQuery({
         query: GET_USER,
-        variables: { username }
+        variables: { username },
       });
       if (data) {
-        data.userProfile.user.profile.isDarkMode =
-          toggleSettings.user.profile.isDarkMode;
-        data.userProfile.user.profile.isHideTrips =
-          toggleSettings.user.profile.isHideTrips;
-        data.userProfile.user.profile.isHideCoffees =
-          toggleSettings.user.profile.isHideCoffees;
-        data.userProfile.user.profile.isHideCities =
-          toggleSettings.user.profile.isHideCities;
-        data.userProfile.user.profile.isHideCountries =
-          toggleSettings.user.profile.isHideCountries;
-        data.userProfile.user.profile.isHideContinents =
-          toggleSettings.user.profile.isHideContinents;
-        data.userProfile.user.profile.isAutoLocationReport =
-          toggleSettings.user.profile.isAutoLocationReport;
+        data.userProfile.user.isDarkMode = toggleSettings.user.isDarkMode;
+        data.userProfile.user.isHideTrips = toggleSettings.user.isHideTrips;
+        data.userProfile.user.isHideCities = toggleSettings.user.isHideCities;
+        data.userProfile.user.isHideCountries =
+          toggleSettings.user.isHideCountries;
+        data.userProfile.user.isHideContinents =
+          toggleSettings.user.isHideContinents;
+        data.userProfile.user.isAutoLocationReport =
+          toggleSettings.user.isAutoLocationReport;
         cache.writeQuery({
           query: GET_USER,
           variables: { username },
-          data
+          data,
         });
       }
     } catch (e) {
@@ -245,10 +231,10 @@ class ToggleSettingsContainer extends React.Component<IProps, IState> {
   public toggleConfirmModal = () => {
     const { logoutConfirmModalOpen } = this.state;
     this.setState({
-      logoutConfirmModalOpen: !logoutConfirmModalOpen
+      logoutConfirmModalOpen: !logoutConfirmModalOpen,
     });
   };
-  public back = async event => {
+  public back = async (event) => {
     const { history } = this.props;
     const { username } = this.state;
     await event.stopPropagation();

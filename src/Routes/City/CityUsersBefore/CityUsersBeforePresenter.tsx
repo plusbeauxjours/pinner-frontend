@@ -32,17 +32,17 @@ const UserRow = styled.div`
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
   &:hover {
-    background-color: ${props => props.theme.hoverColor};
+    background-color: ${(props) => props.theme.hoverColor};
   }
-  border-bottom: 1px solid ${props => props.theme.borderColor};
+  border-bottom: 1px solid ${(props) => props.theme.borderColor};
 `;
 
 const Input = styled.input`
   width: 215px;
   border: 0;
-  border-bottom: 1px solid ${props => props.theme.borderColor};
+  border-bottom: 1px solid ${(props) => props.theme.borderColor};
   padding: 5px;
-  color: ${props => props.theme.color};
+  color: ${(props) => props.theme.color};
   font-size: 12px;
   font-weight: 100;
   &:focus {
@@ -52,7 +52,7 @@ const Input = styled.input`
     }
   }
   &::placeholder {
-    color: ${props => props.theme.greyColor};
+    color: ${(props) => props.theme.greyColor};
     text-align: right;
   }
 `;
@@ -97,7 +97,7 @@ interface IProps {
 
 const CityUsersBeforePresenter: React.FunctionComponent<IProps> = ({
   data: {
-    cityUsersBefore: { usersBefore = null, hasNextPage = null } = {}
+    cityUsersBefore: { usersBefore = null, hasNextPage = null } = {},
   } = {},
   loading,
   modalOpen,
@@ -106,7 +106,7 @@ const CityUsersBeforePresenter: React.FunctionComponent<IProps> = ({
   usersBeforeList,
   onChange,
   loadMore,
-  cityId
+  cityId,
 }) => {
   return (
     <>
@@ -131,17 +131,17 @@ const CityUsersBeforePresenter: React.FunctionComponent<IProps> = ({
               pageStart={0}
             >
               {usersBeforeList.length !== 0 &&
-                usersBeforeList.map(user => (
-                  <React.Fragment key={user.actor.profile.id}>
-                    <Link to={`/${user.actor.profile.uuid}`}>
-                      <UserRow key={user.actor.profile.id}>
+                usersBeforeList.map((user) => (
+                  <React.Fragment key={user.actor.id}>
+                    <Link to={`/${user.actor.uuid}`}>
+                      <UserRow key={user.actor.id}>
                         <UserHeader
-                          username={user.actor.profile.username}
-                          currentCity={user.actor.profile.currentCity.cityName}
+                          username={user.actor.username}
+                          currentCity={user.actor.currentCity.cityName}
                           currentCountry={
-                            user.actor.profile.currentCity.country.countryName
+                            user.actor.currentCity.country.countryName
                           }
-                          avatar={user.actor.profile.avatarUrl}
+                          avatar={user.actor.avatarUrl}
                           size={"sm"}
                         />
                         <Explain>{user.naturalTime}</Explain>
@@ -152,17 +152,17 @@ const CityUsersBeforePresenter: React.FunctionComponent<IProps> = ({
               {usersBeforeList.length === 0 &&
                 !search &&
                 usersBefore &&
-                usersBefore.map(user => (
-                  <React.Fragment key={user.actor.profile.id}>
-                    <Link to={`/${user.actor.profile.uuid}`}>
+                usersBefore.map((user) => (
+                  <React.Fragment key={user.actor.id}>
+                    <Link to={`/${user.actor.uuid}`}>
                       <UserRow>
                         <UserHeader
-                          username={user.actor.profile.username}
-                          currentCity={user.actor.profile.currentCity.cityName}
+                          username={user.actor.username}
+                          currentCity={user.actor.currentCity.cityName}
                           currentCountry={
-                            user.actor.profile.currentCity.country.countryName
+                            user.actor.currentCity.country.countryName
                           }
-                          avatar={user.actor.profile.avatarUrl}
+                          avatar={user.actor.avatarUrl}
                           size={"sm"}
                         />
                         <Explain>{user.naturalTime}</Explain>

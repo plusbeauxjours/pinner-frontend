@@ -1,7 +1,5 @@
 import { createGlobalStyle } from "./typed-components";
 import reset from "styled-reset";
-import "react-dates/initialize";
-import "react-dates/lib/css/_datepicker.css";
 
 const GlobalStyles = createGlobalStyle`
     
@@ -46,16 +44,6 @@ const GlobalStyles = createGlobalStyle`
     .pac-item {
         padding: 20px;
     }
-    /* .DateRangePicker_picker {
-        background-color: red;
-        color: red;
-        z-index: 10;
-    }
-    .DateRangePicker_picker__portal {
-        background-color: red;
-        color: red;
-        z-index: 10;
-    } */
     input[type=number]::-webkit-inner-spin-button, 
     input[type=number]::-webkit-outer-spin-button { 
         -webkit-appearance: none; 

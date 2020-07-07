@@ -5,33 +5,23 @@ import styled from "styled-components";
 import CityProfile from "../Routes/City/CityProfile";
 import CountryProfile from "../Routes/Country/CountryProfile";
 import ContinentProfile from "../Routes/Continent/ContinentProfile";
-import TripProfile from "../Routes/TripProfile";
-import CoffeeDetail from "../Routes/Detail/CoffeeDetail";
-import Match from "../Routes/Match";
 
 import UserProfile from "../Routes/User/UserProfile";
 import EditProfile from "../Routes/User/EditProfile";
 import EditEmailAddress from "../Routes/User/EditEmailAddress";
 import ToggleSettings from "../Routes/User/ToggleSettings";
 import UserAvatarDetail from "../Routes/User/UserAvatarDetail";
-// import Coffees from "../Routes/User/Coffees";
 import Cities from "../Routes/User/Cities";
 import Countries from "../Routes/User/Countries";
 import Continents from "../Routes/User/Continents";
-
-import PeoplePage from "../Routes/Feed/PeoplePage";
-import LocationsPage from "../Routes/Feed/LocationsPage";
-import CoffeesPage from "../Routes/Feed/CoffeesPage";
 
 import CityUsersNow from "../Routes/City/CityUsersNow";
 import CityUsersBefore from "../Routes/City/CityUsersBefore";
 import NearCities from "../Routes/City/NearCities";
 
-import CountriesPage from "../Routes/Continent/CountriesPage";
 import ContinentUsersNow from "../Routes/Continent/ContinentUsersNow";
 import ContinentUsersBefore from "../Routes/Continent/ContinentUsersBefore";
 
-import CitiesPage from "../Routes/Country/CitiesPage";
 import CountryUsersNow from "../Routes/Country/CountryUsersNow";
 import CountryUsersBefore from "../Routes/Country/CountryUsersBefore";
 
@@ -58,8 +48,6 @@ class LoggedInPages extends React.Component<IProps> {
     if (
       nextProps.history.action !== "POP" &&
       (!location.state ||
-        !location.state.coffeeModalOpen ||
-        !location.state.coffeesModalOpen ||
         !location.state.avatarModalOpen ||
         !location.state.cityModalOpen ||
         !location.state.countryModalOpen ||
@@ -71,16 +59,6 @@ class LoggedInPages extends React.Component<IProps> {
 
   public render() {
     const { location } = this.props;
-    const coffeeModalOpen = !!(
-      location.state &&
-      location.state.coffeeModalOpen &&
-      this.previousLocation !== location
-    );
-    const coffeesModalOpen = !!(
-      location.state &&
-      location.state.coffeesModalOpen &&
-      this.previousLocation !== location
-    );
     const avatarModalOpen = !!(
       location.state &&
       location.state.avatarModalOpen &&
@@ -104,14 +82,6 @@ class LoggedInPages extends React.Component<IProps> {
     return (
       <Wrapper>
         <Header />
-        {coffeeModalOpen && (
-          <Route
-            onUpdate={window.scrollTo(0, 0)}
-            path="/c/:uuid"
-            exact={true}
-            component={CoffeeDetail}
-          />
-        )}
         {cityModalOpen && (
           <Route
             onUpdate={window.scrollTo(0, 0)}
@@ -146,8 +116,6 @@ class LoggedInPages extends React.Component<IProps> {
         )}
         <Switch
           location={
-            coffeeModalOpen ||
-            coffeesModalOpen ||
             avatarModalOpen ||
             cityModalOpen ||
             countryModalOpen ||
@@ -158,40 +126,13 @@ class LoggedInPages extends React.Component<IProps> {
         >
           <Route
             onUpdate={window.scrollTo(0, 0)}
-            path="/"
-            exact={true}
-            component={Match}
-          />
-          <Route
-            onUpdate={window.scrollTo(0, 0)}
-            path="/people"
-            exact={true}
-            component={PeoplePage}
-          />
-          <Route
-            onUpdate={window.scrollTo(0, 0)}
-            path="/locations"
-            exact={true}
-            component={LocationsPage}
-          />
-          <Route
-            onUpdate={window.scrollTo(0, 0)}
             path="/novalid"
             exact={true}
             component={NoValid}
           />
 
           {/* CONTINENT */}
-          <Route
-            onUpdate={window.scrollTo(0, 0)}
-            path="/continent/:continentCode/countries"
-            component={CountriesPage}
-          />
-          {/* <Route
-            onUpdate={window.scrollTo(0, 0)}
-            path="/continent/:continentCode/coffees"
-            component={CoffeesPage}
-          /> */}
+
           <Route
             onUpdate={window.scrollTo(0, 0)}
             path="/continent/:continentCode/usersNow"
@@ -209,16 +150,7 @@ class LoggedInPages extends React.Component<IProps> {
           />
 
           {/* COUNTRY */}
-          <Route
-            onUpdate={window.scrollTo(0, 0)}
-            path="/country/:countryCode/cities"
-            component={CitiesPage}
-          />
-          {/* <Route
-            onUpdate={window.scrollTo(0, 0)}
-            path="/country/:countryCode/coffees"
-            component={CoffeesPage}
-          /> */}
+
           <Route
             onUpdate={window.scrollTo(0, 0)}
             path="/country/:countryCode/usersNow"
@@ -236,11 +168,7 @@ class LoggedInPages extends React.Component<IProps> {
           />
 
           {/* CITY */}
-          <Route
-            onUpdate={window.scrollTo(0, 0)}
-            path="/city/:cityId/coffees"
-            component={CoffeesPage}
-          />
+
           <Route
             onUpdate={window.scrollTo(0, 0)}
             path="/city/:cityId/nearCities"
@@ -255,11 +183,6 @@ class LoggedInPages extends React.Component<IProps> {
             onUpdate={window.scrollTo(0, 0)}
             path="/city/:cityId/usersBefore"
             component={CityUsersBefore}
-          />
-          <Route
-            onUpdate={window.scrollTo(0, 0)}
-            path="/city/:cityId/:duration"
-            component={TripProfile}
           />
           <Route
             onUpdate={window.scrollTo(0, 0)}
@@ -288,6 +211,7 @@ class LoggedInPages extends React.Component<IProps> {
           />
 
           {/* USER */}
+
           <Route
             onUpdate={window.scrollTo(0, 0)}
             path="/:uuid"

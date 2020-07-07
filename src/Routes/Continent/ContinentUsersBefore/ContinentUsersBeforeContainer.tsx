@@ -2,7 +2,7 @@ import React from "react";
 import { Query } from "react-apollo";
 import {
   ContinentUsersBefore,
-  ContinentUsersBeforeVariables
+  ContinentUsersBeforeVariables,
 } from "../../../types/api";
 import ContinentUsersBeforePresenter from "./ContinentUsersBeforePresenter";
 import { CONTINENT_USERS_BEFORE } from "./ContinentUsersBeforeQueries";
@@ -26,7 +26,7 @@ class ContinentUsersBeforeContainer extends React.Component<IProps, IState> {
     super(props);
     this.state = {
       search: "",
-      usersBeforeList: []
+      usersBeforeList: [],
     };
   }
   public componentDidUpdate(prevProps) {
@@ -38,15 +38,15 @@ class ContinentUsersBeforeContainer extends React.Component<IProps, IState> {
   public render() {
     const {
       match: {
-        params: { continentCode }
-      }
+        params: { continentCode },
+      },
     } = this.props;
     const { search, usersBeforeList } = this.state;
     return (
       <ContinentUsersBeforeQuery
         query={CONTINENT_USERS_BEFORE}
         variables={{
-          continentCode
+          continentCode,
         }}
       >
         {({ data, loading, fetchMore }) => {
@@ -66,34 +66,34 @@ class ContinentUsersBeforeContainer extends React.Component<IProps, IState> {
       </ContinentUsersBeforeQuery>
     );
   }
-  public onChange: React.ChangeEventHandler<HTMLInputElement> = event => {
+  public onChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
     const {
-      target: { value }
+      target: { value },
     } = event;
     const {
-      continentUsersBefore: { usersBefore = null }
+      continentUsersBefore: { usersBefore = null },
     } = this.data;
     const userSearch = (list, text) =>
-      list.filter(i =>
-        i.actor.profile.username.toLowerCase().includes(text.toLowerCase())
+      list.filter((i) =>
+        i.actor.username.toLowerCase().includes(text.toLowerCase())
       );
     const usersBeforeList = userSearch(usersBefore, value);
     this.setState({
       search: value,
-      usersBeforeList
+      usersBeforeList,
     } as any);
   };
-  public loadMore = page => {
+  public loadMore = (page) => {
     const {
       match: {
-        params: { continentCode }
-      }
+        params: { continentCode },
+      },
     } = this.props;
     this.fetchMore({
       query: CONTINENT_USERS_BEFORE,
       variables: {
         continentCode,
-        page
+        page,
       },
       updateQuery: (previousResult, { fetchMoreResult }) => {
         if (!fetchMoreResult) {
@@ -104,14 +104,14 @@ class ContinentUsersBeforeContainer extends React.Component<IProps, IState> {
             ...previousResult.continentUsersBefore,
             usersBefore: [
               ...previousResult.continentUsersBefore.usersBefore,
-              ...fetchMoreResult.continentUsersBefore.usersBefore
+              ...fetchMoreResult.continentUsersBefore.usersBefore,
             ],
             page: fetchMoreResult.continentUsersBefore.page,
-            hasNextPage: fetchMoreResult.continentUsersBefore.hasNextPage
-          }
+            hasNextPage: fetchMoreResult.continentUsersBefore.hasNextPage,
+          },
         };
         return data;
-      }
+      },
     });
   };
 }

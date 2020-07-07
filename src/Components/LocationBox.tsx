@@ -11,7 +11,7 @@ const SeeAll = styled.p`
   font-size: 12px;
   font-weight: 100;
   cursor: pointer;
-  color: ${props => props.theme.greyColor};
+  color: ${(props) => props.theme.greyColor};
 `;
 
 const Container = styled.div`
@@ -33,13 +33,13 @@ const Box = styled.div`
     height: 6px;
   }
   ::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px ${props => props.theme.trackShadowColor};
+    -webkit-box-shadow: inset 0 0 6px ${(props) => props.theme.trackShadowColor};
     border-radius: 10px;
   }
   ::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px ${props => props.theme.trackShadowColor};
-    background-color: ${props => props.theme.greyColor};
+    -webkit-box-shadow: inset 0 0 6px ${(props) => props.theme.trackShadowColor};
+    background-color: ${(props) => props.theme.greyColor};
   }
 `;
 
@@ -47,7 +47,7 @@ const UserRow = styled.div<ITheme>`
   display: grid;
   height: 50px;
   width: 400px;
-  grid-template-columns: ${props => {
+  grid-template-columns: ${(props) => {
     if (props.type === "continents") {
       return "3fr 1fr";
     } else if (props.type === "countries") {
@@ -66,9 +66,9 @@ const UserRow = styled.div<ITheme>`
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
   &:hover {
-    background-color: ${props => props.theme.hoverColor};
+    background-color: ${(props) => props.theme.hoverColor};
   }
-  border-bottom: 1px solid ${props => props.theme.borderColor};
+  border-bottom: 1px solid ${(props) => props.theme.borderColor};
   &:last-child {
     margin-bottom: 15px;
   }
@@ -89,7 +89,7 @@ const HeaderColumn = styled.div`
 const GreyLine = styled.div`
   margin-top: 10px;
   margin-bottom: 10px;
-  border-bottom: 1px solid ${props => props.theme.borderColor};
+  border-bottom: 1px solid ${(props) => props.theme.borderColor};
   @media screen and (max-width: 935px) {
     margin: 10px 15px 0 15px;
   }
@@ -149,7 +149,6 @@ interface IProps extends RouteComponentProps<any> {
   continentCode?: string;
   samenameCities?: any;
   nearCities?: any;
-  recommendLocations?: any;
   cities?: any;
   countries?: any;
   continents?: any;
@@ -163,12 +162,11 @@ const LocationBox: React.FunctionComponent<IProps> = ({
   continentCode,
   samenameCities,
   nearCities,
-  recommendLocations,
   cities,
   countries,
   continents,
   title,
-  loading
+  loading,
 }) => {
   if (loading) {
     return (
@@ -192,7 +190,7 @@ const LocationBox: React.FunctionComponent<IProps> = ({
         </Title>
         <Container>
           <Box>
-            {continents.map(continent => (
+            {continents.map((continent) => (
               <React.Fragment key={continent.id}>
                 <Link to={`/continent/${continent.continentCode}`}>
                   <UserRow type={"continents"}>
@@ -227,7 +225,7 @@ const LocationBox: React.FunctionComponent<IProps> = ({
         </Title>
         <Container>
           <Box>
-            {samenameCities.map(samenameCity => (
+            {samenameCities.map((samenameCity) => (
               <React.Fragment key={samenameCity.id}>
                 <UserRow type={"samenameCities"}>
                   <Link to={`/city/${samenameCity.cityId}`}>
@@ -272,7 +270,7 @@ const LocationBox: React.FunctionComponent<IProps> = ({
         </Title>
         <Container>
           <Box>
-            {countries.map(country => (
+            {countries.map((country) => (
               <React.Fragment key={country.id}>
                 <Link to={`/country/${country.countryCode}`}>
                   <UserRow type={"countries"}>
@@ -308,7 +306,7 @@ const LocationBox: React.FunctionComponent<IProps> = ({
         </Title>
         <Container>
           <Box>
-            {continents.map(continent => (
+            {continents.map((continent) => (
               <React.Fragment key={continent.id}>
                 <Link to={`/continent/${continent.continentCode}`}>
                   <UserRow type={"continents"}>
@@ -346,7 +344,7 @@ const LocationBox: React.FunctionComponent<IProps> = ({
         </Title>
         <Container>
           <Box>
-            {nearCities.map(nearCity => (
+            {nearCities.map((nearCity) => (
               <React.Fragment key={nearCity.id}>
                 <UserRow type={"nearCities"}>
                   <Link to={`/city/${nearCity.cityId}`}>
@@ -371,56 +369,6 @@ const LocationBox: React.FunctionComponent<IProps> = ({
                   <Link to={`/city/${nearCity.cityId}`}>
                     <Div>
                       <Text>{nearCity.distance}&nbsp;km</Text>
-                    </Div>
-                  </Link>
-                </UserRow>
-              </React.Fragment>
-            ))}
-          </Box>
-        </Container>
-      </>
-    );
-  } else if (
-    !loading &&
-    recommendLocations &&
-    recommendLocations.length !== 0
-  ) {
-    return (
-      <>
-        <GreyLine />
-        <Title>
-          <SText text={title} />
-          <Link to={`/locations`}>
-            <SeeAll>SEE ALL</SeeAll>
-          </Link>
-        </Title>
-        <Container>
-          <Box>
-            {recommendLocations.map(city => (
-              <React.Fragment key={city.id}>
-                <UserRow type={"nearCities"}>
-                  <Link to={`/city/${city.cityId}`}>
-                    <Header>
-                      <SAvatar
-                        size={"sm"}
-                        url={city.cityThumbnail}
-                        city={true}
-                      />
-                      <HeaderColumn>
-                        <HeaderText text={city.cityName} />
-                        <Location>{city.country.countryName}</Location>
-                      </HeaderColumn>
-                    </Header>
-                  </Link>
-                  <CityLikeBtn
-                    isLiked={city.isLiked}
-                    cityId={city.cityId}
-                    likeCount={city.likeCount}
-                    type={"row"}
-                  />
-                  <Link to={`/city/${city.cityId}`}>
-                    <Div>
-                      <Text>{city.distance}&nbsp;km</Text>
                     </Div>
                   </Link>
                 </UserRow>

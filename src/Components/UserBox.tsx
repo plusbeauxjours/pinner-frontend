@@ -24,7 +24,7 @@ const SeeAll = styled.p`
   font-size: 12px;
   font-weight: 100;
   cursor: pointer;
-  color: ${props => props.theme.greyColor};
+  color: ${(props) => props.theme.greyColor};
 `;
 
 const Container = styled.div`
@@ -46,13 +46,13 @@ const Box = styled.div`
     height: 6px;
   }
   ::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px ${props => props.theme.trackShadowColor};
+    -webkit-box-shadow: inset 0 0 6px ${(props) => props.theme.trackShadowColor};
     border-radius: 10px;
   }
   ::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px ${props => props.theme.trackShadowColor};
-    background-color: ${props => props.theme.greyColor};
+    -webkit-box-shadow: inset 0 0 6px ${(props) => props.theme.trackShadowColor};
+    background-color: ${(props) => props.theme.greyColor};
   }
 `;
 
@@ -67,9 +67,9 @@ const UserRow = styled.div`
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
   &:hover {
-    background-color: ${props => props.theme.hoverColor};
+    background-color: ${(props) => props.theme.hoverColor};
   }
-  border-bottom: 1px solid ${props => props.theme.borderColor};
+  border-bottom: 1px solid ${(props) => props.theme.borderColor};
   &:last-child {
     margin-bottom: 15px;
   }
@@ -102,7 +102,7 @@ const UserBox: React.FunctionComponent<IProps> = ({
   type,
   currentCityId,
   currentCountryCode,
-  currentContinentCode
+  currentContinentCode,
 }) => (
   <>
     {(() => {
@@ -116,7 +116,7 @@ const UserBox: React.FunctionComponent<IProps> = ({
                   <Link
                     to={{
                       pathname: `/continent/${currentContinentCode}/usersnow`,
-                      state: { location: "continent", currentContinentCode }
+                      state: { location: "continent", currentContinentCode },
                     }}
                   >
                     <SeeAll>SEE ALL</SeeAll>
@@ -126,7 +126,7 @@ const UserBox: React.FunctionComponent<IProps> = ({
                   <Link
                     to={{
                       pathname: `/country/${currentCountryCode}/usersnow`,
-                      state: { location: "country", currentCountryCode }
+                      state: { location: "country", currentCountryCode },
                     }}
                   >
                     <SeeAll>SEE ALL</SeeAll>
@@ -136,7 +136,7 @@ const UserBox: React.FunctionComponent<IProps> = ({
                   <Link
                     to={{
                       pathname: `/city/${currentCityId}/usersnow`,
-                      state: { location: "city", currentCityId }
+                      state: { location: "city", currentCityId },
                     }}
                   >
                     <SeeAll>SEE ALL</SeeAll>
@@ -146,7 +146,7 @@ const UserBox: React.FunctionComponent<IProps> = ({
               <Container>
                 <Box>
                   {users &&
-                    users.map(user => {
+                    users.map((user) => {
                       return (
                         <UserRow key={user.id}>
                           <Link to={`/${user.uuid}`}>
@@ -177,7 +177,7 @@ const UserBox: React.FunctionComponent<IProps> = ({
                   <Link
                     to={{
                       pathname: `/continent/${currentContinentCode}/usersbefore`,
-                      state: { location: "continent", currentContinentCode }
+                      state: { location: "continent", currentContinentCode },
                     }}
                   >
                     <SeeAll>SEE ALL</SeeAll>
@@ -187,7 +187,7 @@ const UserBox: React.FunctionComponent<IProps> = ({
                   <Link
                     to={{
                       pathname: `/country/${currentCountryCode}/usersbefore`,
-                      state: { location: "country", currentCountryCode }
+                      state: { location: "country", currentCountryCode },
                     }}
                   >
                     <SeeAll>SEE ALL</SeeAll>
@@ -197,7 +197,7 @@ const UserBox: React.FunctionComponent<IProps> = ({
                   <Link
                     to={{
                       pathname: `/city/${currentCityId}/usersbefore`,
-                      state: { location: "city", currentCityId }
+                      state: { location: "city", currentCityId },
                     }}
                   >
                     <SeeAll>SEE ALL</SeeAll>
@@ -207,20 +207,17 @@ const UserBox: React.FunctionComponent<IProps> = ({
               <Container>
                 <Box>
                   {users &&
-                    users.map(user => {
+                    users.map((user) => {
                       return (
-                        <UserRow key={user.actor.profile.id}>
-                          <Link to={`/${user.actor.profile.uuid}`}>
+                        <UserRow key={user.actor.id}>
+                          <Link to={`/${user.actor.uuid}`}>
                             <UserHeader
-                              username={user.actor.profile.username}
-                              currentCity={
-                                user.actor.profile.currentCity.cityName
-                              }
+                              username={user.actor.username}
+                              currentCity={user.actor.currentCity.cityName}
                               currentCountry={
-                                user.actor.profile.currentCity.country
-                                  .countryName
+                                user.actor.currentCity.country.countryName
                               }
-                              avatar={user.actor.profile.avatarUrl}
+                              avatar={user.actor.avatarUrl}
                               size={"sm"}
                             />
                             <Explain>{user.naturalTime}</Explain>

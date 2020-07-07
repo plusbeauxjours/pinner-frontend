@@ -7,18 +7,14 @@ export const TOGGLE_SETTINGS = gql`
       user {
         id
         username
-        profile {
-          id
-          uuid
-          isSelf
-          isDarkMode
-          isHideTrips
-          isHideCoffees
-          isHideCities
-          isHideCountries
-          isHideContinents
-          isAutoLocationReport
-        }
+        uuid
+        isSelf
+        isDarkMode
+        isHideTrips
+        isHideCities
+        isHideCountries
+        isHideContinents
+        isAutoLocationReport
       }
     }
   }

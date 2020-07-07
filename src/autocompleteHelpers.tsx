@@ -4,10 +4,10 @@ import uuid from "uuid/v4";
 const initialState = {
   results: {
     predictions: [],
-    status: ""
+    status: "",
   },
   isLoading: false,
-  error: null
+  error: null,
 };
 
 interface IGoogleProps {
@@ -34,7 +34,7 @@ export default function useGoogleAutocomplete({
   query,
   type = "places",
   debounceMs = 400,
-  options = {}
+  options = {},
 }: IAutocompleteProps) {
   const [state, dispatch] = React.useReducer(reducer, initialState);
   const id = uuid();
@@ -76,17 +76,17 @@ export default function useGoogleAutocomplete({
 
     if (query.length === 0) {
       dispatch({
-        type: "INVALID_REQUEST"
+        type: "INVALID_REQUEST",
       });
       return;
     }
 
     if (!state.isLoading && !abortController.current.signal.aborted) {
       dispatch({
-        type: "LOADING"
+        type: "LOADING",
       });
     }
-
+    console.log(query);
     debouncedFn.current = debounce(() => {
       const types =
         options.types && type === "places" ? `&types=${options.types}` : "";
@@ -100,13 +100,13 @@ export default function useGoogleAutocomplete({
 
       const url = `${cors}https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${query}${types}${language}${location}${radius}${strictbounds}${offset}&key=${apiKey}&sessiontoken=${sessionToken.current}`;
       fetch(url, { signal: abortSignal.current })
-        .then(data => data.json())
-        .then(data => {
+        .then((data) => data.json())
+        .then((data) => {
           dispatch({
             type: data.status,
             payload: {
-              data
-            }
+              data,
+            },
           });
         })
         .catch(() => {
@@ -128,7 +128,7 @@ export default function useGoogleAutocomplete({
     options.radius,
     options.strictbounds,
     options.offset,
-    type
+    type,
   ]);
 
   const resetSessionToken = () => {
@@ -143,16 +143,16 @@ export default function useGoogleAutocomplete({
       type: "OK",
       payload: {
         data: {
-          predictions: [prediction]
-        }
-      }
+          predictions: [prediction],
+        },
+      },
     });
   };
   return {
     results: state.results,
     isLoading: state.isLoading,
     error: state.error,
-    cancelQuery
+    cancelQuery,
   };
 }
 
@@ -168,53 +168,53 @@ const reducer = (
     case "LOADING":
       return {
         ...state,
-        isLoading: true
+        isLoading: true,
       };
     case "OK":
       return {
         ...state,
         results: action.payload.data,
         isLoading: false,
-        error: null
+        error: null,
       };
     case "OVER_QUERY_LIMIT":
       return {
         ...state,
         isLoading: false,
-        error: `Over query limit.`
+        error: `Over query limit.`,
       };
     case "OVER_DAILY_LIMIT":
       return {
         ...state,
         isLoading: false,
-        error: `Over query limit.`
+        error: `Over query limit.`,
       };
     case "ZERO_RESULTS":
       return {
         ...state,
         results: {
-          predictions: []
+          predictions: [],
         },
         isLoading: false,
-        error: `No results — try another input.`
+        error: `No results — try another input.`,
       };
     case "INVALID_REQUEST":
       return {
         ...state,
         isLoading: false,
-        error: null
+        error: null,
       };
     case "REQUEST_DENIED":
       return {
         ...state,
         isLoading: false,
-        error: `Invalid 'key' parameter.`
+        error: `Invalid 'key' parameter.`,
       };
     case "UNKNOWN_ERROR":
       return {
         ...state,
         isLoading: false,
-        error: `Unknown error, refresh and try again.`
+        error: `Unknown error, refresh and try again.`,
       };
     default:
       return state;
@@ -223,12 +223,12 @@ const reducer = (
 
 function debounce(func: () => any, wait: number, immediate?: boolean) {
   let timeout: any;
-  const executedFunction = function(this: any) {
+  const executedFunction = function (this: any) {
     let context = this;
     let args: any = arguments;
 
     // tslint:disable-next-line:only-arrow-functions
-    let later = function() {
+    let later = function () {
       timeout = null;
       if (!immediate) {
         func.apply(context, args);
@@ -243,7 +243,7 @@ function debounce(func: () => any, wait: number, immediate?: boolean) {
   };
 
   // tslint:disable-next-line:only-arrow-functions
-  executedFunction.clear = function() {
+  executedFunction.clear = function () {
     clearTimeout(timeout);
     timeout = null;
   };

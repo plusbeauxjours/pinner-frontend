@@ -1,6 +1,5 @@
 import gql from "graphql-tag";
 import {
-  PROFILE_FRAGMENT,
   COUNTRY_FRAGMENT,
   CONTINENT_FRAGMENT
 } from "src/sharedQueries";
@@ -28,8 +27,16 @@ export const SEARCH = gql`
   query SearchTerms($search: String!) {
     searchUsers(search: $search) {
       users {
-        profile {
-          ...ProfileParts
+        id
+        uuid
+        username
+        avatarUrl
+        isSelf
+        currentCity {
+          cityName
+          country {
+            countryName
+          }
         }
       }
     }
@@ -44,7 +51,6 @@ export const SEARCH = gql`
       }
     }
   }
-  ${PROFILE_FRAGMENT}
   ${COUNTRY_FRAGMENT}
   ${CONTINENT_FRAGMENT}
 `;

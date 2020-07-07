@@ -28,13 +28,11 @@ export const COMPLETE_EMAIL_SIGN_IN = gql`
       token
       user {
         username
-        profile {
-          uuid
-          avatarUrl
-          currentCity {
-            cityId
-            cityName
-          }
+        uuid
+        avatarUrl
+        currentCity {
+          cityId
+          cityName
         }
       }
     }

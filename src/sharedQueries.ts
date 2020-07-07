@@ -5,42 +5,24 @@ export const ME = gql`
     me {
       user {
         username
-        profile {
-          uuid
-          gender
-          residence {
-            countryCode
-            countryName
-            countryEmoji
-          }
-          nationality {
-            countryCode
-            countryName
-            countryEmoji
-          }
-          avatarUrl
-          appAvatarUrl
-          currentCity {
-            cityId
-            cityName
-          }
+        uuid
+        gender
+        residence {
+          countryCode
+          countryName
+          countryEmoji
         }
-      }
-    }
-  }
-`;
-
-export const PROFILE_FRAGMENT = gql`
-  fragment ProfileParts on ProfileType {
-    id
-    uuid
-    username
-    avatarUrl
-    isSelf
-    currentCity {
-      cityName
-      country {
-        countryName
+        nationality {
+          countryCode
+          countryName
+          countryEmoji
+        }
+        avatarUrl
+        appAvatarUrl
+        currentCity {
+          cityId
+          cityName
+        }
       }
     }
   }
@@ -87,100 +69,6 @@ export const CONTINENT_FRAGMENT = gql`
   }
 `;
 
-export const COFFEE_FRAGMENT = gql`
-  fragment CoffeeParts on CoffeeType {
-    id
-    uuid
-    city {
-      cityId
-      cityName
-      cityThumbnail
-      country {
-        countryName
-      }
-    }
-    host {
-      id
-      username
-      profile {
-        uuid
-        avatarUrl
-        isSelf
-        currentCity {
-          cityName
-          country {
-            countryName
-          }
-        }
-      }
-    }
-    status
-    naturalTime
-    target
-    createdAt
-  }
-`;
-
-export const MATCH_FRAGMENT = gql`
-  fragment MatchParts on MatchType {
-    id
-    naturalTime
-    city {
-      cityId
-      cityName
-      country {
-        countryName
-      }
-    }
-    host {
-      profile {
-        id
-        uuid
-        username
-        avatarUrl
-        isSelf
-        currentCity {
-          cityName
-          country {
-            countryName
-          }
-        }
-      }
-    }
-    guest {
-      profile {
-        id
-        uuid
-        username
-        avatarUrl
-        isSelf
-        currentCity {
-          cityName
-          country {
-            countryName
-          }
-        }
-      }
-    }
-    coffee {
-      id
-      uuid
-      target
-      city {
-        cityId
-        cityName
-        country {
-          countryName
-        }
-      }
-    }
-    isHost
-    isGuest
-    isMatching
-    isReadByHost
-    isReadByGuest
-  }
-`;
 
 export const SLACK_REPORT_LOCATIONS = gql`
   mutation SlackReportLocations(

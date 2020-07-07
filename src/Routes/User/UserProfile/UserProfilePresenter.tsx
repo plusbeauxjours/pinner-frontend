@@ -1,11 +1,7 @@
 import React from "react";
-import moment from "moment";
 import { Link } from "react-router-dom";
 import { List, Delete, RedPin, WhitePin } from "../../../Icons";
 import styled, { keyframes } from "../../../Styles/typed-components";
-import "react-dates/initialize";
-import "react-dates/lib/css/_datepicker.css";
-import { DateRangePicker } from "react-dates";
 import { Upload } from "../../../Icons";
 
 import Wrapper from "../../../Components/Wrapper";
@@ -14,9 +10,7 @@ import Avatar from "../../../Components/Avatar";
 import Bold from "../../../Components/Bold";
 import useGoogleAutocomplete from "../../../autocompleteHelpers";
 import { BACKEND_URL } from "src/constants";
-import Thin from "src/Components/Thin";
 import Helmet from "react-helmet";
-import { countries } from "../../../countryData";
 import LoadingOverlay from "react-loading-overlay";
 import ClipLoader from "react-spinners/ClipLoader";
 
@@ -25,7 +19,7 @@ const Header = styled.header`
   flex-direction: column;
   justify-content: space-between;
   height: 365px;
-  background: ${props => props.theme.headerColor};
+  background: ${(props) => props.theme.headerColor};
 `;
 
 const TripSearchHeader = styled.header`
@@ -41,9 +35,10 @@ const PAvatar = styled(Avatar)`
   align-self: center;
   margin-top: 70px;
   cursor: pointer;
-  box-shadow: 0.5px 0.5px 30px 30px ${props => props.theme.shadowColor};
-  -webkit-box-shadow: 0.5px 0.5px 30px 30px ${props => props.theme.shadowColor};
-  -moz-box-shadow: 0.5px 0.5px 30px 30px ${props => props.theme.shadowColor};
+  box-shadow: 0.5px 0.5px 30px 30px ${(props) => props.theme.shadowColor};
+  -webkit-box-shadow: 0.5px 0.5px 30px 30px
+    ${(props) => props.theme.shadowColor};
+  -moz-box-shadow: 0.5px 0.5px 30px 30px ${(props) => props.theme.shadowColor};
 `;
 
 const Container = styled.div`
@@ -117,10 +112,10 @@ const ListIcon = styled.span`
   cursor: pointer;
   margin-top: 7px;
   svg {
-    fill: ${props => props.theme.iconColor};
+    fill: ${(props) => props.theme.iconColor};
     transition: fill 0.2s ease-in-out;
     &:hover {
-      fill: ${props => props.theme.hoverColor};
+      fill: ${(props) => props.theme.hoverColor};
     }
   }
 `;
@@ -174,10 +169,10 @@ const TripOverlay = styled.div`
   align-items: center;
   cursor: pointer;
   svg {
-    fill: ${props => props.theme.iconColor};
+    fill: ${(props) => props.theme.iconColor};
     transition: fill 0.3s ease-in-out;
     &:hover {
-      fill: ${props => props.theme.color};
+      fill: ${(props) => props.theme.color};
     }
   }
   transition: opacity 0.3s ease-in-out;
@@ -195,7 +190,7 @@ const TripRow = styled.div<ITheme>`
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
   &:hover {
-    background-color: ${props => props.theme.hoverColor};
+    background-color: ${(props) => props.theme.hoverColor};
   }
   &:hover {
     ${TripOverlay} {
@@ -203,7 +198,7 @@ const TripRow = styled.div<ITheme>`
     }
   }
   &:not(:last-child) {
-    border-bottom: 1px solid ${props => props.theme.borderColor};
+    border-bottom: 1px solid ${(props) => props.theme.borderColor};
   }
   @media screen and (min-width: 935px) {
     min-width: 685px;
@@ -244,10 +239,10 @@ const Icon = styled.span`
   margin: 0 70px 0 70px;
   cursor: pointer;
   svg {
-    fill: ${props => props.theme.iconColor};
+    fill: ${(props) => props.theme.iconColor};
     transition: fill 0.2s ease-in-out;
     &:hover {
-      fill: ${props => props.theme.hoverColor};
+      fill: ${(props) => props.theme.hoverColor};
     }
   }
 `;
@@ -285,9 +280,9 @@ const VBold = styled(Bold)`
   font-weight: 400;
   justify-content: center;
   margin-bottom: 5px;
-  text-shadow: 0 0 10px ${props => props.theme.borderColor};
-  -webkit-text-shadow: 0 0 10px ${props => props.theme.borderColor};
-  -moz-text-shadow: 0 0 10px ${props => props.theme.borderColor};
+  text-shadow: 0 0 10px ${(props) => props.theme.borderColor};
+  -webkit-text-shadow: 0 0 10px ${(props) => props.theme.borderColor};
+  -moz-text-shadow: 0 0 10px ${(props) => props.theme.borderColor};
 `;
 
 const UBold = styled(Bold)`
@@ -329,12 +324,6 @@ const TripModal = styled.div`
   animation: ${ModalAnimation} 0.1s linear;
 `;
 
-const DateRangePickerContainer = styled.div`
-  display: flex;
-  align-self: center;
-  z-index: 10;
-`;
-
 const TripModalContainer = styled.div`
   z-index: 1;
   display: flex;
@@ -349,8 +338,8 @@ const TripModalContainer = styled.div`
 `;
 
 const Modal = styled.div`
-  background-color: ${props => props.theme.modalBgColor};
-  border: 1px solid ${props => props.theme.borderColor};
+  background-color: ${(props) => props.theme.modalBgColor};
+  border: 1px solid ${(props) => props.theme.borderColor};
   border-radius: 12px;
   margin: 0 15px 0 15px;
   width: 340px;
@@ -364,7 +353,7 @@ const ModalOverlay = styled.div`
   width: 100%;
   position: fixed;
   top: 0;
-  background-color: ${props => props.theme.modalOverlayColor};
+  background-color: ${(props) => props.theme.modalOverlayColor};
 `;
 
 const ModalLink = styled.div`
@@ -376,7 +365,7 @@ const ModalLink = styled.div`
   align-items: center;
   justify-content: center;
   :not(:last-child) {
-    border-bottom: 1px solid ${props => props.theme.borderColor};
+    border-bottom: 1px solid ${(props) => props.theme.borderColor};
   }
 `;
 
@@ -389,7 +378,7 @@ const ModalLinkContainer = styled(Link)`
   align-items: center;
   justify-content: center;
   :not(:last-child) {
-    border-bottom: 1px solid ${props => props.theme.borderColor};
+    border-bottom: 1px solid ${(props) => props.theme.borderColor};
   }
 `;
 
@@ -407,9 +396,9 @@ const TripInputContainer = styled.div`
 const SearchCitiesInput = styled.input`
   z-index: 10;
   border: 0;
-  border-bottom: 1px solid ${props => props.theme.greyColor};
+  border-bottom: 1px solid ${(props) => props.theme.greyColor};
   padding: 5px;
-  color: ${props => props.theme.color};
+  color: ${(props) => props.theme.color};
   background-color: transparent;
   font-size: 12px;
   font-weight: 100;
@@ -418,27 +407,19 @@ const SearchCitiesInput = styled.input`
     outline: none;
   }
   &::placeholder {
-    color: ${props => props.theme.greyColor};
+    color: ${(props) => props.theme.greyColor};
   }
   animation: ${ModalAnimation} 0.1s linear;
   margin-top: 60px;
   font-size: 34px;
 `;
 
-const GreyText = styled(Thin)`
-  text-align: center;
-  color: ${props => props.theme.greyColor};
-  @media screen and (max-width: 400px) {
-    display: none;
-  }
-`;
-
 const TripInput = styled.input`
   width: 215px;
   border: 0;
-  border-bottom: 1px solid ${props => props.theme.borderColor};
+  border-bottom: 1px solid ${(props) => props.theme.borderColor};
   padding: 5px;
-  color: ${props => props.theme.color};
+  color: ${(props) => props.theme.color};
   font-size: 12px;
   font-weight: 100;
   &:focus {
@@ -448,7 +429,7 @@ const TripInput = styled.input`
     }
   }
   &::placeholder {
-    color: ${props => props.theme.greyColor};
+    color: ${(props) => props.theme.greyColor};
     text-align: right;
   }
 `;
@@ -464,10 +445,10 @@ const UserRow = styled.div<ITheme>`
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
   &:hover {
-    background-color: ${props => props.theme.hoverColor};
+    background-color: ${(props) => props.theme.hoverColor};
   }
   &:not(:last-child) {
-    border-bottom: 1px solid ${props => props.theme.borderColor};
+    border-bottom: 1px solid ${(props) => props.theme.borderColor};
   }
 `;
 
@@ -531,10 +512,10 @@ const AvatarUploadIcon = styled.div`
   cursor: pointer;
   overflow: hidden;
   svg {
-    fill: ${props => props.theme.iconColor};
+    fill: ${(props) => props.theme.iconColor};
     transition: fill 0.2s ease-in-out;
     &:hover {
-      fill: ${props => props.theme.hoverColor};
+      fill: ${(props) => props.theme.hoverColor};
     }
   }
 `;
@@ -576,7 +557,7 @@ const AvatarDeleteIcon = styled.div`
   svg {
     opacity: 0;
     transition: all 0.1s ease-in-out;
-    fill: ${props => props.theme.whiteColor};
+    fill: ${(props) => props.theme.whiteColor};
   }
 `;
 
@@ -595,7 +576,7 @@ const WhitePinIcon = styled(RedPinIcon)`
   svg {
     opacity: 0;
     transition: all 0.1s ease-in-out;
-    fill: ${props => props.theme.whiteColor};
+    fill: ${(props) => props.theme.whiteColor};
   }
 `;
 
@@ -637,81 +618,6 @@ const HideEarth = styled.img`
     height: 80px;
     width: 200px;
   }
-`;
-
-const EditPhoneModal = styled.div`
-  background-color: ${props => props.theme.modalBgColor};
-  border: 1px solid ${props => props.theme.borderColor};
-  border-radius: 12px;
-  margin: 0 15px 0 15px;
-  width: 540px;
-  height: 240px;
-  z-index: 5;
-  animation: ${ModalAnimation} 0.1s linear;
-`;
-
-const SearchModalContainer = styled(ModalContainer)`
-  z-index: 10;
-`;
-const SearchModalOverlay = styled(ModalOverlay)`
-  z-index: 10;
-`;
-const SearchModal = styled(EditPhoneModal)`
-  z-index: 5;
-  padding: 30px;
-  height: 700px;
-  z-index: 10;
-`;
-const CountryContainer = styled.div`
-  z-index: 10;
-  display: flex;
-  align-content: center;
-  width: 480px;
-  height: 640px;
-  flex-direction: column;
-  overflow-y: auto;
-  -ms-overflow-style: -ms-autohiding-scrollbar;
-  ::-webkit-scrollbar {
-    display: none !important;
-    width: 3px;
-    background: none;
-  }
-  &::-webkit-scrollbar-track {
-    background: none;
-  }
-`;
-const CountryRow = styled.div`
-  z-index: 10;
-  height: 40px;
-  width: 480px;
-  font-size: 18px;
-  display: flex;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  cursor: pointer;
-  &:not(:last-child) {
-    border-bottom: 1px solid ${props => props.theme.borderColor};
-  }
-  &:hover {
-    background-color: ${props => props.theme.hoverColor};
-  }
-`;
-const CountryText = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
-
-const GenderModalContainer = styled(ModalContainer)`
-  z-index: 10;
-`;
-const GenderModalOverlay = styled(ModalOverlay)`
-  z-index: 10;
-`;
-const GenderModal = styled(Modal)`
-  z-index: 10;
-`;
-const GenderModalLink = styled(ModalLink)`
-  z-index: 10;
 `;
 
 const InfoContainer = styled.div`
@@ -767,17 +673,6 @@ interface IProps {
   cityId: string;
   countryName: string;
 
-  startDate: moment.Moment | null;
-  endDate: moment.Moment | null;
-  tripStartDate: moment.Moment | null;
-  tripEndDate: moment.Moment | null;
-  focusedInput: "startDate" | "endDate" | null;
-  onDatesChange: (arg: {
-    startDate: moment.Moment | null;
-    endDate: moment.Moment | null;
-  }) => void;
-  onFocusChange: (arg: "startDate" | "endDate" | null) => void;
-
   toggleModal: () => void;
   toggleReportModal: () => void;
   toggleTripModal: any;
@@ -793,15 +688,8 @@ interface IProps {
   addTrip: () => void;
   editTrip: () => void;
   deleteTrip: () => void;
-  gotoTrip: (
-    cityName: string,
-    cityId: string,
-    countryName: string,
-    tripStartDate: moment.Moment | null,
-    tripEndDate: moment.Moment | null
-  ) => void;
+  gotoTrip: (cityName: string, cityId: string, countryName: string) => void;
 
-  submitCoffee: any;
   onSearchInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 
   uuid: string;
@@ -809,7 +697,6 @@ interface IProps {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   search: string;
   tripList: any;
-  isDayBlocked: any;
 
   onClickSearch: (cityId: string, cityName: string) => void;
   createCityLoading: boolean;
@@ -823,18 +710,11 @@ interface IProps {
   logoutConfirmModal: boolean;
   toggleLogoutConfirmModal: () => void;
   slackReportUsers: (payload: string) => void;
-  countryModalOpen: boolean;
-  openCountryModal: (taget: string) => void;
-  closeCountryModal: () => void;
-  onSelectCountry: (countryPhoneCode: string) => void;
-  genderModalOpen: boolean;
-  openGenderModal: (taget: string) => void;
-  closeGenderModal: () => void;
-  onSelectGender: (gender: string) => void;
   target: string;
   warningToast: (event: any) => void;
   formatDistance: any;
   deleteAvatarFn: any;
+  countryModalOpen: boolean;
 }
 
 const UserProfilePresenter: React.FunctionComponent<IProps> = ({
@@ -876,20 +756,10 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
   cityName,
   cityId,
   countryName,
-  startDate,
-  endDate,
-  tripStartDate,
-  tripEndDate,
-  focusedInput,
-  onDatesChange,
-  onFocusChange,
-  submitCoffee,
-
   uuid,
   search,
   onChange,
   tripList,
-  // isDayBlocked,
 
   onClickSearch,
   createCityLoading,
@@ -906,17 +776,10 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
   logoutConfirmModal,
   toggleLogoutConfirmModal,
   slackReportUsers,
-  countryModalOpen,
-  openCountryModal,
-  closeCountryModal,
-  onSelectCountry,
-  genderModalOpen,
-  openGenderModal,
-  closeGenderModal,
-  onSelectGender,
   target,
   warningToast,
-  formatDistance
+  formatDistance,
+  countryModalOpen,
 }) => {
   const REACT_APP_GOOGLE_PLACE_KEY = process.env.REACT_APP_GOOGLE_PLACE_KEY;
   const { results, isLoading } = useGoogleAutocomplete({
@@ -924,8 +787,8 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
     query: tripCitySearch,
     options: {
       types: "(cities)",
-      language: "en"
-    }
+      language: "en",
+    },
   });
   if (userProfileLoading) {
     return <Loader />;
@@ -941,45 +804,6 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
               fadeSpeed={500}
             />
           </LoaderContainer>
-        )}
-        {genderModalOpen && (
-          <GenderModalContainer>
-            <GenderModalOverlay onClick={closeGenderModal} />
-            <GenderModal>
-              <GenderModalLink onClick={() => onSelectGender("MALE")}>
-                MALE
-              </GenderModalLink>
-              <GenderModalLink onClick={() => onSelectGender("FEMALE")}>
-                FEMALE
-              </GenderModalLink>
-              <GenderModalLink onClick={() => onSelectGender("OTHER")}>
-                OTHER
-              </GenderModalLink>
-              <GenderModalLink onClick={closeGenderModal}>
-                CANCEL
-              </GenderModalLink>
-            </GenderModal>
-          </GenderModalContainer>
-        )}
-        {countryModalOpen && (
-          <SearchModalContainer>
-            <SearchModalOverlay onClick={closeCountryModal} />
-            <SearchModal>
-              <CountryContainer>
-                {countries.map((country, index) => (
-                  <CountryRow
-                    key={index}
-                    onClick={() => onSelectCountry(country.code)}
-                  >
-                    <CountryText>
-                      <p>&nbsp;{country.name}</p>
-                      <p>&nbsp;{country.emoji}</p>
-                    </CountryText>
-                  </CountryRow>
-                ))}
-              </CountryContainer>
-            </SearchModal>
-          </SearchModalContainer>
         )}
         {logoutConfirmModal && (
           <ConfirmModalContainer>
@@ -1002,9 +826,9 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
         )}
         {avatarModalOpen && (
           <AvatarModalContainer>
-            <ModalOverlay onClick={e => onSubmitImage(e)} />
+            <ModalOverlay onClick={(e) => onSubmitImage(e)} />
             <ModalAvatars>
-              {user.profile.isSelf && imagePreviewUrl.length === 0 && (
+              {user.isSelf && imagePreviewUrl.length === 0 && (
                 <AvatarUploadIcon>
                   <Label htmlFor="file">
                     <Upload />
@@ -1013,11 +837,11 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                     id="file"
                     type="file"
                     accept="image/*"
-                    onChange={e => onChangeImage(e)}
+                    onChange={(e) => onChangeImage(e)}
                   />
                 </AvatarUploadIcon>
               )}
-              {user.profile.isSelf && imagePreviewUrl.length !== 0 && (
+              {user.isSelf && imagePreviewUrl.length !== 0 && (
                 <AvatarKeyContainer>
                   <AvatarDeleteIcon onClick={removeImagePreviewUrl}>
                     <Delete />
@@ -1030,7 +854,7 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
               {!avatarsLoading &&
                 avatars &&
                 avatars.length !== 0 &&
-                avatars.map(avatar => {
+                avatars.map((avatar) => {
                   return (
                     <AvatarKeyContainer key={avatar.id}>
                       <AvatarImage>
@@ -1038,7 +862,7 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                           <Link
                             to={{
                               pathname: `/${uuid}/${avatar.uuid}`,
-                              state: { avatarModalOpen: true }
+                              state: { avatarModalOpen: true },
                             }}
                           >
                             <ModalAvatarImage
@@ -1051,23 +875,23 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                           />
                         )}
                       </AvatarImage>
-                      {avatar.isMain && user.profile.isSelf ? (
+                      {avatar.isMain && user.isSelf ? (
                         <RedPinIcon>
                           <RedPin />
                         </RedPinIcon>
                       ) : null}
-                      {!avatar.isMain && user.profile.isSelf ? (
+                      {!avatar.isMain && user.isSelf ? (
                         <WhitePinIcon
                           onClick={() =>
                             markAsMainFn({
-                              variables: { uuid: avatar.uuid }
+                              variables: { uuid: avatar.uuid },
                             })
                           }
                         >
                           <WhitePin />
                         </WhitePinIcon>
                       ) : null}
-                      {!avatar.isMain && user.profile.isSelf ? (
+                      {!avatar.isMain && user.isSelf ? (
                         <AvatarDeleteIcon
                           onClick={() =>
                             deleteAvatarFn({ variables: { uuid: avatar.uuid } })
@@ -1082,44 +906,7 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
             </ModalAvatars>
           </AvatarModalContainer>
         )}
-        {requestModalOpen && (
-          <ModalContainer>
-            <ModalOverlay onClick={toggleRequestModal} />
-            <Modal>
-              <ModalLink onClick={() => submitCoffee("everyone")}>
-                EVERYONE
-              </ModalLink>
-              <ModalLink
-                onClick={
-                  user.profile.nationality
-                    ? () => submitCoffee("nationality")
-                    : () => openCountryModal("nationality")
-                }
-              >
-                NATIONALITY
-              </ModalLink>
-              <ModalLink
-                onClick={
-                  user.profile.residence
-                    ? () => submitCoffee("residence")
-                    : () => openCountryModal("residence")
-                }
-              >
-                RESIDENCE
-              </ModalLink>
-              <ModalLink
-                onClick={
-                  user.profile.gender
-                    ? () => submitCoffee("gender")
-                    : () => openGenderModal("gender")
-                }
-              >
-                GENDER
-              </ModalLink>
-              <ModalLink onClick={toggleRequestModal}>CANCEL</ModalLink>
-            </Modal>
-          </ModalContainer>
-        )}
+
         {modalOpen && (
           <ModalContainer>
             <ModalOverlay onClick={toggleModal} />
@@ -1129,29 +916,28 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                   pathname: `/account/edit`,
                   state: {
                     username: user.username,
-                    uuid: user.profile.uuid,
-                    isSelf: user.profile.isSelf,
-                    isDarkMode: user.profile.isDarkMode,
-                    isHideTrips: user.profile.isHideTrips,
-                    isHideCoffees: user.profile.isHideCoffees,
-                    isHideCities: user.profile.isHideCities,
-                    isHideCountries: user.profile.isHideCountries,
-                    isHideContinents: user.profile.isHideContinents,
-                    isAutoLocationReport: user.profile.isAutoLocationReport,
-                    bio: user.profile.bio,
-                    gender: user.profile.gender,
+                    uuid: user.uuid,
+                    isSelf: user.isSelf,
+                    isDarkMode: user.isDarkMode,
+                    isHideTrips: user.isHideTrips,
+                    isHideCities: user.isHideCities,
+                    isHideCountries: user.isHideCountries,
+                    isHideContinents: user.isHideContinents,
+                    isAutoLocationReport: user.isAutoLocationReport,
+                    bio: user.bio,
+                    gender: user.gender,
                     firstName: user.firstName,
                     lastName: user.lastName,
-                    nationality: user.profile.nationality,
-                    residence: user.profile.residence,
-                    avatarUrl: user.profile.avatarUrl,
-                    countryPhoneNumber: user.profile.countryPhoneNumber,
-                    countryPhoneCode: user.profile.countryPhoneCode,
-                    phoneNumber: user.profile.phoneNumber,
-                    emailAddress: user.profile.emailAddress,
-                    isVerifiedPhoneNumber: user.profile.isVerifiedPhoneNumber,
-                    isVerifiedEmailAddress: user.profile.isVerifiedEmailAddress
-                  }
+                    nationality: user.nationality,
+                    residence: user.residence,
+                    avatarUrl: user.avatarUrl,
+                    countryPhoneNumber: user.countryPhoneNumber,
+                    countryPhoneCode: user.countryPhoneCode,
+                    phoneNumber: user.phoneNumber,
+                    emailAddress: user.emailAddress,
+                    isVerifiedPhoneNumber: user.isVerifiedPhoneNumber,
+                    isVerifiedEmailAddress: user.isVerifiedEmailAddress,
+                  },
                 }}
               >
                 EDIT PROFILE
@@ -1161,29 +947,28 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                   pathname: `/account/settings`,
                   state: {
                     username: user.username,
-                    uuid: user.profile.uuid,
-                    isSelf: user.profile.isSelf,
-                    isDarkMode: user.profile.isDarkMode,
-                    isHideTrips: user.profile.isHideTrips,
-                    isHideCoffees: user.profile.isHideCoffees,
-                    isHideCities: user.profile.isHideCities,
-                    isHideCountries: user.profile.isHideCountries,
-                    isHideContinents: user.profile.isHideContinents,
-                    isAutoLocationReport: user.profile.isAutoLocationReport,
-                    bio: user.profile.bio,
-                    gender: user.profile.gender,
+                    uuid: user.uuid,
+                    isSelf: user.isSelf,
+                    isDarkMode: user.isDarkMode,
+                    isHideTrips: user.isHideTrips,
+                    isHideCities: user.isHideCities,
+                    isHideCountries: user.isHideCountries,
+                    isHideContinents: user.isHideContinents,
+                    isAutoLocationReport: user.isAutoLocationReport,
+                    bio: user.bio,
+                    gender: user.gender,
                     firstName: user.firstName,
                     lastName: user.lastName,
-                    nationality: user.profile.nationality,
-                    residence: user.profile.residence,
-                    avatarUrl: user.profile.avatarUrl,
-                    countryPhoneNumber: user.profile.countryPhoneNumber,
-                    countryPhoneCode: user.profile.countryPhoneCode,
-                    phoneNumber: user.profile.phoneNumber,
-                    emailAddress: user.profile.emailAddress,
-                    isVerifiedPhoneNumber: user.profile.isVerifiedPhoneNumber,
-                    isVerifiedEmailAddress: user.profile.isVerifiedEmailAddress
-                  }
+                    nationality: user.nationality,
+                    residence: user.residence,
+                    avatarUrl: user.avatarUrl,
+                    countryPhoneNumber: user.countryPhoneNumber,
+                    countryPhoneCode: user.countryPhoneCode,
+                    phoneNumber: user.phoneNumber,
+                    emailAddress: user.emailAddress,
+                    isVerifiedPhoneNumber: user.isVerifiedPhoneNumber,
+                    isVerifiedEmailAddress: user.isVerifiedEmailAddress,
+                  },
                 }}
               >
                 SETTINGS
@@ -1198,15 +983,7 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
             <ModalOverlay onClick={toggleTripModal} />
             <Modal>
               <ModalLink
-                onClick={() =>
-                  gotoTrip(
-                    cityName,
-                    cityId,
-                    countryName,
-                    tripStartDate,
-                    tripEndDate
-                  )
-                }
+                onClick={() => gotoTrip(cityName, cityId, countryName)}
               >
                 GOTO TRIP
               </ModalLink>
@@ -1254,20 +1031,6 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
           <TripModalContainer>
             <ModalOverlay onClick={addTrip} />
             <TripInputContainer>
-              <DateRangePickerContainer>
-                <DateRangePicker
-                  startDateId="startDate"
-                  endDateId="endDate"
-                  startDate={startDate}
-                  endDate={endDate}
-                  onDatesChange={onDatesChange}
-                  onFocusChange={onFocusChange}
-                  focusedInput={focusedInput}
-                  isOutsideRange={() => false}
-                  withPortal={true}
-                  // isDayBlocked={isDayBlocked()}
-                />
-              </DateRangePickerContainer>
               <SearchCitiesInput
                 autoFocus={true}
                 placeholder={"Search a City"}
@@ -1283,7 +1046,7 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                   !createCityLoading &&
                   !isLoading &&
                   results.predictions.length > 0 &&
-                  results.predictions.map(prediction => (
+                  results.predictions.map((prediction) => (
                     <UserRow
                       key={prediction.id}
                       onClick={() =>
@@ -1317,20 +1080,6 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
           <TripModalContainer>
             <ModalOverlay onClick={editTrip} />
             <TripInputContainer>
-              <DateRangePickerContainer>
-                <DateRangePicker
-                  startDateId="startDate"
-                  endDateId="endDate"
-                  startDate={startDate}
-                  endDate={endDate}
-                  onDatesChange={onDatesChange}
-                  onFocusChange={onFocusChange}
-                  focusedInput={focusedInput}
-                  isOutsideRange={() => false}
-                  withPortal={true}
-                  // isDayBlocked={isDayBlocked()}
-                />
-              </DateRangePickerContainer>
               <SearchCitiesInput
                 autoFocus={true}
                 placeholder={cityName || "Search a City"}
@@ -1346,7 +1095,7 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                   !createCityLoading &&
                   !isLoading &&
                   results.predictions.length > 0 &&
-                  results.predictions.map(prediction => (
+                  results.predictions.map((prediction) => (
                     <UserRow
                       key={prediction.id}
                       onClick={() =>
@@ -1383,14 +1132,14 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
           <AvatarContainer>
             <PAvatar
               size="lg"
-              url={user.profile.avatarUrl}
+              url={user.avatarUrl}
               onClick={toggleAvatarModal}
             />
           </AvatarContainer>
           <BioContainer>
             <NameContainer>
               <Username>{user.username}</Username>
-              {user.profile.isSelf ? (
+              {user.isSelf ? (
                 <ListIcon onClick={toggleModal}>
                   <List />
                 </ListIcon>
@@ -1400,7 +1149,7 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                 </ListIcon>
               )}
             </NameContainer>
-            {user.profile.bio && <Bio>{`${user.profile.bio}`}</Bio>}
+            {user.bio && <Bio>{`${user.bio}`}</Bio>}
           </BioContainer>
         </Header>
         {/* 
@@ -1412,20 +1161,20 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
               <title>Profile | Pinner</title>
             </Helmet>
             <LocationAvatarContainer>
-              <Link to={`/city/${user.profile.currentCity.cityId}`}>
+              <Link to={`/city/${user.currentCity.cityId}`}>
                 <CAvatar
                   size="lg"
-                  url={user.profile.currentCity.cityPhoto}
+                  url={user.currentCity.cityPhoto}
                   city={true}
                 />
               </Link>
             </LocationAvatarContainer>
             <Container>
               <InfoContainer>
-                {user.profile.gender && (
+                {user.gender && (
                   <Row>
                     {(() => {
-                      switch (user.profile.gender) {
+                      switch (user.gender) {
                         case "MALE":
                           return <VBold text={"M"} />;
                         case "FEMALE":
@@ -1439,20 +1188,20 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                     <UBold text={"GENDER"} />
                   </Row>
                 )}
-                {user.profile.distance !== 0 && (
+                {user.distance !== 0 && (
                   <Row>
-                    <VBold text={formatDistance(user.profile.distance)} />
+                    <VBold text={formatDistance(user.distance)} />
                     <UBold text={"KM"} />
                   </Row>
                 )}
                 <Row>
-                  <VBold text={String(user.profile.tripCount)} />
+                  <VBold text={String(user.tripCount)} />
                   <UBold text={"TRIPS"} />
                 </Row>
-                {user.profile.isHideCities ? (
+                {user.isHideCities ? (
                   <Row>
-                    <VBold text={String(user.profile.cityCount)} />
-                    {user.profile.cityCount === 1 ? (
+                    <VBold text={String(user.cityCount)} />
+                    {user.cityCount === 1 ? (
                       <GreyUBold text={"CITY🔒"} />
                     ) : (
                       <GreyUBold text={"CITIES🔒"} />
@@ -1463,11 +1212,11 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                     <Link
                       to={{
                         pathname: `/${uuid}/cities`,
-                        state: { cityModalOpen: true }
+                        state: { cityModalOpen: true },
                       }}
                     >
-                      <VBold text={String(user.profile.cityCount)} />
-                      {user.profile.cityCount === 1 ? (
+                      <VBold text={String(user.cityCount)} />
+                      {user.cityCount === 1 ? (
                         <UBold text={"CITY"} />
                       ) : (
                         <UBold text={"CITIES"} />
@@ -1475,10 +1224,10 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                     </Link>
                   </Row>
                 )}
-                {user.profile.isHideCountries ? (
+                {user.isHideCountries ? (
                   <Row>
-                    <VBold text={String(user.profile.countryCount)} />
-                    {user.profile.countryCount === 1 ? (
+                    <VBold text={String(user.countryCount)} />
+                    {user.countryCount === 1 ? (
                       <GreyUBold text={"COUNTRY🔒"} />
                     ) : (
                       <GreyUBold text={"COUNTRIES🔒"} />
@@ -1489,11 +1238,11 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                     <Link
                       to={{
                         pathname: `/${uuid}/countries`,
-                        state: { countryModalOpen: true }
+                        state: { countryModalOpen: true },
                       }}
                     >
-                      <VBold text={String(user.profile.countryCount)} />
-                      {user.profile.countryCount === 1 ? (
+                      <VBold text={String(user.countryCount)} />
+                      {user.countryCount === 1 ? (
                         <UBold text={"COUNTRY"} />
                       ) : (
                         <UBold text={"COUNTRIES"} />
@@ -1501,10 +1250,10 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                     </Link>
                   </Row>
                 )}
-                {user.profile.isHideContinents ? (
+                {user.isHideContinents ? (
                   <Row>
-                    <VBold text={String(user.profile.continentCount)} />
-                    {user.profile.continentCount === 1 ? (
+                    <VBold text={String(user.continentCount)} />
+                    {user.continentCount === 1 ? (
                       <GreyUBold text={"CONTINENT🔒"} />
                     ) : (
                       <GreyUBold text={"CONTINENTS🔒"} />
@@ -1515,11 +1264,11 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                     <Link
                       to={{
                         pathname: `/${uuid}/continents`,
-                        state: { continentModalOpen: true }
+                        state: { continentModalOpen: true },
                       }}
                     >
-                      <VBold text={String(user.profile.continentCount)} />
-                      {user.profile.continentCount === 1 ? (
+                      <VBold text={String(user.continentCount)} />
+                      {user.continentCount === 1 ? (
                         <UBold text={"CONTINENT"} />
                       ) : (
                         <UBold text={"CONTINENTS"} />
@@ -1527,30 +1276,24 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                     </Link>
                   </Row>
                 )}
-                {user.profile.nationality && (
+                {user.nationality && (
                   <Row>
-                    <Link
-                      to={`/country/${user.profile.nationality.countryCode}`}
-                    >
-                      <VBold
-                        text={String(user.profile.nationality.countryEmoji)}
-                      />
+                    <Link to={`/country/${user.nationality.countryCode}`}>
+                      <VBold text={String(user.nationality.countryEmoji)} />
                       <UBold text={"NATIONALITY"} />
                     </Link>
                   </Row>
                 )}
-                {user.profile.residence && (
+                {user.residence && (
                   <Row>
-                    <Link to={`/country/${user.profile.residence.countryCode}`}>
-                      <VBold
-                        text={String(user.profile.residence.countryEmoji)}
-                      />
+                    <Link to={`/country/${user.residence.countryCode}`}>
+                      <VBold text={String(user.residence.countryEmoji)} />
                       <UBold text={"RESIDENCE"} />
                     </Link>
                   </Row>
                 )}
               </InfoContainer>
-              {!user.profile.isSelf && user.profile.isHideTrips ? (
+              {!user.isSelf && user.isHideTrips ? (
                 <EmptyContainer>
                   <HideEarth
                     src={require(`../../../Images/animations/hideTrip.png`)}
@@ -1567,22 +1310,20 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                       onChange={onChange}
                     />
                   </UserNameRow>
-                  {user.profile.isSelf && (
+                  {user.isSelf && (
                     <TripIcon onClick={toggleAddTripModal}>
                       <Upload />
                     </TripIcon>
                   )}
                   {tripList.length !== 0 &&
-                    tripList.map(trip => (
+                    tripList.map((trip) => (
                       <TripRow key={trip.id}>
                         <THeader
                           onClick={() =>
                             gotoTrip(
                               trip.city.cityName,
                               trip.city.cityId,
-                              trip.city.country.countryName,
-                              trip.startDate,
-                              trip.endDate
+                              trip.city.country.countryName
                             )
                           }
                         >
@@ -1596,48 +1337,19 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                             <Location>{trip.city.country.countryName}</Location>
                           </HeaderColumn>
                         </THeader>
-                        <GreyText
-                          text={
-                            trip.startDate
-                              ? moment(trip.startDate).format("MMM Do YY")
-                              : "-"
-                          }
-                        />
-                        <GreyText
-                          text={
-                            trip.endDate
-                              ? moment(trip.endDate).format("MMM Do YY")
-                              : "-"
-                          }
-                        />
-                        {trip.diffDays ? (
-                          <GreyText
-                            text={
-                              trip.diffDays === 1
-                                ? `${trip.diffDays} Day`
-                                : `${trip.diffDays} Days`
-                            }
-                          />
-                        ) : (
-                          <div />
-                        )}
                         <TripOverlay
                           onClick={() => {
-                            user.profile.isSelf
+                            user.isSelf
                               ? toggleTripModal(
                                   trip.id,
                                   trip.city.cityName,
                                   trip.city.cityId,
-                                  trip.city.country.countryName,
-                                  trip.startDate,
-                                  trip.endDate
+                                  trip.city.country.countryName
                                 )
                               : gotoTrip(
                                   trip.city.cityName,
                                   trip.city.cityId,
-                                  trip.city.country.countryName,
-                                  trip.startDate,
-                                  trip.endDate
+                                  trip.city.country.countryName
                                 );
                           }}
                         >
@@ -1648,16 +1360,14 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                   {tripList.length === 0 &&
                     !search &&
                     getTrips &&
-                    getTrips.map(trip => (
+                    getTrips.map((trip) => (
                       <TripRow key={trip.id}>
                         <THeader
                           onClick={() =>
                             gotoTrip(
                               trip.city.cityName,
                               trip.city.cityId,
-                              trip.city.country.countryName,
-                              trip.startDate,
-                              trip.endDate
+                              trip.city.country.countryName
                             )
                           }
                         >
@@ -1671,48 +1381,20 @@ const UserProfilePresenter: React.FunctionComponent<IProps> = ({
                             <Location>{trip.city.country.countryName}</Location>
                           </HeaderColumn>
                         </THeader>
-                        <GreyText
-                          text={
-                            trip.startDate
-                              ? moment(trip.startDate).format("MMM Do YY")
-                              : "-"
-                          }
-                        />
-                        <GreyText
-                          text={
-                            trip.endDate
-                              ? moment(trip.endDate).format("MMM Do YY")
-                              : "-"
-                          }
-                        />
-                        {trip.diffDays ? (
-                          <GreyText
-                            text={
-                              trip.diffDays === 1
-                                ? `${trip.diffDays} Day`
-                                : `${trip.diffDays} Days`
-                            }
-                          />
-                        ) : (
-                          <div />
-                        )}
+
                         <TripOverlay
                           onClick={() => {
-                            user.profile.isSelf
+                            user.isSelf
                               ? toggleTripModal(
                                   trip.id,
                                   trip.city.cityName,
                                   trip.city.cityId,
-                                  trip.city.country.countryName,
-                                  trip.startDate,
-                                  trip.endDate
+                                  trip.city.country.countryName
                                 )
                               : gotoTrip(
                                   trip.city.cityName,
                                   trip.city.cityId,
-                                  trip.city.country.countryName,
-                                  trip.startDate,
-                                  trip.endDate
+                                  trip.city.country.countryName
                                 );
                           }}
                         >

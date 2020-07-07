@@ -18,14 +18,14 @@ import {
   StartEditPhoneVerification,
   StartEditPhoneVerificationVariables,
   StartEditEmailVerification,
-  StartEditEmailVerificationVariables
+  StartEditEmailVerificationVariables,
 } from "src/types/api";
 import {
   EDIT_PROFILE,
   DELETE_PROFILE,
   COMPLETE_EDIT_PHONE_VERIFICATION,
   START_EDIT_PHONE_VERIFICATION,
-  START_EDIT_EMAIL_VERIFICATION
+  START_EDIT_EMAIL_VERIFICATION,
 } from "./EditProfileQueries";
 import { countries } from "../../../countryData";
 
@@ -39,7 +39,7 @@ import {
   MARK_AS_MAIN,
   DELETE_AVATAR,
   UPLOAD_AVATAR,
-  GET_AVATARS
+  GET_AVATARS,
 } from "../UserProfile/UserProfileQueries";
 
 class EditProfileMutation extends Mutation<EditProfile, EditProfileVariables> {}
@@ -98,7 +98,6 @@ interface IState {
   isSelf: boolean;
   isDarkMode: boolean;
   isHideTrips: boolean;
-  isHideCoffees: boolean;
   isHideCities: boolean;
   isHideCountries: boolean;
   isHideContinents: boolean;
@@ -170,7 +169,6 @@ class EditProfileContainer extends React.Component<IProps, IState> {
       isSelf: state.isSelf,
       isDarkMode: state.isDarkMode,
       isHideTrips: state.isHideTrips,
-      isHideCoffees: state.isHideCoffees,
       isHideCities: state.isHideCities,
       isHideCountries: state.isHideCountries,
       isHideContinents: state.isHideContinents,
@@ -204,9 +202,9 @@ class EditProfileContainer extends React.Component<IProps, IState> {
       newCountryPhoneCode:
         props.newCountryPhoneCode || localStorage.getItem("countryCode"),
       newCountryPhoneNumber: countries.find(
-        i => i.code === localStorage.getItem("countryCode")
+        (i) => i.code === localStorage.getItem("countryCode")
       ).phone,
-      verificationKey: ""
+      verificationKey: "",
     };
   }
   public componentDidUpdate(prevProps) {
@@ -214,7 +212,7 @@ class EditProfileContainer extends React.Component<IProps, IState> {
     if (prevProps.match.params !== newProps.match.params) {
       this.setState({
         imagePreviewUrl: "",
-        file: ""
+        file: "",
       });
     }
   }
@@ -239,7 +237,6 @@ class EditProfileContainer extends React.Component<IProps, IState> {
       isSelf,
       isDarkMode,
       isHideTrips,
-      isHideCoffees,
       isHideCities,
       isHideCountries,
       isHideContinents,
@@ -266,11 +263,11 @@ class EditProfileContainer extends React.Component<IProps, IState> {
       newPhoneNumber,
       newCountryPhoneCode,
       newCountryPhoneNumber,
-      verificationKey
+      verificationKey,
     } = this.state;
     return (
       <LogUserInMutation mutation={LOG_USER_IN}>
-        {logUserInFn => {
+        {(logUserInFn) => {
           this.logUserInFn = logUserInFn;
           return (
             <StartEditEmailVerificationMutatiojn
@@ -289,12 +286,12 @@ class EditProfileContainer extends React.Component<IProps, IState> {
                       countryPhoneCode: newCountryPhoneCode,
                       phoneNumber: newPhoneNumber.startsWith("0")
                         ? newPhoneNumber.substring(1)
-                        : newPhoneNumber
+                        : newPhoneNumber,
                     }}
                     update={this.updateEditPhoneVerification}
                     onCompleted={this.onCompletedCompleteEditPhoneVerification}
                   >
-                    {completeEditPhoneVerificationFn => {
+                    {(completeEditPhoneVerificationFn) => {
                       this.completeEditPhoneVerificationFn = completeEditPhoneVerificationFn;
                       return (
                         <StartEditPhoneVerificationMutation
@@ -303,7 +300,7 @@ class EditProfileContainer extends React.Component<IProps, IState> {
                             countryPhoneNumber: newCountryPhoneNumber,
                             phoneNumber: newPhoneNumber.startsWith("0")
                               ? newPhoneNumber.substring(1)
-                              : newPhoneNumber
+                              : newPhoneNumber,
                           }}
                           onCompleted={
                             this.onCompletedStartEditPhoneVerification
@@ -317,7 +314,7 @@ class EditProfileContainer extends React.Component<IProps, IState> {
                                 update={this.updateMarkAsMain}
                                 onCompleted={this.onCompletedMarkAsMain}
                               >
-                                {markAsMainFn => {
+                                {(markAsMainFn) => {
                                   this.markAsMainFn = markAsMainFn;
                                   return (
                                     <DeleteAvatarMutation
@@ -325,7 +322,7 @@ class EditProfileContainer extends React.Component<IProps, IState> {
                                       update={this.updateDeleteAvatar}
                                       onCompleted={this.onCompletedDeleteAvatar}
                                     >
-                                      {deleteAvatarFn => {
+                                      {(deleteAvatarFn) => {
                                         this.deleteAvatarFn = deleteAvatarFn;
                                         return (
                                           <UploadAvatarMutation
@@ -344,17 +341,17 @@ class EditProfileContainer extends React.Component<IProps, IState> {
                                                 <GetAvatarsQuery
                                                   query={GET_AVATARS}
                                                   variables={{
-                                                    uuid
+                                                    uuid,
                                                   }}
                                                 >
                                                   {({
                                                     data: avatarsData,
-                                                    loading: avatarsLoading
+                                                    loading: avatarsLoading,
                                                   }) => (
                                                     <LogOutMutation
                                                       mutation={LOG_USER_OUT}
                                                     >
-                                                      {logUserOutFn => {
+                                                      {(logUserOutFn) => {
                                                         this.logUserOutFn = logUserOutFn;
                                                         return (
                                                           <EditProfileMutation
@@ -370,16 +367,20 @@ class EditProfileContainer extends React.Component<IProps, IState> {
                                                                 .onCompletedEditProfile
                                                             }
                                                           >
-                                                            {editProfileFn => {
+                                                            {(
+                                                              editProfileFn
+                                                            ) => {
                                                               this.editProfileFn = editProfileFn;
                                                               return (
                                                                 <DeleteProfileMutation
                                                                   mutation={
                                                                     DELETE_PROFILE
                                                                   }
-                                                                  onCompleted={deleteResult => {
+                                                                  onCompleted={(
+                                                                    deleteResult
+                                                                  ) => {
                                                                     const {
-                                                                      deleteProfile
+                                                                      deleteProfile,
                                                                     } = deleteResult;
                                                                     if (
                                                                       deleteProfile.ok
@@ -402,7 +403,9 @@ class EditProfileContainer extends React.Component<IProps, IState> {
                                                                     }
                                                                   }}
                                                                 >
-                                                                  {deleteProfileFn => {
+                                                                  {(
+                                                                    deleteProfileFn
+                                                                  ) => {
                                                                     this.deleteProfileFn = deleteProfileFn;
                                                                     return (
                                                                       <EditProfilePresenter
@@ -546,9 +549,6 @@ class EditProfileContainer extends React.Component<IProps, IState> {
                                                                         }
                                                                         isHideTrips={
                                                                           isHideTrips
-                                                                        }
-                                                                        isHideCoffees={
-                                                                          isHideCoffees
                                                                         }
                                                                         isHideCities={
                                                                           isHideCities
@@ -716,11 +716,11 @@ class EditProfileContainer extends React.Component<IProps, IState> {
     const { residenceModalOpen } = this.state;
     this.setState({ residenceModalOpen: !residenceModalOpen });
   };
-  public onSelectNationality = nationalityCode => {
+  public onSelectNationality = (nationalityCode) => {
     this.setState({ nationalityCode });
     this.setState({ nationalityModalOpen: false });
   };
-  public onSelectResidence = residenceCode => {
+  public onSelectResidence = (residenceCode) => {
     this.setState({ residenceCode });
     this.setState({ residenceModalOpen: false });
   };
@@ -731,13 +731,13 @@ class EditProfileContainer extends React.Component<IProps, IState> {
     this.markAsMainFn({ variables: { uuid } });
     this.setState({ avatarUrl });
   };
-  public onCompletedEditProfile = data => {
+  public onCompletedEditProfile = (data) => {
     const { editProfile } = data;
     if (editProfile) {
       this.logUserInFn({
         variables: {
-          token: editProfile.token
-        }
+          token: editProfile.token,
+        },
       });
     } else {
       toast.error("Could not log you in 😔");
@@ -750,12 +750,12 @@ class EditProfileContainer extends React.Component<IProps, IState> {
     const { newUsername } = this.state;
     this.setState({ username: newUsername, isProfileSubmitted: false });
   };
-  public onCompletedCompleteEditPhoneVerification = data => {
+  public onCompletedCompleteEditPhoneVerification = (data) => {
     const { completeEditPhoneVerification } = data;
     const {
       newPhoneNumber,
       newCountryPhoneCode,
-      newCountryPhoneNumber
+      newCountryPhoneNumber,
     } = this.state;
     if (completeEditPhoneVerification.ok) {
       toast.success("Your phone number is verified");
@@ -773,19 +773,19 @@ class EditProfileContainer extends React.Component<IProps, IState> {
         newPhoneNumber: "",
         newCountryPhoneCode: localStorage.getItem("countryCode"),
         newCountryPhoneNumber: countries.find(
-          i => i.code === localStorage.getItem("countryCode")
-        ).phone
+          (i) => i.code === localStorage.getItem("countryCode")
+        ).phone,
       });
     } else {
       toast.error("Could not be Verified your phone number");
     }
   };
-  public onCompletedStartEditPhoneVerification = data => {
+  public onCompletedStartEditPhoneVerification = (data) => {
     const { startEditPhoneVerification } = data;
     this.setState({ isPhoneSubmitted: false });
     if (startEditPhoneVerification.ok) {
       this.setState({
-        verifyPhoneNumberModalOpen: true
+        verifyPhoneNumberModalOpen: true,
       });
       toast.success("SMS Sent! Redirectiong you...");
     } else {
@@ -797,21 +797,21 @@ class EditProfileContainer extends React.Component<IProps, IState> {
       verifyEmailAddressModalOpen: false,
       editEmailAddressModalOpen: true,
       isPhoneSubmitted: false,
-      newEmailAddress: ""
+      newEmailAddress: "",
     });
   };
 
   public closeVerifyPhoneNumberModal = () => {
     this.setState({
       isPhoneSubmitted: false,
-      verifyPhoneNumberModalOpen: false
+      verifyPhoneNumberModalOpen: false,
     });
   };
   public closeVerifyEmailAddressModal = () => {
     this.setState({
       isEmailSubmitted: false,
       verifyEmailAddressModalOpen: false,
-      newEmailAddress: ""
+      newEmailAddress: "",
     });
   };
   public updateEditPhoneVerification = (
@@ -822,21 +822,21 @@ class EditProfileContainer extends React.Component<IProps, IState> {
     try {
       const data = cache.readQuery({
         query: GET_USER,
-        variables: { username }
+        variables: { username },
       });
       if (data) {
-        data.userProfile.user.profile.phoneNumber =
+        data.userProfile.user.phoneNumber =
           completeEditPhoneVerification.phoneNumber;
-        data.userProfile.user.profile.countryPhoneNumber =
+        data.userProfile.user.countryPhoneNumber =
           completeEditPhoneVerification.countryPhoneNumber;
-        data.userProfile.user.profile.countryPhoneCode =
+        data.userProfile.user.countryPhoneCode =
           completeEditPhoneVerification.countryPhoneCode;
-        data.userProfile.user.profile.isVerifiedPhoneNumber =
+        data.userProfile.user.isVerifiedPhoneNumber =
           completeEditPhoneVerification.isVerifiedPhoneNumber;
         cache.writeQuery({
           query: GET_USER,
           variables: { username },
-          data
+          data,
         });
       }
     } catch (e) {
@@ -844,9 +844,9 @@ class EditProfileContainer extends React.Component<IProps, IState> {
     }
   };
 
-  public onChangeVerifyPhone = value => {
+  public onChangeVerifyPhone = (value) => {
     this.setState({
-      verificationKey: value
+      verificationKey: value,
     } as any);
   };
 
@@ -854,14 +854,14 @@ class EditProfileContainer extends React.Component<IProps, IState> {
     const { editPhoneNumberModalOpen } = this.state;
     this.setState({
       editPhoneNumberModalOpen: !editPhoneNumberModalOpen,
-      isPhoneSubmitted: false
+      isPhoneSubmitted: false,
     });
   };
   public toggleEditEmailAddressModal = () => {
     const { editEmailAddressModalOpen } = this.state;
     this.setState({
       editEmailAddressModalOpen: !editEmailAddressModalOpen,
-      newEmailAddress: ""
+      newEmailAddress: "",
     });
   };
   public onSelectCountry = (
@@ -871,25 +871,25 @@ class EditProfileContainer extends React.Component<IProps, IState> {
     this.setState({
       newCountryPhoneNumber,
       newCountryPhoneCode,
-      countryModalOpen: false
+      countryModalOpen: false,
     });
   };
   public toggleCountryModal = () => {
     const { countryModalOpen } = this.state;
     this.setState({
-      countryModalOpen: !countryModalOpen
+      countryModalOpen: !countryModalOpen,
     });
   };
   public removeImagePreviewUrl = () => {
     this.setState({ file: null, imagePreviewUrl: "" });
   };
-  public onChangeImage = event => {
+  public onChangeImage = (event) => {
     event.preventDefault();
     const {
       target: {
         validity,
-        files: [file]
-      }
+        files: [file],
+      },
     } = event;
     if (!validity.valid || !file) {
       return;
@@ -898,12 +898,12 @@ class EditProfileContainer extends React.Component<IProps, IState> {
     reader.onloadend = () => {
       this.setState({
         file,
-        imagePreviewUrl: reader.result
+        imagePreviewUrl: reader.result,
       });
     };
     reader.readAsDataURL(file);
   };
-  public onSubmitImage = event => {
+  public onSubmitImage = (event) => {
     event.preventDefault();
     const { file, imagePreviewUrl } = this.state;
     if (
@@ -914,7 +914,7 @@ class EditProfileContainer extends React.Component<IProps, IState> {
       this.setState({
         file: null,
         imagePreviewUrl: "",
-        avatarModalOpen: false
+        avatarModalOpen: false,
       });
     } else {
       this.setState({ avatarModalOpen: false });
@@ -923,20 +923,20 @@ class EditProfileContainer extends React.Component<IProps, IState> {
   public toggleAvatarModal = () => {
     const { avatarModalOpen } = this.state;
     this.setState({
-      avatarModalOpen: !avatarModalOpen
+      avatarModalOpen: !avatarModalOpen,
     });
   };
   public togglePreviewAvatarModal = () => {
     const { avatarPreviewModalOpen } = this.state;
     this.setState({
-      avatarPreviewModalOpen: !avatarPreviewModalOpen
+      avatarPreviewModalOpen: !avatarPreviewModalOpen,
     });
   };
   public deleteProfile = () => {
     this.deleteProfileFn();
     this.logUserOutFn();
   };
-  public onSubmit: React.FormEventHandler<HTMLFormElement> = event => {
+  public onSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
     const {
       newUsername,
       bio,
@@ -944,7 +944,7 @@ class EditProfileContainer extends React.Component<IProps, IState> {
       firstName,
       lastName,
       nationalityCode,
-      residenceCode
+      residenceCode,
     } = this.state;
     const { isProfileSubmitted } = this.state;
     if (!isProfileSubmitted) {
@@ -959,8 +959,8 @@ class EditProfileContainer extends React.Component<IProps, IState> {
             firstName,
             lastName,
             nationalityCode,
-            residenceCode
-          }
+            residenceCode,
+          },
         });
       }
       this.setState({ isProfileSubmitted: true });
@@ -969,28 +969,28 @@ class EditProfileContainer extends React.Component<IProps, IState> {
   public toggleDeleteConfirmModal = () => {
     const { deleteConfirmModalOpen } = this.state;
     this.setState({
-      deleteConfirmModalOpen: !deleteConfirmModalOpen
+      deleteConfirmModalOpen: !deleteConfirmModalOpen,
     } as any);
   };
   public toggleLogoutConfirmModal = () => {
     const { logoutConfirmModalOpen } = this.state;
     this.setState({
-      logoutConfirmModalOpen: !logoutConfirmModalOpen
+      logoutConfirmModalOpen: !logoutConfirmModalOpen,
     } as any);
   };
   public onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const {
-      target: { name, value }
+      target: { name, value },
     } = event;
     this.setState({
-      [name]: value
+      [name]: value,
     } as any);
   };
   public onInputUsernameChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     const {
-      target: { name, value }
+      target: { name, value },
     } = event;
     const replaceChar = /[~!@\#$%^&*\()\-=+_'\;<>0-9\/.\`:\"\\,\[\]?|{}]/gi;
     this.setState({
@@ -998,7 +998,7 @@ class EditProfileContainer extends React.Component<IProps, IState> {
         .replace(/^\s\s*/, "")
         .replace(/\s\s*$/, "")
         .replace(replaceChar, "")
-        .replace(/[^a-z|^A-Z|^0-9]/, "")
+        .replace(/[^a-z|^A-Z|^0-9]/, ""),
     } as any);
   };
 
@@ -1007,14 +1007,14 @@ class EditProfileContainer extends React.Component<IProps, IState> {
     try {
       const data = cache.readQuery({
         query: GET_USER,
-        variables: { username }
+        variables: { username },
       });
       if (data) {
         data.userProfile.user = editProfile.user;
         cache.writeQuery({
           query: GET_USER,
           variables: { username },
-          data
+          data,
         });
       }
     } catch (e) {
@@ -1022,13 +1022,13 @@ class EditProfileContainer extends React.Component<IProps, IState> {
     }
     try {
       const data = cache.readQuery({
-        query: ME
+        query: ME,
       });
       if (data) {
         data.me.user.username = editProfile.user.username;
         cache.writeQuery({
           query: ME,
-          data
+          data,
         });
       }
     } catch (e) {
@@ -1039,27 +1039,27 @@ class EditProfileContainer extends React.Component<IProps, IState> {
     event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const {
-      target: { name, value }
+      target: { name, value },
     } = event;
     this.setState({
-      [name]: value
+      [name]: value,
     } as any);
   };
-  public onSubmitVerifyPhone: React.FormEventHandler<
-    HTMLFormElement
-  > = event => {
+  public onSubmitVerifyPhone: React.FormEventHandler<HTMLFormElement> = (
+    event
+  ) => {
     event.preventDefault();
     this.completeEditPhoneVerificationFn();
   };
 
-  public onSubmitPhoneNumber: React.FormEventHandler<
-    HTMLFormElement
-  > = event => {
+  public onSubmitPhoneNumber: React.FormEventHandler<HTMLFormElement> = (
+    event
+  ) => {
     event.preventDefault();
     const {
       newCountryPhoneNumber,
       newPhoneNumber,
-      isPhoneSubmitted
+      isPhoneSubmitted,
     } = this.state;
     if (newPhoneNumber) {
       const phone = `${newCountryPhoneNumber}${
@@ -1074,7 +1074,7 @@ class EditProfileContainer extends React.Component<IProps, IState> {
         if (!isPhoneSubmitted) {
           this.phoneVerificationFn();
           this.setState({
-            isPhoneSubmitted: true
+            isPhoneSubmitted: true,
           });
         }
       } else {
@@ -1084,9 +1084,9 @@ class EditProfileContainer extends React.Component<IProps, IState> {
       toast.error("Please write a phone number");
     }
   };
-  public onSubmitEmailAddress: React.FormEventHandler<
-    HTMLFormElement
-  > = event => {
+  public onSubmitEmailAddress: React.FormEventHandler<HTMLFormElement> = (
+    event
+  ) => {
     event.preventDefault();
     const { isEmailSubmitted, newEmailAddress } = this.state;
     if (newEmailAddress !== "") {
@@ -1097,7 +1097,7 @@ class EditProfileContainer extends React.Component<IProps, IState> {
         if (!isEmailSubmitted) {
           this.emailVerificationFn();
           this.setState({
-            isEmailSubmitted: true
+            isEmailSubmitted: true,
           });
         }
       } else {
@@ -1107,7 +1107,7 @@ class EditProfileContainer extends React.Component<IProps, IState> {
       toast.error("Please write a email");
     }
   };
-  public back = async event => {
+  public back = async (event) => {
     const { history } = this.props;
     const { username } = this.state;
     await event.stopPropagation();
@@ -1118,14 +1118,14 @@ class EditProfileContainer extends React.Component<IProps, IState> {
     try {
       const data = cache.readQuery({
         query: GET_USER,
-        variables: { username }
+        variables: { username },
       });
       if (data) {
-        data.userProfile.user.profile.avatarUrl = markAsMain.avatar.thumbnail;
+        data.userProfile.user.avatarUrl = markAsMain.avatar.thumbnail;
         cache.writeQuery({
           query: GET_USER,
           variables: { username },
-          data
+          data,
         });
       }
     } catch (e) {
@@ -1133,13 +1133,13 @@ class EditProfileContainer extends React.Component<IProps, IState> {
     }
     try {
       const data = cache.readQuery({
-        query: ME
+        query: ME,
       });
       if (data) {
-        data.me.user.profile.avatarUrl = markAsMain.avatar.thumbnail;
+        data.me.user.avatarUrl = markAsMain.avatar.thumbnail;
         cache.writeQuery({
           query: ME,
-          data
+          data,
         });
       }
     } catch (e) {
@@ -1148,26 +1148,26 @@ class EditProfileContainer extends React.Component<IProps, IState> {
     try {
       const data = cache.readQuery({
         query: GET_AVATARS,
-        variables: { userName: username }
+        variables: { userName: username },
       });
       if (data) {
         data.getAvatars.avatars.find(
-          i => i.uuid === markAsMain.preAvatarUUID
+          (i) => i.uuid === markAsMain.preAvatarUUID
         ).isMain = false;
         data.getAvatars.avatars.find(
-          i => i.uuid === markAsMain.newAvatarUUID
+          (i) => i.uuid === markAsMain.newAvatarUUID
         ).isMain = true;
         cache.writeQuery({
           query: GET_AVATARS,
           variables: { userName: username },
-          data
+          data,
         });
       }
     } catch (e) {
       console.log(e);
     }
   };
-  public onCompletedMarkAsMain = data => {
+  public onCompletedMarkAsMain = (data) => {
     if (data.markAsMain.ok) {
       toast.success("Mark As Main updated");
     } else {
@@ -1179,23 +1179,23 @@ class EditProfileContainer extends React.Component<IProps, IState> {
     try {
       const data = cache.readQuery({
         query: GET_AVATARS,
-        variables: { userName: username }
+        variables: { userName: username },
       });
       if (data) {
         data.getAvatars.avatars = data.getAvatars.avatars.filter(
-          i => i.uuid !== deleteAvatar.uuid
+          (i) => i.uuid !== deleteAvatar.uuid
         );
         cache.writeQuery({
           query: GET_AVATARS,
           variables: { userName: username },
-          data
+          data,
         });
       }
     } catch (e) {
       console.log(e);
     }
   };
-  public onCompletedDeleteAvatar = data => {
+  public onCompletedDeleteAvatar = (data) => {
     if (data.deleteAvatar.ok) {
       toast.success("Avatar deleted");
     } else {
@@ -1207,20 +1207,20 @@ class EditProfileContainer extends React.Component<IProps, IState> {
     try {
       const data = cache.readQuery({
         query: GET_AVATARS,
-        variables: { userName: username }
+        variables: { userName: username },
       });
       if (data) {
         data.getAvatars.avatars.unshift(uploadAvatar.avatar);
         data.getAvatars.avatars.find(
-          i => i.uuid === uploadAvatar.preAvatarUUID
+          (i) => i.uuid === uploadAvatar.preAvatarUUID
         ).isMain = false;
         data.getAvatars.avatars.find(
-          i => i.uuid === uploadAvatar.newAvatarUUID
+          (i) => i.uuid === uploadAvatar.newAvatarUUID
         ).isMain = true;
         cache.writeQuery({
           query: GET_AVATARS,
           variables: { userName: username },
-          data
+          data,
         });
       }
     } catch (e) {
@@ -1229,14 +1229,14 @@ class EditProfileContainer extends React.Component<IProps, IState> {
     try {
       const data = cache.readQuery({
         query: GET_USER,
-        variables: { username }
+        variables: { username },
       });
       if (data) {
-        data.userProfile.user.profile.avatarUrl = uploadAvatar.avatar.thumbnail;
+        data.userProfile.user.avatarUrl = uploadAvatar.avatar.thumbnail;
         cache.writeQuery({
           query: GET_USER,
           variables: { username },
-          data
+          data,
         });
       }
     } catch (e) {
@@ -1244,13 +1244,13 @@ class EditProfileContainer extends React.Component<IProps, IState> {
     }
     try {
       const data = cache.readQuery({
-        query: ME
+        query: ME,
       });
       if (data) {
-        data.me.user.profile.avatarUrl = uploadAvatar.avatar.thumbnail;
+        data.me.user.avatarUrl = uploadAvatar.avatar.thumbnail;
         cache.writeQuery({
           query: ME,
-          data
+          data,
         });
       }
     } catch (e) {
@@ -1258,22 +1258,22 @@ class EditProfileContainer extends React.Component<IProps, IState> {
     }
     this.setState({ avatarUrl: uploadAvatar.avatar.thumbnail });
   };
-  public onCompletedEditEmailVerification = data => {
+  public onCompletedEditEmailVerification = (data) => {
     this.setState({
-      isEmailSubmitted: false
+      isEmailSubmitted: false,
     });
     this.setState({});
     if (data.startEditEmailVerification.ok) {
       this.setState({
         verifyEmailAddressModalOpen: true,
-        editEmailAddressModalOpen: false
+        editEmailAddressModalOpen: false,
       });
       toast.success("Email Sent! Please ");
     } else {
       toast.error("Could not send you a Key");
     }
   };
-  public onCompletedUploadAvatar = data => {
+  public onCompletedUploadAvatar = (data) => {
     if (data.uploadAvatar.ok) {
       toast.success("Avatar updated");
     } else {

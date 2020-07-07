@@ -27,51 +27,47 @@ export const EDIT_PROFILE = gql`
         username
         firstName
         lastName
-        profile {
-          bio
-          uuid
-          gender
-          avatarUrl
-          website
-          distance
-          countryPhoneNumber
-          countryPhoneCode
-          phoneNumber
-          emailAddress
-          isVerifiedPhoneNumber
-          isVerifiedEmailAddress
-          nationality {
-            countryEmoji
-            ...CountryParts
-          }
-          residence {
-            countryEmoji
-            ...CountryParts
-          }
-          postCount
-          tripCount
-          coffeeCount
-          cityCount
-          countryCount
-          continentCount
-          isSelf
-          isDarkMode
-          isHideTrips
-          isHideCoffees
-          isHideCities
-          isHideCountries
-          isHideContinents
-          isAutoLocationReport
-          currentCity {
-            latitude
-            longitude
-            cityId
-            cityName
-            cityThumbnail
-            country {
-              countryName
-              countryCode
-            }
+        bio
+        uuid
+        gender
+        avatarUrl
+        website
+        distance
+        countryPhoneNumber
+        countryPhoneCode
+        phoneNumber
+        emailAddress
+        isVerifiedPhoneNumber
+        isVerifiedEmailAddress
+        nationality {
+          countryEmoji
+          ...CountryParts
+        }
+        residence {
+          countryEmoji
+          ...CountryParts
+        }
+        postCount
+        tripCount
+        cityCount
+        countryCount
+        continentCount
+        isSelf
+        isDarkMode
+        isHideTrips
+        isHideCities
+        isHideCountries
+        isHideContinents
+        isAutoLocationReport
+        currentCity {
+          latitude
+          longitude
+          cityId
+          cityName
+          cityThumbnail
+          country {
+            countryName
+            countryCode
           }
         }
       }

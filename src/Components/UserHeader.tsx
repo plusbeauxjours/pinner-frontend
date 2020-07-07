@@ -54,7 +54,7 @@ const UserHeader: React.FunctionComponent<IProps> = ({
   onInputChange,
   cityName,
   type,
-  target
+  target,
 }) => {
   return (
     <Header>
@@ -62,32 +62,21 @@ const UserHeader: React.FunctionComponent<IProps> = ({
       <HeaderColumn>
         <SText text={username} />
         <Location>
-          {(() => {
-            switch (type) {
-              case "coffee":
-                return <>{currentCity}</>;
-              default:
-                return (
-                  <>
-                    {editMode ? (
-                      <>
-                        <ExtendedInput
-                          onChange={onInputChange}
-                          type={"text"}
-                          placeholder={currentCity}
-                          name={"cityName"}
-                        />
-                        , {currentCountry}
-                      </>
-                    ) : (
-                      <>
-                        {currentCity}, {currentCountry}
-                      </>
-                    )}
-                  </>
-                );
-            }
-          })()}
+          {editMode ? (
+            <>
+              <ExtendedInput
+                onChange={onInputChange}
+                type={"text"}
+                placeholder={currentCity}
+                name={"cityName"}
+              />
+              , {currentCountry}
+            </>
+          ) : (
+            <>
+              {currentCity}, {currentCountry}
+            </>
+          )}
         </Location>
       </HeaderColumn>
     </Header>

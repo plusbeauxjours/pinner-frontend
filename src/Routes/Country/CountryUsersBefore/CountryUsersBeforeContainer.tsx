@@ -2,7 +2,7 @@ import React from "react";
 import { Query } from "react-apollo";
 import {
   CountryUsersBefore,
-  CountryUsersBeforeVariables
+  CountryUsersBeforeVariables,
 } from "../../../types/api";
 import CountryUsersBeforePresenter from "./CountryUsersBeforePresenter";
 import { COUNTRY_USERS_BEFORE } from "./CountryUsersBeforeQueries";
@@ -26,7 +26,7 @@ class CountryUsersBeforeContainer extends React.Component<IProps, IState> {
     super(props);
     this.state = {
       search: "",
-      usersBeforeList: []
+      usersBeforeList: [],
     };
   }
   public componentDidUpdate(prevProps) {
@@ -38,15 +38,15 @@ class CountryUsersBeforeContainer extends React.Component<IProps, IState> {
   public render() {
     const {
       match: {
-        params: { countryCode }
-      }
+        params: { countryCode },
+      },
     } = this.props;
     const { search, usersBeforeList } = this.state;
     return (
       <CountryUsersBeforeQuery
         query={COUNTRY_USERS_BEFORE}
         variables={{
-          countryCode
+          countryCode,
         }}
       >
         {({ data, loading, fetchMore }) => {
@@ -66,34 +66,34 @@ class CountryUsersBeforeContainer extends React.Component<IProps, IState> {
       </CountryUsersBeforeQuery>
     );
   }
-  public onChange: React.ChangeEventHandler<HTMLInputElement> = event => {
+  public onChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
     const {
-      target: { value }
+      target: { value },
     } = event;
     const {
-      countryUsersBefore: { usersBefore = null }
+      countryUsersBefore: { usersBefore = null },
     } = this.data;
     const userSearch = (list, text) =>
-      list.filter(i =>
-        i.actor.profile.username.toLowerCase().includes(text.toLowerCase())
+      list.filter((i) =>
+        i.actor.username.toLowerCase().includes(text.toLowerCase())
       );
     const usersBeforeList = userSearch(usersBefore, value);
     this.setState({
       search: value,
-      usersBeforeList
+      usersBeforeList,
     } as any);
   };
-  public loadMore = page => {
+  public loadMore = (page) => {
     const {
       match: {
-        params: { countryCode }
-      }
+        params: { countryCode },
+      },
     } = this.props;
     this.fetchMore({
       query: COUNTRY_USERS_BEFORE,
       variables: {
         countryCode,
-        page
+        page,
       },
       updateQuery: (previousResult, { fetchMoreResult }) => {
         if (!fetchMoreResult) {
@@ -104,14 +104,14 @@ class CountryUsersBeforeContainer extends React.Component<IProps, IState> {
             ...previousResult.countryUsersBefore,
             usersBefore: [
               ...previousResult.countryUsersBefore.usersBefore,
-              ...fetchMoreResult.countryUsersBefore.usersBefore
+              ...fetchMoreResult.countryUsersBefore.usersBefore,
             ],
             page: fetchMoreResult.countryUsersBefore.page,
-            hasNextPage: fetchMoreResult.countryUsersBefore.hasNextPage
-          }
+            hasNextPage: fetchMoreResult.countryUsersBefore.hasNextPage,
+          },
         };
         return data;
-      }
+      },
     });
   };
 }

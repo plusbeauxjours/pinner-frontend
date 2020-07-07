@@ -26,7 +26,7 @@ const ModalOverlay = styled.div`
   width: 100%;
   position: fixed;
   top: 0;
-  background-color: ${props => props.theme.modalOverlayColor};
+  background-color: ${(props) => props.theme.modalOverlayColor};
 `;
 
 const ModalAnimation = keyframes`
@@ -57,9 +57,9 @@ const InputContainer = styled.div`
 const SearchContinentInput = styled.input`
   z-index: 10;
   border: 0;
-  border-bottom: 1px solid ${props => props.theme.greyColor};
+  border-bottom: 1px solid ${(props) => props.theme.greyColor};
   padding: 5px;
-  color: ${props => props.theme.color};
+  color: ${(props) => props.theme.color};
   background-color: transparent;
   font-size: 12px;
   font-weight: 100;
@@ -68,7 +68,7 @@ const SearchContinentInput = styled.input`
     outline: none;
   }
   &::placeholder {
-    color: ${props => props.theme.greyColor};
+    color: ${(props) => props.theme.greyColor};
   }
   animation: ${ModalAnimation} 0.1s linear;
   margin-top: 20px;
@@ -108,10 +108,10 @@ const UserRow = styled.div`
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
   &:hover {
-    background-color: ${props => props.theme.hoverColor};
+    background-color: ${(props) => props.theme.hoverColor};
   }
   &:not(:last-child) {
-    border-bottom: 1px solid ${props => props.theme.borderColor};
+    border-bottom: 1px solid ${(props) => props.theme.borderColor};
   }
 `;
 
@@ -136,7 +136,7 @@ const SAvatar = styled(Avatar)`
 `;
 
 const GreyText = styled(Bold)`
-  color: ${props => props.theme.greyColor};
+  color: ${(props) => props.theme.greyColor};
 `;
 
 interface IProps {
@@ -154,7 +154,7 @@ const ContinentsPresenter: React.FunctionComponent<IProps> = ({
   continentList,
   search,
   onChange,
-  back
+  back,
 }) => {
   if (loading) {
     return <Loader />;
@@ -173,7 +173,7 @@ const ContinentsPresenter: React.FunctionComponent<IProps> = ({
           <Modal>
             {continentList.length !== 0 &&
               continentList &&
-              continentList.map(continent => (
+              continentList.map((continent) => (
                 <UserRow key={continent.id}>
                   <Link to={`/continent/${continent.continentCode}`}>
                     <Header>
@@ -188,13 +188,12 @@ const ContinentsPresenter: React.FunctionComponent<IProps> = ({
                     </Header>
                   </Link>
                   <GreyText text={`x ${continent.count}`} />
-                  {continent.diff && <GreyText text={`${continent.diff} d`} />}
                 </UserRow>
               ))}
             {continentList.length === 0 &&
               !search &&
               continents &&
-              continents.map(continent => (
+              continents.map((continent) => (
                 <UserRow key={continent.id}>
                   <Link to={`/continent/${continent.continentCode}`}>
                     <Header>
@@ -209,7 +208,6 @@ const ContinentsPresenter: React.FunctionComponent<IProps> = ({
                     </Header>
                   </Link>
                   <GreyText text={`x ${continent.count}`} />
-                  {continent.diff && <GreyText text={`${continent.diff} d`} />}
                 </UserRow>
               ))}
           </Modal>

@@ -26,7 +26,7 @@ const ModalOverlay = styled.div`
   width: 100%;
   position: fixed;
   top: 0;
-  background-color: ${props => props.theme.modalOverlayColor};
+  background-color: ${(props) => props.theme.modalOverlayColor};
 `;
 
 const ModalAnimation = keyframes`
@@ -57,9 +57,9 @@ const InputContainer = styled.div`
 const SearchCountriesInput = styled.input`
   z-index: 10;
   border: 0;
-  border-bottom: 1px solid ${props => props.theme.greyColor};
+  border-bottom: 1px solid ${(props) => props.theme.greyColor};
   padding: 5px;
-  color: ${props => props.theme.color};
+  color: ${(props) => props.theme.color};
   background-color: transparent;
   font-size: 12px;
   font-weight: 100;
@@ -68,7 +68,7 @@ const SearchCountriesInput = styled.input`
     outline: none;
   }
   &::placeholder {
-    color: ${props => props.theme.greyColor};
+    color: ${(props) => props.theme.greyColor};
   }
   animation: ${ModalAnimation} 0.1s linear;
   margin-top: 20px;
@@ -108,10 +108,10 @@ const UserRow = styled.div`
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
   &:hover {
-    background-color: ${props => props.theme.hoverColor};
+    background-color: ${(props) => props.theme.hoverColor};
   }
   &:not(:last-child) {
-    border-bottom: 1px solid ${props => props.theme.borderColor};
+    border-bottom: 1px solid ${(props) => props.theme.borderColor};
   }
 `;
 
@@ -143,7 +143,7 @@ const Location = styled.span`
   font-weight: 200;
 `;
 const GreyText = styled(Bold)`
-  color: ${props => props.theme.greyColor};
+  color: ${(props) => props.theme.greyColor};
 `;
 
 interface IProps {
@@ -161,7 +161,7 @@ const CountriesPresenter: React.FunctionComponent<IProps> = ({
   countryList,
   search,
   onChange,
-  back
+  back,
 }) => {
   if (loading) {
     return <Loader />;
@@ -180,7 +180,7 @@ const CountriesPresenter: React.FunctionComponent<IProps> = ({
           <Modal>
             {countryList.length !== 0 &&
               countryList &&
-              countryList.map(country => (
+              countryList.map((country) => (
                 <UserRow key={country.id}>
                   <Link to={`/country/${country.countryCode}`}>
                     <Header>
@@ -196,13 +196,12 @@ const CountriesPresenter: React.FunctionComponent<IProps> = ({
                     </Header>
                   </Link>
                   <GreyText text={`x ${country.count}`} />
-                  {country.diff && <GreyText text={`${country.diff} d`} />}
                 </UserRow>
               ))}
             {countryList.length === 0 &&
               !search &&
               countries &&
-              countries.map(country => (
+              countries.map((country) => (
                 <UserRow key={country.id}>
                   <Link to={`/country/${country.countryCode}`}>
                     <Header>
@@ -218,7 +217,6 @@ const CountriesPresenter: React.FunctionComponent<IProps> = ({
                     </Header>
                   </Link>
                   <GreyText text={`x ${country.count}`} />
-                  {country.diff && <GreyText text={`${country.diff} d`} />}
                 </UserRow>
               ))}
           </Modal>

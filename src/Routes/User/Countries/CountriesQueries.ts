@@ -6,7 +6,6 @@ export const TOP_COUNTRIES = gql`
     topCountries(uuid: $uuid) {
       countries {
         count
-        diff
         ...CountryParts
       }
     }

@@ -23,10 +23,10 @@ const UserRow = styled.div`
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
   &:hover {
-    background-color: ${props => props.theme.hoverColor};
+    background-color: ${(props) => props.theme.hoverColor};
   }
   &:not(:last-child) {
-    border-bottom: 1px solid ${props => props.theme.borderColor};
+    border-bottom: 1px solid ${(props) => props.theme.borderColor};
   }
 `;
 
@@ -72,11 +72,11 @@ const SearchPresenter: React.FunctionComponent<IProps> = ({
   searchData: {
     searchUsers: { users = null } = {},
     searchCountries: { countries = null } = {},
-    searchContinents: { continents = null } = {}
+    searchContinents: { continents = null } = {},
   } = {},
   searchLoading,
   onClick,
-  createCityLoading
+  createCityLoading,
 }) => {
   const REACT_APP_GOOGLE_PLACE_KEY = process.env.REACT_APP_GOOGLE_PLACE_KEY;
   const { results, isLoading } = useGoogleAutocomplete({
@@ -84,8 +84,8 @@ const SearchPresenter: React.FunctionComponent<IProps> = ({
     query: search,
     options: {
       types: "(cities)",
-      language: "en"
-    }
+      language: "en",
+    },
   });
   if (searchLoading || isLoading || createCityLoading) {
     return <Loader />;
@@ -95,14 +95,14 @@ const SearchPresenter: React.FunctionComponent<IProps> = ({
         {search.length > 0 &&
           users &&
           users.length > 0 &&
-          users.map(user => (
-            <UserRow key={user.profile.id}>
-              <Link to={`/${user.profile.uuid}`}>
+          users.map((user) => (
+            <UserRow key={user.id}>
+              <Link to={`/${user.uuid}`}>
                 <UserHeader
-                  username={user.profile.username}
-                  currentCity={user.profile.currentCity.cityName}
-                  currentCountry={user.profile.currentCity.country.countryName}
-                  avatar={user.profile.avatarUrl}
+                  username={user.username}
+                  currentCity={user.currentCity.cityName}
+                  currentCountry={user.currentCity.country.countryName}
+                  avatar={user.avatarUrl}
                   size={"sm"}
                 />
               </Link>
@@ -111,7 +111,7 @@ const SearchPresenter: React.FunctionComponent<IProps> = ({
         {search.length > 0 &&
           results.predictions &&
           results.predictions.length > 0 &&
-          results.predictions.map(prediction => (
+          results.predictions.map((prediction) => (
             <UserRow
               key={prediction.id}
               onClick={() => onClick(prediction.place_id)}
@@ -134,12 +134,12 @@ const SearchPresenter: React.FunctionComponent<IProps> = ({
         {search.length > 0 &&
           countries &&
           countries.length > 0 &&
-          countries.map(country => (
+          countries.map((country) => (
             <UserRow key={country.id}>
               <Link
                 to={{
                   pathname: `/country/${country.countryCode}`,
-                  state: { countryName: country.countryName }
+                  state: { countryName: country.countryName },
                 }}
               >
                 <Header>
@@ -162,7 +162,7 @@ const SearchPresenter: React.FunctionComponent<IProps> = ({
         {search.length > 0 &&
           continents &&
           continents.length > 0 &&
-          continents.map(continent => (
+          continents.map((continent) => (
             <UserRow key={continent.id}>
               <Link to={`/continent/${continent.continentCode}`}>
                 <Header>

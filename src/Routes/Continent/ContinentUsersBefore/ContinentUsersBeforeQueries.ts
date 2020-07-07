@@ -1,5 +1,4 @@
 import gql from "graphql-tag";
-import { PROFILE_FRAGMENT } from "src/sharedQueries";
 
 export const CONTINENT_USERS_BEFORE = gql`
   query ContinentUsersBefore($page: Int, $continentCode: String!) {
@@ -9,12 +8,19 @@ export const CONTINENT_USERS_BEFORE = gql`
       usersBefore {
         naturalTime
         actor {
-          profile {
-            ...ProfileParts
+          id
+          uuid
+          username
+          avatarUrl
+          isSelf
+          currentCity {
+            cityName
+            country {
+              countryName
+            }
           }
         }
       }
     }
   }
-  ${PROFILE_FRAGMENT}
 `;

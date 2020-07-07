@@ -1,5 +1,4 @@
 import gql from "graphql-tag";
-import { PROFILE_FRAGMENT } from "src/sharedQueries";
 
 export const CITY_USERS_NOW = gql`
   query CityUsersNow($page: Int, $cityId: String!) {
@@ -7,9 +6,18 @@ export const CITY_USERS_NOW = gql`
       page
       hasNextPage
       usersNow {
-        ...ProfileParts
+        id
+        uuid
+        username
+        avatarUrl
+        isSelf
+        currentCity {
+          cityName
+          country {
+            countryName
+          }
+        }
       }
     }
   }
-  ${PROFILE_FRAGMENT}
 `;

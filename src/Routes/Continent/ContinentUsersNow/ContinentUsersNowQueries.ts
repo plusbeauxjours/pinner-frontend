@@ -1,5 +1,4 @@
 import gql from "graphql-tag";
-import { PROFILE_FRAGMENT } from "src/sharedQueries";
 
 export const CONTINENT_USERS_NOW = gql`
   query ContinentUsersNow($page: Int, $continentCode: String!) {
@@ -7,9 +6,18 @@ export const CONTINENT_USERS_NOW = gql`
       page
       hasNextPage
       usersNow {
-        ...ProfileParts
+        id
+        uuid
+        username
+        avatarUrl
+        isSelf
+        currentCity {
+          cityName
+          country {
+            countryName
+          }
+        }
       }
     }
   }
-  ${PROFILE_FRAGMENT}
 `;
