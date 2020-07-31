@@ -1,3 +1,3 @@
 # pinner-frontend
 
-www.pinner.fun
+www.pinner.shop
