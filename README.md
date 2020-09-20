@@ -19,8 +19,6 @@
 
 ### Webpage
 
-<span>
-  <a href="https://www.pinner.shop/">
-    <p align="center" >www.pinner.shop</p>
-  </a>
-</span>
+> <a href="https://www.pinner.shop/">
+  <p align="center" >www.pinner.shop</p>
+</a>
