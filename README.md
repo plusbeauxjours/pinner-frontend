@@ -1,7 +1,7 @@
 # PINNER-FRONTEND
 
 <p align="center" >
-  <img src="https://www.plusbeauxjours.com/static/media/Pinner_app_video.c47d995b.gif" >
+  <img src="https://www.plusbeauxjours.com/static/media/Pinner_web_video.4f4b2c1f.gif" >
   <br>
 </p>
 
@@ -11,11 +11,11 @@
 
 ### Technical Sheet
 
-> Django, Graphene, React-Native, Apollo, Firebase, TypeScript, Styled-Components, Sentry, GoogleMapAPI, Heroku
+> Django, Graphene, React, Apollo, Firebase, TypeScript, Styled-Components, Sentry, GoogleMapAPI, Heroku
 
 ### Portfolio Link
 
-> https://www.plusbeauxjours.com/projects/app/pinner-web
+> https://www.plusbeauxjours.com/projects/web/pinner-web
 
 ### Webpage
 
