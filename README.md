@@ -19,6 +19,4 @@
 
 ### Webpage
 
-> <a href="https://master--pinner.netlify.app/">
-  <p align="center">https://master--pinner.netlify.app</p>
-</a>
+> https://master--pinner.netlify.app
