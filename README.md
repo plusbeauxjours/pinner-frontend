@@ -15,10 +15,10 @@
 
 ### Portfolio Link
 
-> https://www.plusbeauxjours.com/projects/web/pinner-web
+> https://www.plusbeauxjours.info/projects/web/pinner
 
 ### Webpage
 
-> <a href="https://www.pinner.shop/">
-  <p align="center" >www.pinner.shop</p>
+> <a href="https://master--pinner.netlify.app/">
+  <p align="center" >[www.pinner.shop](https://master--pinner.netlify.app/)</p>
 </a>
