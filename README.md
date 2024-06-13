@@ -20,5 +20,5 @@
 ### Webpage
 
 > <a href="https://master--pinner.netlify.app/">
-  <p align="center" >[www.pinner.shop](https://master--pinner.netlify.app/)</p>
+  <p align="center">https://master--pinner.netlify.app</p>
 </a>
